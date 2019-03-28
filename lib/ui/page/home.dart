@@ -9,12 +9,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
-      body: StoreConnector<AppState, ViewModel>(
-          builder: (BuildContext context, ViewModel viewModel) => Container(
-                child: viewModel
-                    .onLogin(new UserLogin(username: "konul", password: "aaa")),
-              ),
-          converter: (store) => ViewModel.create(store)),
-    );
+        body: new Container(
+      color: Colors.red,
+    ));
   }
 }

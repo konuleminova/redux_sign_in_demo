@@ -17,7 +17,7 @@ class ViewModel {
     }
 
     _onRegister(UserRegister userRegister) {
-      store.dispatch(OnRegisterAction(user: userRegister));
+      store.dispatch(OnRegisterAction(userRegister: userRegister));
     }
 
     return ViewModel(onLogin: _onLogin, onRegister: _onRegister);

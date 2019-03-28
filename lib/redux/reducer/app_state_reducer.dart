@@ -5,9 +5,9 @@ import 'package:redux_sign_in/redux/action/OnRegisterAction.dart';
 
 AppState appStateReducer(AppState state, dynamic action) {
   if (action is OnLoginAction) {
-    return AppState(isLoading: false, userLogin: state.userLogin);
+    return AppState(userLogin: action.userLogin);
   }
- else if (action is OnRegisterAction) {
-    return AppState(isLoading: false, userRegister: state.userRegister);
+  if (action is OnRegisterAction) {
+    return AppState(userRegister: action.userRegister);
   }
 }
