@@ -1,0 +1,3 @@
+class LoginFailAction{
+  bool isLogin;
+}

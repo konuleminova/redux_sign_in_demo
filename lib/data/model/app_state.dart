@@ -12,4 +12,10 @@ class AppState {
   }
 
   AppState({this.userRegister, this.userLogin, this.isLogin});
+
+  @override
+  String toString() {
+    return 'AppState{userRegister: $userRegister, userLogin: $userLogin, isLogin: $isLogin}';
+  }
+
 }

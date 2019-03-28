@@ -16,7 +16,7 @@ class IndexPage extends StatelessWidget {
     if(status) {
       return HomePage();
     } else {
-      return LoginPage();
+      return LoginPage(store: store,);
     }
   }
 
