@@ -20,8 +20,8 @@ class LoginPage extends StatelessWidget {
     return StoreConnector(
       converter: (Store<AppState> store) => ViewModel.create(store),
       onInit: (store) {
-        store.onChange.listen((onValue) {
-          if (onValue.isLogin) {
+        store.onChange.listen((state) {
+          if (state.isLogin) {
             Navigator.pushNamed(context, "/home");
           }
         });
