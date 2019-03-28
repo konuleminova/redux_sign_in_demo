@@ -22,7 +22,8 @@ class LoginPage extends StatelessWidget {
       onInit: (store) {
         store.onChange.listen((state) {
           if (state.isLogin) {
-            Navigator.pushNamed(context, "/home");
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
           }
         });
       },

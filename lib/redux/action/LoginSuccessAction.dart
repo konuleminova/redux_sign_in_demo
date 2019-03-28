@@ -5,6 +5,7 @@ import 'package:redux/redux.dart';
 import 'package:redux_sign_in/data/model/app_state.dart';
 import 'package:redux_sign_in/data/model/user_login.dart';
 import 'package:redux_sign_in/ui/page/login.dart';
+import 'package:redux_sign_in/util/sharedpref.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
@@ -15,7 +16,8 @@ class LoginSuccessAction {
   LoginSuccessAction({this.isLoginSuccess});
 }
 
-ThunkAction<AppState> loginThunkAction(BuildContext context,String url, {Map body}) {
+ThunkAction<AppState> loginThunkAction(BuildContext context, String url,
+    {Map body}) {
   print("thunk");
   return (Store<AppState> store) async {
     var bodyEncoded = json.encode(body);
@@ -25,7 +27,9 @@ ThunkAction<AppState> loginThunkAction(BuildContext context,String url, {Map bod
       if (response.statusCode == 200) {
         print(convert.jsonDecode(response.body));
         store.dispatch(LoginSuccessAction(isLoginSuccess: true));
-        store.state.isLogin=true;
+        store.state.isLogin = true;
+        SharedPrefUtil sharedPrefUtil = new SharedPrefUtil();
+        sharedPrefUtil.setUserLogin(store.state.isLogin);
       }
     });
   };

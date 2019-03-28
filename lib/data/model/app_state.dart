@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:redux_sign_in/data/model/user_login.dart';
 import 'package:redux_sign_in/data/model/user_register.dart';
+import 'package:redux_sign_in/util/sharedpref.dart';
 
 class AppState {
   UserRegister userRegister;
   UserLogin userLogin;
-  bool isLogin=false;
+  bool isLogin = false;
+  getUserLogin() async {
+    SharedPrefUtil sharedPrefUtil = new SharedPrefUtil();
+    sharedPrefUtil.getUserHasLogin().then((onvalue) {
+      isLogin = onvalue;
+      print("on value"+onvalue.toString());
+    });
+    return isLogin;
+  }
 
   AppState.initialState() {
-    isLogin:false;
+    isLogin:
+    getUserLogin();
   }
 
   AppState({this.userRegister, this.userLogin, this.isLogin});
@@ -17,5 +27,4 @@ class AppState {
   String toString() {
     return 'AppState{userRegister: $userRegister, userLogin: $userLogin, isLogin: $isLogin}';
   }
-
 }
