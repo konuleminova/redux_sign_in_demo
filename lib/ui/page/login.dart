@@ -41,7 +41,7 @@ class LoginPage extends StatelessWidget {
                     child: RaisedButton(
                       onPressed: () {
                         print("click");
-                        viewModel.loginSuccess(context);
+                        viewModel.buildLogin(context);
                       },
                       child: new Text("Login"),
                     ),

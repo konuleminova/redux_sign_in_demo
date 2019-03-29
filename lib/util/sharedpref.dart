@@ -7,9 +7,8 @@ class SharedPrefUtil {
 
   Future<bool> getUserHasLogin() async {
     // sleep(const Duration(seconds:5));
-      await Future.delayed(Duration(milliseconds: 2000));
+    await Future.delayed(Duration(milliseconds: 2000));
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-
     return sharedPreferences.getBool(isLoginKey) ?? false;
   }
 

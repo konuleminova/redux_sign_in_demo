@@ -24,8 +24,7 @@ class MyApp extends StatelessWidget {
     return StoreProvider<AppState>(
       store: store,
       child: new MaterialApp(
-        home: IndexPage(
-        ),
+        home: IndexPage(),
         routes: <String, WidgetBuilder>{
           "/index": (BuildContext context) => IndexPage(),
           "/login": (BuildContext context) => LoginPage(),
