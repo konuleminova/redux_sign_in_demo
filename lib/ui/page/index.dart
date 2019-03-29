@@ -19,20 +19,24 @@ class _IndexPageState extends State<IndexPage> {
 
   @override
   Widget build(BuildContext context) {
-    return new FutureBuilder(
-      initialData: _loadingView,
-      future: SharedPrefUtil().getUserHasLogin(),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        if (snapshot.hasData) {
-          isLoggedIn = snapshot.data;
-          if (isLoggedIn) {
-            return HomePage();
+    return new Scaffold(
+      body: new FutureBuilder(
+        future: SharedPrefUtil().getUserHasLogin(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            if (snapshot.data != null) {
+              isLoggedIn = snapshot.data;
+              if (isLoggedIn) {
+                return HomePage();
+              } else {
+                return LoginPage();
+              }
+            }
           } else {
-            return LoginPage();
+            return new CircularProgressIndicator();
           }
-        }
-
-      },
+        },
+      ),
     );
   }
 

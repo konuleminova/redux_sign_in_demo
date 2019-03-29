@@ -6,6 +6,7 @@ import 'package:redux_sign_in/data/model/user_register.dart';
 import 'package:redux_sign_in/redux/action/LoginSuccessAction.dart';
 import 'package:redux_sign_in/redux/action/OnLoginAction.dart';
 import 'package:redux_sign_in/redux/action/OnRegisterAction.dart';
+import 'package:redux_sign_in/redux/middleware/thunkfunction.dart';
 
 class ViewModel {
   Function(UserLogin) onLogin;
