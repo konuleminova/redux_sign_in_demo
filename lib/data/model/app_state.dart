@@ -7,18 +7,10 @@ class AppState {
   UserRegister userRegister;
   UserLogin userLogin;
   bool isLogin = false;
-  getUserLogin() async {
-    SharedPrefUtil sharedPrefUtil = new SharedPrefUtil();
-    sharedPrefUtil.getUserHasLogin().then((onvalue) {
-      isLogin = onvalue;
-      print("on value"+onvalue.toString());
-    });
-    return isLogin;
-  }
 
   AppState.initialState() {
     isLogin:
-    getUserLogin();
+    isLogin;
   }
 
   AppState({this.userRegister, this.userLogin, this.isLogin});
