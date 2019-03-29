@@ -33,7 +33,7 @@ class _IndexPageState extends State<IndexPage> {
               }
             }
           } else {
-            return new CircularProgressIndicator();
+            return _loadingView;
           }
         },
       ),
