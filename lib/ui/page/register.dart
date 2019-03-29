@@ -6,6 +6,7 @@ class RegisterPage extends StatelessWidget {
     // TODO: implement build
     return new Scaffold(
       body: new Container(
+        color: Colors.yellow,
         child: new Text("register"),
       ),
     );

@@ -6,15 +6,11 @@ import 'package:redux_sign_in/data/viewmodel/viewmodel.dart';
 import 'package:redux_sign_in/redux/reducer/app_state_reducer.dart';
 
 class LoginPage extends StatelessWidget {
-  Store<AppState> store;
-
-  LoginPage({this.store});
 
   BuildContext context;
 
   @override
   Widget build(BuildContext context) {
-    this.store = store;
 
     // TODO: implement build
     return StoreConnector(

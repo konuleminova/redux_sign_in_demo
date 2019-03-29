@@ -17,6 +17,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   final Store<AppState> store = Store<AppState>(appStateReducer,
       initialState: AppState.initialState(), middleware: [thunkMiddleware]);
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -24,13 +25,10 @@ class MyApp extends StatelessWidget {
       store: store,
       child: new MaterialApp(
         home: IndexPage(
-          store: store,
         ),
         routes: <String, WidgetBuilder>{
           "/index": (BuildContext context) => IndexPage(),
-          "/login": (BuildContext context) => LoginPage(
-            store: store,
-          ),
+          "/login": (BuildContext context) => LoginPage(),
           "/register": (BuildContext context) => RegisterPage(),
           "/home": (BuildContext context) => HomePage()
         },
