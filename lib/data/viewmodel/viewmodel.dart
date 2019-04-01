@@ -6,12 +6,10 @@ import 'package:redux_sign_in/data/model/user_register.dart';
 import 'package:redux_sign_in/redux/action/OnLoginAction.dart';
 import 'package:redux_sign_in/redux/action/OnRegisterAction.dart';
 import 'package:redux_sign_in/redux/middleware/thunkfunction.dart';
-import 'package:redux_sign_in/util/networkutil.dart';
-
 class ViewModel {
   Function(UserLogin) onLogin;
   Function(UserRegister) onRegister;
-  Function(BuildContext context) buildLogin;
+  Function(String username,String password) buildLogin;
 
   ViewModel({this.onLogin, this.onRegister, this.buildLogin});
 
@@ -24,13 +22,13 @@ class ViewModel {
       store.dispatch(OnRegisterAction(userRegister: userRegister));
     }
 
-    buildLogin(BuildContext context) {
-      store.dispatch(loginThunkAction("konuld","aaa"));
+    _buildLogin(String username,String password) {
+      store.dispatch(loginThunkAction(username,password));
     }
 
     return ViewModel(
         onLogin: _onLogin,
         onRegister: _onRegister,
-        buildLogin: buildLogin);
+        buildLogin: _buildLogin);
   }
 }
