@@ -1,19 +1,27 @@
+import 'dart:convert';
+
 import 'package:redux/redux.dart';
 import 'package:redux_sign_in/data/model/app_state.dart';
-import 'package:redux_sign_in/redux/action/LoginSuccessAction.dart';
+import 'package:redux_sign_in/data/model/user_login.dart';
+import 'package:redux_sign_in/redux/action/OnLoginAction.dart';
 import 'package:redux_sign_in/util/networkutil.dart';
 import 'package:redux_sign_in/util/sharedpref.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 
 ThunkAction<AppState> loginThunkAction(String username, String password) {
   return (Store<AppState> store) async {
-    var response = await NetworkUtils.loginUser(username, password);
-    print(response.toString()+"...");
-    if (response != null) {
-      store.dispatch(LoginSuccessAction(isLoginSuccess: true));
-      store.state.isLogin = true;
-      SharedPrefUtil sharedPrefUtil = new SharedPrefUtil();
-      sharedPrefUtil.setUserLogin(store.state.isLogin);
+    AppState responseBody = await NetworkUtils.loginUser(username, password);
+    print(responseBody.toString() + "...");
+    if (responseBody != null) {
+      if (responseBody.code == 1001) {
+        UserLogin userLogin = new UserLogin();
+        userLogin.username = username;
+        userLogin.password = password;
+        userLogin.isLogin = true;
+        SharedPrefUtil sharedPrefUtil = new SharedPrefUtil();
+        sharedPrefUtil.setUserHasLogin(userLogin.isLogin);
+        store.dispatch(OnLoginAction(userLogin: userLogin));
+      }
     }
   };
 }

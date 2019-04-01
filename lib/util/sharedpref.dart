@@ -12,7 +12,7 @@ class SharedPrefUtil {
     return sharedPreferences.getBool(isLoginKey) ?? false;
   }
 
-  setUserLogin(bool value) async {
+  setUserHasLogin(bool value) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.setBool(isLoginKey, value);
   }

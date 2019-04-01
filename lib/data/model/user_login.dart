@@ -10,6 +10,18 @@ import 'dart:convert' as convert;
 class UserLogin {
   String username;
   String password;
-  UserLogin({this.username, this.password});
-}
+  bool isLogin = false;
 
+  UserLogin({this.username, this.password});
+
+  static fromJson(json) {
+    return UserLogin(username: json['username'], password: json['password']);
+  }
+
+  @override
+  String toString() {
+    return 'UserLogin{username: $username, password: $password, isLogin: $isLogin}';
+  }
+
+
+}

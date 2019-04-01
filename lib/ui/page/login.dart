@@ -26,9 +26,9 @@ class LoginState extends State<LoginPage> {
       onInit: (store) {
         store.onChange.listen((state) {
           if (state != null) {
-            if (state.isLogin) {
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                  '/home', (Route<dynamic> route) => false);
+            if (state.user_info.isLogin) {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                 '/home', (Route<dynamic> route) => false);
             }
           }
         });

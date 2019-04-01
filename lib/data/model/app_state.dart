@@ -5,18 +5,22 @@ import 'package:redux_sign_in/util/sharedpref.dart';
 
 class AppState {
   UserRegister userRegister;
-  UserLogin userLogin;
-  bool isLogin = false;
+  UserLogin user_info;
+  int code;
 
-  AppState.initialState() {
-    isLogin:
-    isLogin;
+  AppState.initialState()
+      : user_info = UserLogin(),
+        userRegister = UserRegister();
+
+  AppState({this.userRegister, this.user_info, this.code});
+  static AppState fromJson(dynamic json){
+    if(json!=null){
+      return AppState(user_info: UserLogin.fromJson(json['user_info']),code: json['code']);
+    }
   }
-
-  AppState({this.userRegister, this.userLogin, this.isLogin});
 
   @override
   String toString() {
-    return 'AppState{userRegister: $userRegister, userLogin: $userLogin, isLogin: $isLogin}';
+    return 'AppState{userRegister: $userRegister, userLogin: $user_info}';
   }
 }
