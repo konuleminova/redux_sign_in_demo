@@ -6,21 +6,21 @@ import 'package:redux_sign_in/data/viewmodel/viewmodel.dart';
 import 'package:redux_sign_in/redux/reducer/app_state_reducer.dart';
 
 class LoginPage extends StatelessWidget {
-
   BuildContext context;
 
   @override
   Widget build(BuildContext context) {
-
     // TODO: implement build
     return StoreConnector(
       converter: (Store<AppState> store) => ViewModel.create(store),
       onInit: (store) {
         store.onChange.listen((state) {
-          if (state.isLogin) {
-            Navigator.of(context)
-                .pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
-          }
+            if (state != null) {
+              if (state.isLogin) {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/home', (Route<dynamic> route) => false);
+              }
+            }
         });
       },
       builder: (BuildContext context, ViewModel viewModel) => new Scaffold(

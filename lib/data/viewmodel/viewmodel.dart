@@ -6,6 +6,7 @@ import 'package:redux_sign_in/data/model/user_register.dart';
 import 'package:redux_sign_in/redux/action/OnLoginAction.dart';
 import 'package:redux_sign_in/redux/action/OnRegisterAction.dart';
 import 'package:redux_sign_in/redux/middleware/thunkfunction.dart';
+import 'package:redux_sign_in/util/networkutil.dart';
 
 class ViewModel {
   Function(UserLogin) onLogin;
@@ -24,8 +25,7 @@ class ViewModel {
     }
 
     buildLogin(BuildContext context) {
-      store.dispatch(loginThunkAction(context,"http://35.240.80.11/app/login/",
-          body: {"username": "konuld", "password": "aaa"}));
+      store.dispatch(loginThunkAction("konuld","aaa"));
     }
 
     return ViewModel(
