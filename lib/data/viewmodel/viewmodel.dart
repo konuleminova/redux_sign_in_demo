@@ -15,7 +15,6 @@ class ViewModel {
     _buildLogin(String username,String password) {
       store.dispatch(loginThunkFunction(username,password));
     }
-
     return ViewModel(
         buildLogin: _buildLogin);
   }
