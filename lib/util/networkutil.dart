@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:redux_sign_in/data/model/app_state.dart';
-import 'package:redux_sign_in/redux/middleware/thunkfunction.dart';
+import 'package:redux_sign_in/redux/middleware/thunk_login.dart';
 
 class NetworkUtils {
   static final String BASE_URL = "http://35.240.80.11/app/";
@@ -17,13 +17,15 @@ class NetworkUtils {
             'password': password,
           }),
           headers: {"Accept": "application/json"});
+      print(response.statusCode.toString()+"..");
         if (response.statusCode == 200) {
           return AppState.fromJson(json.decode(response.body));
         }
+        else{
+        return null;
+        }
     } catch (exception) {
-      if(exception.toString().contains('SocketException')) {
-        return 'NetworkError';
-      } else {
+       {
         return null;
       }
     }

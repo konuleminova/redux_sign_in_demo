@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:redux_sign_in/ui/page/home.dart';
 import 'package:redux_sign_in/ui/page/login.dart';
-import 'package:redux_sign_in/util/sharedpref.dart';
+import 'package:redux_sign_in/util/sharedpref_util.dart';
 
 class IndexPage extends StatefulWidget {
   @override
@@ -36,7 +36,7 @@ class _IndexPageState extends State<IndexPage> {
     );
   }
 
-  Widget get _loadingView {
+   Widget get _loadingView {
     return new Center(
       child: new CircularProgressIndicator(),
     );

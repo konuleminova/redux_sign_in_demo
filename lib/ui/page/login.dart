@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_sign_in/data/model/app_state.dart';
-import 'package:redux_sign_in/data/viewmodel/viewmodel.dart';
+import 'package:redux_sign_in/data/model/user_login.dart';
+import 'package:redux_sign_in/data/viewmodel/login_viewmodel.dart';
 import 'package:redux_sign_in/redux/reducer/app_state_reducer.dart';
+import 'package:redux_sign_in/ui/page/index.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -22,6 +24,12 @@ void _showToast(BuildContext context, String content) {
   ));
 }
 
+Widget get _loadingView {
+  return new Center(
+    child: new CircularProgressIndicator(),
+  );
+}
+
 class LoginState extends State<LoginPage> {
   TextEditingController _controllerUsername, _controllerPass;
 
@@ -36,11 +44,15 @@ class LoginState extends State<LoginPage> {
       onInit: (store) {
         store.onChange.listen((state) {
           if (state != null) {
-            if (state.user_info.isLogin) {
+            if (state.user_info.status == STATUS.SUCCESS) {
               Navigator.of(context).pushNamedAndRemoveUntil(
                   '/home', (Route<dynamic> route) => false);
-            } else {
+            } else if (state.user_info.status == STATUS.LOADING) {
+              print("loading..");
+            } else if (state.user_info.status == STATUS.FAIL) {
               _showToast(context, "Username or Password is wrong.");
+            }else if (state.user_info.status==STATUS.NETWORK_ERROR){
+              _showToast(context, "No internet connection");
             }
           }
         });
@@ -82,7 +94,7 @@ class LoginState extends State<LoginPage> {
                             fontWeight: FontWeight.bold),
                       )
                     ],
-                  )
+                  ),
                 ],
               ),
             )),

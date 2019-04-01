@@ -5,7 +5,7 @@ import 'package:redux_sign_in/data/model/user_login.dart';
 import 'package:redux_sign_in/data/model/user_register.dart';
 import 'package:redux_sign_in/redux/action/OnLoginAction.dart';
 import 'package:redux_sign_in/redux/action/OnRegisterAction.dart';
-import 'package:redux_sign_in/redux/middleware/thunkfunction.dart';
+import 'package:redux_sign_in/redux/middleware/thunk_login.dart';
 class ViewModel {
   Function(String username,String password) buildLogin;
 
