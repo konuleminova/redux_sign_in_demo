@@ -13,6 +13,15 @@ class LoginPage extends StatefulWidget {
   }
 }
 
+void _showToast(BuildContext context, String content) {
+  final scaffold = Scaffold.of(context);
+  scaffold.showSnackBar(SnackBar(
+    content: Text(content),
+    action:
+        SnackBarAction(label: "UNDO", onPressed: scaffold.hideCurrentSnackBar),
+  ));
+}
+
 class LoginState extends State<LoginPage> {
   TextEditingController _controllerUsername, _controllerPass;
 
@@ -20,6 +29,7 @@ class LoginState extends State<LoginPage> {
   Widget build(BuildContext context) {
     _controllerUsername = TextEditingController();
     _controllerPass = TextEditingController();
+
     // TODO: implement build
     return StoreConnector(
       converter: (Store<AppState> store) => ViewModel.create(store),
@@ -27,8 +37,10 @@ class LoginState extends State<LoginPage> {
         store.onChange.listen((state) {
           if (state != null) {
             if (state.user_info.isLogin) {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                 '/home', (Route<dynamic> route) => false);
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/home', (Route<dynamic> route) => false);
+            } else {
+              _showToast(context, "Username or Password is wrong.");
             }
           }
         });

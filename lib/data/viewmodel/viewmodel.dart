@@ -13,7 +13,7 @@ class ViewModel {
 
   factory ViewModel.create(Store<AppState> store) {
     _buildLogin(String username,String password) {
-      store.dispatch(loginThunkAction(username,password));
+      store.dispatch(loginThunkFunction(username,password));
     }
 
     return ViewModel(
