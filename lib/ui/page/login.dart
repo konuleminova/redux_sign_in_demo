@@ -32,6 +32,8 @@ Widget get _loadingView {
 
 class LoginState extends State<LoginPage> {
   TextEditingController _controllerUsername, _controllerPass;
+  bool _validateUsername = false;
+  bool _validatePassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +53,7 @@ class LoginState extends State<LoginPage> {
               print("loading..");
             } else if (state.user_info.status == STATUS.FAIL) {
               _showToast(context, "Username or Password is wrong.");
-            }else if (state.user_info.status==STATUS.NETWORK_ERROR){
+            } else if (state.user_info.status == STATUS.NETWORK_ERROR) {
               _showToast(context, "No internet connection");
             }
           }
@@ -65,11 +67,17 @@ class LoginState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   TextField(
-                    decoration: InputDecoration(hintText: "Username"),
+                    decoration: InputDecoration(
+                        hintText: "Username",
+                        errorText:
+                            _validateUsername ? "Field can't be empty." : null),
                     controller: _controllerUsername,
                   ),
                   TextField(
-                    decoration: InputDecoration(hintText: "Password"),
+                    decoration: InputDecoration(
+                        hintText: "Password",
+                        errorText:
+                            _validateUsername ? "Field can't be empty." : null),
                     controller: _controllerPass,
                   ),
                   new Container(
@@ -77,8 +85,18 @@ class LoginState extends State<LoginPage> {
                     child: RaisedButton(
                       onPressed: () {
                         print("click");
-                        viewModel.buildLogin(
-                            _controllerUsername.text, _controllerPass.text);
+                        setState(() {
+                          _controllerUsername.text.isEmpty
+                              ? _validateUsername = true
+                              : _validateUsername = false;
+                          _controllerPass.text.isEmpty
+                              ? _validatePassword = true
+                              : _validatePassword = false;
+                        });
+                        if (!_validateUsername) {
+                          viewModel.buildLogin(
+                              _controllerUsername.text, _controllerPass.text);
+                        }
                       },
                       child: new Text("Login"),
                     ),
