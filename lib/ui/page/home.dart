@@ -7,19 +7,37 @@ import 'package:redux_sign_in/data/model/user_login.dart';
 import 'package:redux_sign_in/data/viewmodel/fetch_campaign_viewmodel.dart';
 import 'package:redux_sign_in/data/viewmodel/login_viewmodel.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return new HomePageState();
+  }
+}
+
+class HomePageState extends State<HomePage> {
+  List<Data> campaignList;
+  ScrollController _scrollController;
+  String message;
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
+  void initState() {
+    campaignList = new List();
+    _scrollController = new ScrollController();
+    _scrollController.addListener(_scrollListener);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    List<Data> campaignList = new List();
     // TODO: implement build
     return StoreConnector(
         converter: (Store<AppState> store) => FetchDataViewModel.create(store),
         onInit: (store) {
           store.onChange.listen((onData) {
             if (onData != null) {
-              campaignList = onData.campaign.data;
+              campaignList.addAll(onData.campaign.data);
               print("//" + onData.campaign.data.toString() + "...");
             }
           });
@@ -72,17 +90,50 @@ class HomePage extends StatelessWidget {
             ),
             body: new Container(
                 child: new ListView.builder(
-                  itemBuilder: (BuildContext context, int index) =>
-                      new Container(
-                        margin: EdgeInsets.all(16),
-                        child: new Image.network(
-                          campaignList[index].image,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                  itemCount: campaignList.length,
-                )),
+              controller: _scrollController,
+              itemBuilder: (BuildContext context, int index) => new Container(
+                    margin: EdgeInsets.all(16),
+                    child: new Image.network(
+                      campaignList[index].image,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+              itemCount: campaignList.length,
+            )),
           );
         });
+  }
+
+  _scrollListener() {
+    if (_scrollController.offset >=
+            _scrollController.position.maxScrollExtent &&
+        !_scrollController.position.outOfRange) {
+      setState(() {
+        message = "reach the bottom";
+        print(message);
+        //  loadMore();
+      });
+    }
+    if (_scrollController.offset <=
+            _scrollController.position.minScrollExtent &&
+        !_scrollController.position.outOfRange) {
+      setState(() {
+        message = "reach the top";
+        print(message);
+      });
+    }
+  }
+
+  void loadMore() {
+    setState(() {
+      //   isLoading = !isLoading;
+      //  fetchData();
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
   }
 }
