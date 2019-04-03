@@ -131,26 +131,41 @@ class HomePageState extends State<HomePage> {
                   ),
                   margin: EdgeInsets.all(8),
                 ),
-                new Container(
-                    height: 170,
-                    child: new ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      controller: _scrollController,
-                      itemBuilder: (BuildContext context, int index) =>
-                          new Container(
-                              width: 140,
-                              child: new Card(
-                                  clipBehavior: Clip.antiAlias,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: ClipRect(
-                                    child: new Image.network(
-                                      campaignList[index].image,
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ))),
-                      itemCount: campaignList.length,
-                    )),
+                new SizedBox(
+                  height: 170,
+                  child: Stack(
+                    children: <Widget>[
+                      new Container(
+                          child: new ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            controller: _scrollController,
+                            itemBuilder: (BuildContext context, int index) =>
+                                new Container(
+                                    width: 140,
+                                    child: new Card(
+                                        clipBehavior: Clip.antiAlias,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: ClipRect(
+                                          child: new Image.network(
+                                            campaignList[index].image,
+                                            fit: BoxFit.fill,
+                                          ),
+                                        ))),
+                            itemCount: campaignList.length,
+                          )),
+                      new Container(
+                        alignment: AlignmentDirectional.centerEnd,
+                        child: new IconButton(
+                          disabledColor: Colors.white,
+                            iconSize: 40,
+                            icon: Icon(Icons.arrow_forward_ios),
+                            onPressed: null),
+                      )
+                    ],
+                  ),
+                ),
                 new Container(
                   height: 60,
                   color: Colors.grey[200],
@@ -187,7 +202,7 @@ class HomePageState extends State<HomePage> {
                               child: new Card(
                                   clipBehavior: Clip.antiAlias,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
+                                      borderRadius: BorderRadius.circular(10)),
                                   child: ClipRect(
                                     child: new Image.network(
                                       campaignList[index].image,
