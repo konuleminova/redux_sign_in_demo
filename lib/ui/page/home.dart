@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_sign_in/data/model/app_state.dart';
@@ -20,6 +21,8 @@ class HomePageState extends State<HomePage> {
   ScrollController _scrollController;
   String message;
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
+  FetchDataViewModel viewModel;
+  int page = 0;
 
   @override
   void initState() {
@@ -30,9 +33,18 @@ class HomePageState extends State<HomePage> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return StoreConnector(
+        onInitialBuild: (FetchDataViewModel viewModel) {
+          viewModel.onFetchCampaign(10, page);
+          this.viewModel = viewModel;
+        },
         converter: (Store<AppState> store) => FetchDataViewModel.create(store),
         onInit: (store) {
           store.onChange.listen((onData) {
@@ -62,7 +74,7 @@ class HomePageState extends State<HomePage> {
                     color: Colors.grey,
                   ),
                   onPressed: () {
-                    return viewModel.onFetchCampaign(10, 0);
+                    //return viewModel.onFetchCampaign(10, 0);
                     //  print(viewModel.onFetchCampaign(1, 10).toString());
                   },
                 ),
@@ -111,7 +123,7 @@ class HomePageState extends State<HomePage> {
       setState(() {
         message = "reach the bottom";
         print(message);
-        //  loadMore();
+        loadMore();
       });
     }
     if (_scrollController.offset <=
@@ -125,10 +137,10 @@ class HomePageState extends State<HomePage> {
   }
 
   void loadMore() {
-    setState(() {
-      //   isLoading = !isLoading;
-      //  fetchData();
-    });
+    page++;
+    if (viewModel != null) {
+      viewModel.onFetchCampaign(10, page);
+    }
   }
 
   @override
