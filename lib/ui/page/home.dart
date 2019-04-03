@@ -23,6 +23,8 @@ class HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
   FetchDataViewModel viewModel;
   int page = 0;
+  double height = 0;
+  double width = 0;
 
   @override
   void initState() {
@@ -33,12 +35,15 @@ class HomePageState extends State<HomePage> {
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
     // TODO: implement build
     return StoreConnector(
         onInitialBuild: (FetchDataViewModel viewModel) {
@@ -73,10 +78,7 @@ class HomePageState extends State<HomePage> {
                     Icons.search,
                     color: Colors.grey,
                   ),
-                  onPressed: () {
-                    //return viewModel.onFetchCampaign(10, 0);
-                    //  print(viewModel.onFetchCampaign(1, 10).toString());
-                  },
+                  onPressed: () {},
                 ),
                 new IconButton(icon: Icon(Icons.shopping_cart))
               ],
@@ -100,18 +102,102 @@ class HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            body: new Container(
-                child: new ListView.builder(
-              controller: _scrollController,
-              itemBuilder: (BuildContext context, int index) => new Container(
-                    margin: EdgeInsets.all(16),
-                    child: new Image.network(
-                      campaignList[index].image,
-                      fit: BoxFit.cover,
-                    ),
+            body: new Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                new Container(
+                  height: 60,
+                  color: Colors.grey[200],
+                  child: new Stack(
+                    children: <Widget>[
+                      new Container(
+                        child: new Text(
+                          "Popular Mehsullar ",
+                          textAlign: TextAlign.left,
+                          style: new TextStyle(fontSize: 20),
+                        ),
+                        alignment: AlignmentDirectional.centerStart,
+                      ),
+                      new Container(
+                        child: new Text(
+                          "See All ",
+                          textAlign: TextAlign.left,
+                          style: new TextStyle(fontSize: 15),
+                        ),
+                        alignment: AlignmentDirectional.centerEnd,
+                      )
+                    ],
                   ),
-              itemCount: campaignList.length,
-            )),
+                  margin: EdgeInsets.all(8),
+                ),
+                new Container(
+                    height: 170,
+                    child: new ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      controller: _scrollController,
+                      itemBuilder: (BuildContext context, int index) =>
+                          new Container(
+                              width: 140,
+                              child: new Card(
+                                  clipBehavior: Clip.antiAlias,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: ClipRect(
+                                    child: new Image.network(
+                                      campaignList[index].image,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ))),
+                      itemCount: campaignList.length,
+                    )),
+                new Container(
+                  height: 60,
+                  color: Colors.grey[200],
+                  child: new Stack(
+                    children: <Widget>[
+                      new Container(
+                        child: new Text(
+                          "Popular Mehsullar ",
+                          textAlign: TextAlign.left,
+                          style: new TextStyle(fontSize: 20),
+                        ),
+                        alignment: AlignmentDirectional.centerStart,
+                      ),
+                      new Container(
+                        child: new Text(
+                          "See All ",
+                          textAlign: TextAlign.left,
+                          style: new TextStyle(fontSize: 15),
+                        ),
+                        alignment: AlignmentDirectional.centerEnd,
+                      )
+                    ],
+                  ),
+                  margin: EdgeInsets.all(8),
+                ),
+                new Container(
+                    height: 170,
+                    child: new ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      controller: _scrollController,
+                      itemBuilder: (BuildContext context, int index) =>
+                          new Container(
+                              width: 140,
+                              child: new Card(
+                                  clipBehavior: Clip.antiAlias,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: ClipRect(
+                                    child: new Image.network(
+                                      campaignList[index].image,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ))),
+                      itemCount: campaignList.length,
+                    ))
+              ],
+            ),
           );
         });
   }
@@ -141,11 +227,5 @@ class HomePageState extends State<HomePage> {
     if (viewModel != null) {
       viewModel.onFetchCampaign(10, page);
     }
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _scrollController.dispose();
   }
 }
