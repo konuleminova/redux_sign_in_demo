@@ -68,11 +68,11 @@ class HomePageState extends State<HomePage> {
           return new Scaffold(
               key: scaffoldKey,
               appBar: new AppBar(
-                backgroundColor: Colors.white,
+                backgroundColor: Colors.lightGreen,
                 leading: IconButton(
                   icon: new Icon(
                     Icons.menu,
-                    color: Colors.grey,
+                    color: Colors.white,
                   ),
                   onPressed: () => scaffoldKey.currentState.openDrawer(),
                 ),
@@ -81,11 +81,11 @@ class HomePageState extends State<HomePage> {
                   new IconButton(
                     icon: Icon(
                       Icons.search,
-                      color: Colors.grey,
+                      color: Colors.white,
                     ),
                     onPressed: () {},
                   ),
-                  new IconButton(icon: Icon(Icons.shopping_cart))
+                  new IconButton(icon: Icon(Icons.shopping_cart,color: Colors.white,))
                 ],
               ),
               drawer: new Drawer(
