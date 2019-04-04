@@ -7,6 +7,7 @@ import 'package:redux_sign_in/data/model/data.dart';
 import 'package:redux_sign_in/data/model/user_login.dart';
 import 'package:redux_sign_in/data/viewmodel/fetch_campaign_viewmodel.dart';
 import 'package:redux_sign_in/data/viewmodel/login_viewmodel.dart';
+import 'package:redux_sign_in/util/carousel.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -65,58 +66,60 @@ class HomePageState extends State<HomePage> {
         },
         builder: (BuildContext context, FetchDataViewModel viewModel) {
           return new Scaffold(
-            key: scaffoldKey,
-            appBar: new AppBar(
-              backgroundColor: Colors.white,
-              leading: IconButton(
-                icon: new Icon(
-                  Icons.menu,
-                  color: Colors.grey,
-                ),
-                onPressed: () => scaffoldKey.currentState.openDrawer(),
-              ),
-              title: new Text("Home"),
-              actions: <Widget>[
-                new IconButton(
-                  icon: Icon(
-                    Icons.search,
+              key: scaffoldKey,
+              appBar: new AppBar(
+                backgroundColor: Colors.white,
+                leading: IconButton(
+                  icon: new Icon(
+                    Icons.menu,
                     color: Colors.grey,
                   ),
-                  onPressed: () {},
+                  onPressed: () => scaffoldKey.currentState.openDrawer(),
                 ),
-                new IconButton(icon: Icon(Icons.shopping_cart))
-              ],
-            ),
-            drawer: new Drawer(
-              child: ListView(
-                children: <Widget>[
-                  UserAccountsDrawerHeader(
-                    accountName: new Text(
-                      "KOnul Eminova",
-                      style: new TextStyle(fontSize: 20),
+                title: new Text("Home"),
+                actions: <Widget>[
+                  new IconButton(
+                    icon: Icon(
+                      Icons.search,
+                      color: Colors.grey,
                     ),
-                    accountEmail: new Text("konul.eminova@mail.sinam.net"),
-                    currentAccountPicture: Image.network(
-                        'http://www.clker.com/cliparts/5/7/4/8/13099629981030824019profile.svg.med.png'),
+                    onPressed: () {},
                   ),
-                  ListTile(
-                    leading: Icon(Icons.category),
-                    title: Text("Categories"),
-                  )
+                  new IconButton(icon: Icon(Icons.shopping_cart))
                 ],
               ),
-            ),
-            body: new Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
+              drawer: new Drawer(
+                child: ListView(
+                  children: <Widget>[
+                    UserAccountsDrawerHeader(
+                      accountName: new Text(
+                        "KOnul Eminova",
+                        style: new TextStyle(fontSize: 20),
+                      ),
+                      accountEmail: new Text("konul.eminova@mail.sinam.net"),
+                      currentAccountPicture: Image.network(
+                          'http://www.clker.com/cliparts/5/7/4/8/13099629981030824019profile.svg.med.png'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.category),
+                      title: Text("Categories"),
+                    )
+                  ],
+                ),
+              ),
+              body: new ListView(children: <Widget>[
+                // _buildCarousel(),
+                new SizedBox(
+                  width: width,
+                  height: 200,
+                  child: new PageView(children: <Widget>[_buildCarousel()]),
+                ),
                 _titleContainer(),
                 _itemList(),
                 _titleContainer(),
                 _itemListSecond(),
-              ],
-            ),
-          );
+                _titleContainer()
+              ]));
         });
   }
 
@@ -168,6 +171,7 @@ class HomePageState extends State<HomePage> {
   }
 
   _titleContainer() => new Container(
+        margin: EdgeInsets.all(10),
         height: 60,
         color: Colors.grey[200],
         child: new Stack(
@@ -190,86 +194,116 @@ class HomePageState extends State<HomePage> {
             )
           ],
         ),
-        margin: EdgeInsets.all(8),
       );
 
-  _itemList() => new SizedBox(
-        height: 170,
-        child: Stack(
-          children: <Widget>[
-            new Container(
-                child: new ListView.builder(
-              scrollDirection: Axis.horizontal,
-              controller: _scrollController,
-              itemBuilder: (BuildContext context, int index) => new Container(
-                  width: 140,
-                  child: new Card(
-                      clipBehavior: Clip.antiAlias,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      child: ClipRect(
-                        child: new Image.network(
-                          campaignList[index].image,
-                          fit: BoxFit.fill,
-                        ),
-                      ))),
-              itemCount: campaignList.length,
-            )),
-            new Container(
-              alignment: AlignmentDirectional.centerEnd,
-              child: new IconButton(
-                  disabledColor: Colors.white,
-                  iconSize: 40,
-                  icon: Icon(Icons.arrow_forward_ios,color: Colors.white,),
-                  onPressed: () {
-                    _scrollController.animateTo((100.0 * index),
-                        // 100 is the height of container and index of 6th element is 5
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeOut);
-                    index = index + 3;
-                  }),
-            )
-          ],
+  _itemList() => Container(
+        margin: EdgeInsets.all(16),
+        child: new SizedBox(
+          height: 150,
+          child: Stack(
+            children: <Widget>[
+              new Container(
+                  child: new ListView.builder(
+                scrollDirection: Axis.horizontal,
+                controller: _scrollController,
+                itemBuilder: (BuildContext context, int index) => new Container(
+                    width: 120,
+                    child: new Card(
+                        clipBehavior: Clip.antiAlias,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: ClipRect(
+                          child: new Image.network(
+                            campaignList[index].image,
+                            fit: BoxFit.fill,
+                          ),
+                        ))),
+                itemCount: campaignList.length,
+              )),
+              new Container(
+                alignment: AlignmentDirectional.centerEnd,
+                child: new IconButton(
+                    disabledColor: Colors.white,
+                    iconSize: 40,
+                    icon: Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      _scrollController.animateTo((100.0 * index),
+                          // 100 is the height of container and index of 6th element is 5
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeOut);
+                      index = index + 3;
+                    }),
+              )
+            ],
+          ),
         ),
       );
 
-  _itemListSecond() => new SizedBox(
-        height: 170,
-        child: Stack(
-          children: <Widget>[
-            new Container(
-                child: new ListView.builder(
-              scrollDirection: Axis.horizontal,
-              controller: _scrollControllerSecond,
-              itemBuilder: (BuildContext context, int index) => new Container(
-                  width: 140,
-                  child: new Card(
-                      clipBehavior: Clip.antiAlias,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      child: ClipRect(
-                        child: new Image.network(
-                          campaignList[index].image,
-                          fit: BoxFit.fill,
-                        ),
-                      ))),
-              itemCount: campaignList.length,
-            )),
-            new Container(
-              alignment: AlignmentDirectional.centerEnd,
-              child: new IconButton(
-                  disabledColor: Colors.white,
-                  iconSize: 40,
-                  icon: Icon(Icons.arrow_forward_ios,color: Colors.white,),
-                  onPressed: () {
-                    _scrollControllerSecond.animateTo((100.0 * index),
-                        // 100 is the height of container and index of 6th element is 5
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeOut);
-                    index = index + 3;
-                  }),
-            )
-          ],
+  _itemListSecond() => new Container(
+        margin: EdgeInsets.all(16),
+        child: new SizedBox(
+          height: 150,
+          child: Stack(
+            children: <Widget>[
+              new Container(
+                  child: new ListView.builder(
+                scrollDirection: Axis.horizontal,
+                controller: _scrollControllerSecond,
+                itemBuilder: (BuildContext context, int index) => new Container(
+                    width: 120,
+                    child: new Card(
+                        clipBehavior: Clip.antiAlias,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: ClipRect(
+                          child: new Image.network(
+                            campaignList[index].image,
+                            fit: BoxFit.fill,
+                          ),
+                        ))),
+                itemCount: campaignList.length,
+              )),
+              new Container(
+                alignment: AlignmentDirectional.centerEnd,
+                child: new IconButton(
+                    disabledColor: Colors.white,
+                    iconSize: 40,
+                    icon: Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      _scrollControllerSecond.animateTo((100.0 * index),
+                          // 100 is the height of container and index of 6th element is 5
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeOut);
+                      index = index + 3;
+                    }),
+              )
+            ],
+          ),
+        ),
+      );
+
+  Widget _buildCarousel() => Container(
+        margin: EdgeInsets.all(16),
+        child: new Carousel(
+          children: [
+            new AssetImage('images/img1.jpg'),
+            new AssetImage('images/img2.jpg'),
+            new AssetImage('images/img3.jpg'),
+          ]
+              .map((bgImage) => new Image(
+                    image: bgImage,
+                    width: width,
+                    height: 200,
+                    fit: BoxFit.cover,
+                  ))
+              .toList(),
+          displayDuration: const Duration(seconds: 4),
         ),
       );
 }
