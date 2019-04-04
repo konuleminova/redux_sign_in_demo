@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   List<Data> campaignList;
-  ScrollController _scrollController;
+  ScrollController _scrollController, _scrollControllerSecond;
   String message;
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
   FetchDataViewModel viewModel;
@@ -33,6 +33,8 @@ class HomePageState extends State<HomePage> {
     campaignList = new List();
     _scrollController = new ScrollController();
     _scrollController.addListener(_scrollListener);
+    _scrollControllerSecond = new ScrollController();
+    _scrollControllerSecond.addListener(_scrollListenerSecond);
     super.initState();
   }
 
@@ -110,8 +112,8 @@ class HomePageState extends State<HomePage> {
               children: <Widget>[
                 _titleContainer(),
                 _itemList(),
-                //_titleContainer(),
-                // _itemList(),
+                _titleContainer(),
+                _itemListSecond(),
               ],
             ),
           );
@@ -131,6 +133,26 @@ class HomePageState extends State<HomePage> {
     if (_scrollController.offset <=
             _scrollController.position.minScrollExtent &&
         !_scrollController.position.outOfRange) {
+      setState(() {
+        message = "reach the top";
+        print(message);
+      });
+    }
+  }
+
+  _scrollListenerSecond() {
+    if (_scrollControllerSecond.offset >=
+            _scrollControllerSecond.position.maxScrollExtent &&
+        !_scrollControllerSecond.position.outOfRange) {
+      setState(() {
+        message = "reach the bottom";
+        print(message);
+        loadMore();
+      });
+    }
+    if (_scrollControllerSecond.offset <=
+            _scrollControllerSecond.position.minScrollExtent &&
+        !_scrollControllerSecond.position.outOfRange) {
       setState(() {
         message = "reach the top";
         print(message);
@@ -201,6 +223,46 @@ class HomePageState extends State<HomePage> {
                   icon: Icon(Icons.arrow_forward_ios),
                   onPressed: () {
                     _scrollController.animateTo((100.0 * index),
+                        // 100 is the height of container and index of 6th element is 5
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeOut);
+                    index = index + 3;
+                  }),
+            )
+          ],
+        ),
+      );
+
+  _itemListSecond() => new SizedBox(
+        height: 170,
+        child: Stack(
+          children: <Widget>[
+            new Container(
+                child: new ListView.builder(
+              scrollDirection: Axis.horizontal,
+              controller: _scrollControllerSecond,
+              itemBuilder: (BuildContext context, int index) => new Container(
+                  width: 140,
+                  child: new Card(
+                      clipBehavior: Clip.antiAlias,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      child: ClipRect(
+                        child: new Image.network(
+                          campaignList[index].image,
+                          fit: BoxFit.fill,
+                        ),
+                      ))),
+              itemCount: campaignList.length,
+            )),
+            new Container(
+              alignment: AlignmentDirectional.centerEnd,
+              child: new IconButton(
+                  disabledColor: Colors.white,
+                  iconSize: 40,
+                  icon: Icon(Icons.arrow_forward_ios),
+                  onPressed: () {
+                    _scrollControllerSecond.animateTo((100.0 * index),
                         // 100 is the height of container and index of 6th element is 5
                         duration: const Duration(milliseconds: 300),
                         curve: Curves.easeOut);
