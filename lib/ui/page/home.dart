@@ -220,7 +220,7 @@ class HomePageState extends State<HomePage> {
               child: new IconButton(
                   disabledColor: Colors.white,
                   iconSize: 40,
-                  icon: Icon(Icons.arrow_forward_ios),
+                  icon: Icon(Icons.arrow_forward_ios,color: Colors.white,),
                   onPressed: () {
                     _scrollController.animateTo((100.0 * index),
                         // 100 is the height of container and index of 6th element is 5
@@ -260,7 +260,7 @@ class HomePageState extends State<HomePage> {
               child: new IconButton(
                   disabledColor: Colors.white,
                   iconSize: 40,
-                  icon: Icon(Icons.arrow_forward_ios),
+                  icon: Icon(Icons.arrow_forward_ios,color: Colors.white,),
                   onPressed: () {
                     _scrollControllerSecond.animateTo((100.0 * index),
                         // 100 is the height of container and index of 6th element is 5
