@@ -99,11 +99,32 @@ class HomePageState extends State<HomePage> {
                       accountEmail: new Text("konul.eminova@mail.sinam.net"),
                       currentAccountPicture: Image.network(
                           'http://www.clker.com/cliparts/5/7/4/8/13099629981030824019profile.svg.med.png'),
+                      decoration: new BoxDecoration(color: Colors.lightGreen),
                     ),
                     ListTile(
                       leading: Icon(Icons.category),
                       title: Text("Categories"),
-                    )
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.history),
+                      title: Text("Order History"),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.notifications_active),
+                      title: Text("Notifications"),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.feedback),
+                      title: Text("Feedback"),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.question_answer),
+                      title: Text("FAG"),
+                    ),
+                    ListTile(
+                        leading: Icon(Icons.info), title: Text("About Us")),
+                    ListTile(
+                        leading: Icon(Icons.phone), title: Text("Contact Us")),
                   ],
                 ),
               ),
@@ -123,52 +144,24 @@ class HomePageState extends State<HomePage> {
         });
   }
 
-  _scrollListener() {
-    if (_scrollController.offset >=
-            _scrollController.position.maxScrollExtent &&
-        !_scrollController.position.outOfRange) {
-      setState(() {
-        message = "reach the bottom";
-        print(message);
-        loadMore();
-      });
-    }
-    if (_scrollController.offset <=
-            _scrollController.position.minScrollExtent &&
-        !_scrollController.position.outOfRange) {
-      setState(() {
-        message = "reach the top";
-        print(message);
-      });
-    }
-  }
-
-  _scrollListenerSecond() {
-    if (_scrollControllerSecond.offset >=
-            _scrollControllerSecond.position.maxScrollExtent &&
-        !_scrollControllerSecond.position.outOfRange) {
-      setState(() {
-        message = "reach the bottom";
-        print(message);
-        loadMore();
-      });
-    }
-    if (_scrollControllerSecond.offset <=
-            _scrollControllerSecond.position.minScrollExtent &&
-        !_scrollControllerSecond.position.outOfRange) {
-      setState(() {
-        message = "reach the top";
-        print(message);
-      });
-    }
-  }
-
-  void loadMore() {
-    page++;
-    if (viewModel != null) {
-      viewModel.onFetchCampaign(10, page);
-    }
-  }
+  Widget _buildCarousel() => Container(
+        margin: EdgeInsets.all(16),
+        child: new Carousel(
+          children: [
+            new AssetImage('images/img1.jpg'),
+            new AssetImage('images/img2.jpg'),
+            new AssetImage('images/img3.jpg'),
+          ]
+              .map((bgImage) => new Image(
+                    image: bgImage,
+                    width: width,
+                    height: 200,
+                    fit: BoxFit.cover,
+                  ))
+              .toList(),
+          displayDuration: const Duration(seconds: 4),
+        ),
+      );
 
   _titleContainer() => new Container(
         margin: EdgeInsets.all(10),
@@ -288,22 +281,50 @@ class HomePageState extends State<HomePage> {
         ),
       );
 
-  Widget _buildCarousel() => Container(
-        margin: EdgeInsets.all(16),
-        child: new Carousel(
-          children: [
-            new AssetImage('images/img1.jpg'),
-            new AssetImage('images/img2.jpg'),
-            new AssetImage('images/img3.jpg'),
-          ]
-              .map((bgImage) => new Image(
-                    image: bgImage,
-                    width: width,
-                    height: 200,
-                    fit: BoxFit.cover,
-                  ))
-              .toList(),
-          displayDuration: const Duration(seconds: 4),
-        ),
-      );
+  _scrollListener() {
+    if (_scrollController.offset >=
+            _scrollController.position.maxScrollExtent &&
+        !_scrollController.position.outOfRange) {
+      setState(() {
+        message = "reach the bottom";
+        print(message);
+        loadMore();
+      });
+    }
+    if (_scrollController.offset <=
+            _scrollController.position.minScrollExtent &&
+        !_scrollController.position.outOfRange) {
+      setState(() {
+        message = "reach the top";
+        print(message);
+      });
+    }
+  }
+
+  _scrollListenerSecond() {
+    if (_scrollControllerSecond.offset >=
+            _scrollControllerSecond.position.maxScrollExtent &&
+        !_scrollControllerSecond.position.outOfRange) {
+      setState(() {
+        message = "reach the bottom";
+        print(message);
+        loadMore();
+      });
+    }
+    if (_scrollControllerSecond.offset <=
+            _scrollControllerSecond.position.minScrollExtent &&
+        !_scrollControllerSecond.position.outOfRange) {
+      setState(() {
+        message = "reach the top";
+        print(message);
+      });
+    }
+  }
+
+  void loadMore() {
+    page++;
+    if (viewModel != null) {
+      viewModel.onFetchCampaign(10, page);
+    }
+  }
 }
