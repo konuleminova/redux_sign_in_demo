@@ -166,51 +166,7 @@ class HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                new Container(
-                  height: 60,
-                  color: Colors.grey[200],
-                  child: new Stack(
-                    children: <Widget>[
-                      new Container(
-                        child: new Text(
-                          "Popular Mehsullar ",
-                          textAlign: TextAlign.left,
-                          style: new TextStyle(fontSize: 20),
-                        ),
-                        alignment: AlignmentDirectional.centerStart,
-                      ),
-                      new Container(
-                        child: new Text(
-                          "See All ",
-                          textAlign: TextAlign.left,
-                          style: new TextStyle(fontSize: 15),
-                        ),
-                        alignment: AlignmentDirectional.centerEnd,
-                      )
-                    ],
-                  ),
-                  margin: EdgeInsets.all(8),
-                ),
-                new Container(
-                    height: 170,
-                    child: new ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      controller: _scrollController,
-                      itemBuilder: (BuildContext context, int index) =>
-                          new Container(
-                              width: 140,
-                              child: new Card(
-                                  clipBehavior: Clip.antiAlias,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: ClipRect(
-                                    child: new Image.network(
-                                      campaignList[index].image,
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ))),
-                      itemCount: campaignList.length,
-                    ))
+
               ],
             ),
           );
