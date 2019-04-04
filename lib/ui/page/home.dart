@@ -25,6 +25,8 @@ class HomePageState extends State<HomePage> {
   int page = 0;
   double height = 0;
   double width = 0;
+  final dataKey = new GlobalKey();
+  int index = 4;
 
   @override
   void initState() {
@@ -106,67 +108,10 @@ class HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                new Container(
-                  height: 60,
-                  color: Colors.grey[200],
-                  child: new Stack(
-                    children: <Widget>[
-                      new Container(
-                        child: new Text(
-                          "Popular Mehsullar ",
-                          textAlign: TextAlign.left,
-                          style: new TextStyle(fontSize: 20),
-                        ),
-                        alignment: AlignmentDirectional.centerStart,
-                      ),
-                      new Container(
-                        child: new Text(
-                          "See All ",
-                          textAlign: TextAlign.left,
-                          style: new TextStyle(fontSize: 15),
-                        ),
-                        alignment: AlignmentDirectional.centerEnd,
-                      )
-                    ],
-                  ),
-                  margin: EdgeInsets.all(8),
-                ),
-                new SizedBox(
-                  height: 170,
-                  child: Stack(
-                    children: <Widget>[
-                      new Container(
-                          child: new ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            controller: _scrollController,
-                            itemBuilder: (BuildContext context, int index) =>
-                                new Container(
-                                    width: 140,
-                                    child: new Card(
-                                        clipBehavior: Clip.antiAlias,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        child: ClipRect(
-                                          child: new Image.network(
-                                            campaignList[index].image,
-                                            fit: BoxFit.fill,
-                                          ),
-                                        ))),
-                            itemCount: campaignList.length,
-                          )),
-                      new Container(
-                        alignment: AlignmentDirectional.centerEnd,
-                        child: new IconButton(
-                          disabledColor: Colors.white,
-                            iconSize: 40,
-                            icon: Icon(Icons.arrow_forward_ios),
-                            onPressed: null),
-                      )
-                    ],
-                  ),
-                ),
-
+                _titleContainer(),
+                _itemList(),
+                //_titleContainer(),
+                // _itemList(),
               ],
             ),
           );
@@ -199,4 +144,70 @@ class HomePageState extends State<HomePage> {
       viewModel.onFetchCampaign(10, page);
     }
   }
+
+  _titleContainer() => new Container(
+        height: 60,
+        color: Colors.grey[200],
+        child: new Stack(
+          children: <Widget>[
+            new Container(
+              child: new Text(
+                "Popular Mehsullar ",
+                textAlign: TextAlign.left,
+                style: new TextStyle(fontSize: 20),
+              ),
+              alignment: AlignmentDirectional.centerStart,
+            ),
+            new Container(
+              child: new Text(
+                "See All ",
+                textAlign: TextAlign.left,
+                style: new TextStyle(fontSize: 15),
+              ),
+              alignment: AlignmentDirectional.centerEnd,
+            )
+          ],
+        ),
+        margin: EdgeInsets.all(8),
+      );
+
+  _itemList() => new SizedBox(
+        height: 170,
+        child: Stack(
+          children: <Widget>[
+            new Container(
+                child: new ListView.builder(
+              scrollDirection: Axis.horizontal,
+              controller: _scrollController,
+              itemBuilder: (BuildContext context, int index) => new Container(
+                  width: 140,
+                  child: new Card(
+                      clipBehavior: Clip.antiAlias,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      child: ClipRect(
+                        child: new Image.network(
+                          campaignList[index].image,
+                          fit: BoxFit.fill,
+                        ),
+                      ))),
+              itemCount: campaignList.length,
+            )),
+            new Container(
+              alignment: AlignmentDirectional.centerEnd,
+              child: new IconButton(
+                  disabledColor: Colors.white,
+                  iconSize: 40,
+                  icon: Icon(Icons.arrow_forward_ios),
+                  onPressed: () {
+                    _scrollController.animateTo((100.0 * index),
+                        // 100 is the height of container and index of 6th element is 5
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeOut);
+                    index = index + 3;
+                  }),
+            )
+          ],
+        ),
+      );
 }
