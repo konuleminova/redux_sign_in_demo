@@ -85,7 +85,11 @@ class HomePageState extends State<HomePage> {
                     ),
                     onPressed: () {},
                   ),
-                  new IconButton(icon: Icon(Icons.shopping_cart,color: Colors.white,))
+                  new IconButton(
+                      icon: Icon(
+                    Icons.shopping_cart,
+                    color: Colors.white,
+                  ))
                 ],
               ),
               drawer: new Drawer(
@@ -190,9 +194,9 @@ class HomePageState extends State<HomePage> {
       );
 
   _itemList() => Container(
-        margin: EdgeInsets.all(16),
+        margin: EdgeInsets.all(8),
         child: new SizedBox(
-          height: 150,
+          height: 230,
           child: Stack(
             children: <Widget>[
               new Container(
@@ -200,15 +204,77 @@ class HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 controller: _scrollController,
                 itemBuilder: (BuildContext context, int index) => new Container(
-                    width: 120,
+                    width: 140,
                     child: new Card(
-                        clipBehavior: Clip.antiAlias,
+                        clipBehavior: Clip.hardEdge,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
                         child: ClipRect(
-                          child: new Image.network(
-                            campaignList[index].image,
-                            fit: BoxFit.fill,
+                          child: new Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
+                              new SizedBox(
+                                child: new Image.network(
+                                  campaignList[index].image,
+                                  fit: BoxFit.cover,
+                                ),
+                                width: 100,
+                                height: 120,
+                              ),
+                              new Container(
+                                margin: EdgeInsets.only(left: 10,top: 10),
+                                child: new Text(
+                                  "Alma",
+                                  textAlign: TextAlign.left,
+                                ),
+                              ),
+                              new Container(
+                                margin: EdgeInsets.only(left: 10),
+                                child: new Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    new Container(
+                                      child: new Text(
+                                        "1 kq",
+                                        textAlign: TextAlign.left,
+                                      ),
+                                    ),
+                                    new Container(
+                                      margin: EdgeInsets.only(right: 10),
+                                      child: new Text(
+                                        "2 AZN",
+                                        textAlign: TextAlign.right,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              new Container(
+                                margin: EdgeInsets.all(16),
+                                decoration: new BoxDecoration(
+                                    color: Colors.lightGreen,
+                                    borderRadius: new BorderRadius.circular(8)),
+                                alignment: AlignmentDirectional.bottomEnd,
+                                child: new Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    new Icon(Icons.add, color: Colors.white),
+                                    new Text(
+                                      "Add",
+                                      style: new TextStyle(color: Colors.white),
+                                    ),
+                                    new Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
                           ),
                         ))),
                 itemCount: campaignList.length,
