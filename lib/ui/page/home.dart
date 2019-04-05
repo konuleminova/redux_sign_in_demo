@@ -5,7 +5,7 @@ import 'package:redux/redux.dart';
 import 'package:redux_sign_in/data/model/app_state.dart';
 import 'package:redux_sign_in/data/model/data.dart';
 import 'package:redux_sign_in/data/model/user_login.dart';
-import 'package:redux_sign_in/data/viewmodel/fetch_campaign_viewmodel.dart';
+import 'package:redux_sign_in/data/viewmodel/home_viewmodel.dart';
 import 'package:redux_sign_in/data/viewmodel/login_viewmodel.dart';
 import 'package:redux_sign_in/util/carousel.dart';
 
@@ -22,7 +22,7 @@ class HomePageState extends State<HomePage> {
   ScrollController _scrollController, _scrollControllerSecond;
   String message;
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
-  FetchDataViewModel viewModel;
+  HomeViewModel viewModel;
   int page = 0;
   double height = 0;
   double width = 0;
@@ -51,11 +51,11 @@ class HomePageState extends State<HomePage> {
     height = MediaQuery.of(context).size.height;
     // TODO: implement build
     return StoreConnector(
-        onInitialBuild: (FetchDataViewModel viewModel) {
+        onInitialBuild: (HomeViewModel viewModel) {
           viewModel.onFetchCampaign(10, page);
           this.viewModel = viewModel;
         },
-        converter: (Store<AppState> store) => FetchDataViewModel.create(store),
+        converter: (Store<AppState> store) => HomeViewModel.create(store),
         onInit: (store) {
           store.onChange.listen((onData) {
             if (onData != null) {
@@ -64,7 +64,7 @@ class HomePageState extends State<HomePage> {
             }
           });
         },
-        builder: (BuildContext context, FetchDataViewModel viewModel) {
+        builder: (BuildContext context, HomeViewModel viewModel) {
           return new Scaffold(
               key: scaffoldKey,
               appBar: new AppBar(
@@ -86,10 +86,13 @@ class HomePageState extends State<HomePage> {
                     onPressed: () {},
                   ),
                   new IconButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/shopping_cart");
+                      },
                       icon: Icon(
-                    Icons.shopping_cart,
-                    color: Colors.white,
-                  ))
+                        Icons.shopping_cart,
+                        color: Colors.white,
+                      ))
                 ],
               ),
               drawer: new Drawer(
@@ -224,7 +227,7 @@ class HomePageState extends State<HomePage> {
                                 height: 120,
                               ),
                               new Container(
-                                margin: EdgeInsets.only(left: 10,top: 10),
+                                margin: EdgeInsets.only(left: 10, top: 10),
                                 child: new Text(
                                   "Alma",
                                   textAlign: TextAlign.left,
@@ -233,7 +236,8 @@ class HomePageState extends State<HomePage> {
                               new Container(
                                 margin: EdgeInsets.only(left: 10),
                                 child: new Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                     new Container(
                                       child: new Text(
