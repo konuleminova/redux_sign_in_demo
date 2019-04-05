@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_sign_in/data/model/app_state.dart';
+import 'package:redux_sign_in/data/model/shop_item.dart';
 import 'package:redux_sign_in/data/viewmodel/shopping_cart_viewmodel.dart';
 
 class ShoppingCart extends StatefulWidget {
@@ -13,10 +14,25 @@ class ShoppingCart extends StatefulWidget {
 }
 
 class ShoppingCartState extends State<ShoppingCart> {
+  List<ShopItem> shopItems;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new StoreConnector(
+      onInitialBuild: (ShoppingCartViewModel viewModel) {},
+      onInit: (store) {
+        shopItems = new List<ShopItem>();
+        shopItems.add(new ShopItem(
+            title: "Alma", description: "Dummy Text", price: "2 Azn"));
+        shopItems.add(new ShopItem(
+            title: "Armud", description: "Dummy Text", price: "2 Azn"));
+        shopItems.add(new ShopItem(
+            title: "Nar", description: "Dummy Text", price: "2 Azn"));
+        shopItems.add(new ShopItem(
+            title: "Uzum", description: "Dummy Text", price: "2 Azn"));
+        store.state.shopItems = shopItems;
+      },
       converter: (Store<AppState> store) => ShoppingCartViewModel.create(store),
       builder: (BuildContext context, ShoppingCartViewModel viewModel) {
         return new Scaffold(
@@ -27,7 +43,7 @@ class ShoppingCartState extends State<ShoppingCart> {
           ),
           body: new Container(
               child: new ListView.builder(
-                  itemCount: 5,
+                  itemCount:viewModel.shopItems.length ,
                   itemBuilder: (BuildContext context, int index) {
                     return new Container(
                       color: Colors.lightGreenAccent,
@@ -36,7 +52,10 @@ class ShoppingCartState extends State<ShoppingCart> {
                         title: new Container(
                             alignment: AlignmentDirectional.topEnd,
                             child: new RaisedButton(
-                              onPressed: null,
+                              onPressed: () {
+                               return viewModel.deleteItem(shopItems[index]);
+                                print(viewModel.shopItems.toString());
+                              },
                               child: new Text("X"),
                             )),
                         subtitle: new SizedBox(
@@ -49,10 +68,10 @@ class ShoppingCartState extends State<ShoppingCart> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: <Widget>[
                                     new Container(
-                                      child: new Text("Alma"),
+                                      child: new Text(shopItems[index].title),
                                     ),
                                     new Container(
-                                      child: new Text("1kq: 2 AZN"),
+                                      child: new Text(shopItems[index].price),
                                     ),
                                   ],
                                 ),

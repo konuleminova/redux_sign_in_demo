@@ -5,14 +5,14 @@ import 'package:redux_sign_in/redux/action/OnShoppingCartAction.dart';
 
 class ShoppingCartViewModel {
   Function(ShopItem shopItem) deleteItem;
+  List<ShopItem> shopItems;
 
-  ShoppingCartViewModel({this.deleteItem});
+  ShoppingCartViewModel({this.deleteItem,this.shopItems});
 
   factory ShoppingCartViewModel.create(Store<AppState> store) {
     _deleteItem(ShopItem shopItem) {
-      store.dispatch(OnShoppingCartAction(shopItem: shopItem));
+      store.dispatch(OnShoppingCartAction(removeItem: shopItem));
     }
-
-    return ShoppingCartViewModel(deleteItem: _deleteItem);
+    return ShoppingCartViewModel(deleteItem: _deleteItem,shopItems: store.state.shopItems);
   }
 }

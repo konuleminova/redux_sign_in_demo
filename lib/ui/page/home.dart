@@ -59,8 +59,11 @@ class HomePageState extends State<HomePage> {
         onInit: (store) {
           store.onChange.listen((onData) {
             if (onData != null) {
-              campaignList.addAll(onData.campaign.data);
-              print("//" + onData.campaign.data.toString() + "...");
+              try{campaignList.addAll(onData.campaign.data);}
+              catch(exceptoon){
+
+              }
+             // print("//" + onData.campaign.data.toString() + "...");
             }
           });
         },

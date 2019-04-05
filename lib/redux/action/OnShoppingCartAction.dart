@@ -1,7 +1,8 @@
 import 'package:redux_sign_in/data/model/shop_item.dart';
 
 class OnShoppingCartAction {
-  ShopItem shopItem;
+  List<ShopItem> shopItems;
+  ShopItem removeItem;
 
-  OnShoppingCartAction({this.shopItem});
+  OnShoppingCartAction({this.shopItems,this.removeItem});
 }
