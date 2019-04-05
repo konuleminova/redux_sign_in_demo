@@ -52,7 +52,7 @@ class ShoppingCartState extends State<ShoppingCart> {
                           alignment: AlignmentDirectional.topEnd,
                           child: new RaisedButton(
                             onPressed: () {
-                              return viewModel.deleteItem(shopItem);
+                              return viewModel.removeItem(shopItem);
                               print(viewModel.shopItems.toString());
                             },
                             child: new Text("X"),
