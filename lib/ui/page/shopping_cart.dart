@@ -30,37 +30,56 @@ class ShoppingCartState extends State<ShoppingCart> {
                   itemCount: 5,
                   itemBuilder: (BuildContext context, int index) {
                     return new Container(
+                      color: Colors.lightGreenAccent,
                       margin: EdgeInsets.all(16),
                       child: new ListTile(
-                        title: new SizedBox(
-                          height: 90,
-                          width: 200,
-                          child: new Stack(
+                        title: new Container(
+                            alignment: AlignmentDirectional.topEnd,
+                            child: new RaisedButton(
+                              onPressed: null,
+                              child: new Text("X"),
+                            )),
+                        subtitle: new SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: new Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               new Container(
-                                child: new Text("Alma"),
-                                alignment: AlignmentDirectional.topStart,
+                                child: new Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    new Container(
+                                      child: new Text("Alma"),
+                                    ),
+                                    new Container(
+                                      child: new Text("1kq: 2 AZN"),
+                                    ),
+                                  ],
+                                ),
                               ),
                               new Container(
-                                alignment: AlignmentDirectional.centerStart,
-                                child: new Text("1kq: 2 AZN"),
-                              ),
-                              new Container(
-                                alignment: AlignmentDirectional.bottomStart,
-                                child: new Icon(Icons.add),
-                              ),
-                              new Container(
-                                alignment: AlignmentDirectional.bottomEnd,
-                                child: new Icon(Icons.shopping_cart),
+                                child: new Row(
+                                  children: <Widget>[
+                                    new Container(
+                                      child: new Icon(Icons.add),
+                                    ),
+                                    new Container(
+                                      child: new Text("_"),
+                                    ),
+                                    new Container(
+                                      child: new Icon(Icons.shopping_cart),
+                                    )
+                                  ],
+                                ),
                               )
                             ],
                           ),
                         ),
                         leading: new Image(
                           image: AssetImage("images/img1.jpg"),
-                          fit: BoxFit.cover,
-                          height: 90,
-                          width: 120,
+                          fit: BoxFit.contain,
+                          height: 70,
+                          width: 100,
                         ),
                       ),
                     );
