@@ -5,19 +5,21 @@ import 'package:redux_sign_in/data/model/app_state.dart';
 import 'package:redux_sign_in/data/model/shop_item.dart';
 import 'package:redux_sign_in/data/viewmodel/shopping_cart_viewmodel.dart';
 
-class ShoppingCart extends StatefulWidget {
+class ShoppingCartPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return new ShoppingCartState();
+    return new ShoppingCartPageState();
   }
 }
 
-class ShoppingCartState extends State<ShoppingCart> {
+class ShoppingCartPageState extends State<ShoppingCartPage> {
   List<ShopItem> shopItems;
+  double width;
 
   @override
   Widget build(BuildContext context) {
+    width = MediaQuery.of(context).size.width;
     // TODO: implement build
     return new StoreConnector(
         onInitialBuild: (ShoppingCartViewModel viewModel) {},
@@ -42,71 +44,88 @@ class ShoppingCartState extends State<ShoppingCart> {
               title: new Text("Your Cart List"),
               centerTitle: true,
             ),
-            body: new Container(
-              child: new ListView(
-                  children: viewModel.shopItems.map((ShopItem shopItem) => new Container(
-                    color: Colors.lightGreenAccent,
-                    margin: EdgeInsets.all(16),
-                    child: new ListTile(
-                      title: new Container(
-                          alignment: AlignmentDirectional.topEnd,
-                          child: new RaisedButton(
-                            onPressed: () {
-                              return viewModel.removeItem(shopItem);
-                              print(viewModel.shopItems.toString());
-                            },
-                            child: new Text("X"),
-                          )),
-                      subtitle: new SizedBox(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width,
-                        child: new Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            new Container(
-                              child: new Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  new Container(
-                                    child: new Text(shopItem.title),
-                                  ),
-                                  new Container(
-                                    child: new Text(shopItem.price),
-                                  ),
-                                ],
+            body: new Stack(
+              children: <Widget>[
+                new ListView(
+                  children: viewModel.shopItems
+                      .map((ShopItem shopItem) => new Container(
+                            color: Colors.lightGreenAccent,
+                            margin: EdgeInsets.all(16),
+                            child: new ListTile(
+                              title: new Container(
+                                  alignment: AlignmentDirectional.topEnd,
+                                  child: new RaisedButton(
+                                    onPressed: () {
+                                      return viewModel.removeItem(shopItem);
+                                      print(viewModel.shopItems.toString());
+                                    },
+                                    child: new Text("X"),
+                                  )),
+                              subtitle: new SizedBox(
+                                width: width,
+                                child: new Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    new Container(
+                                      child: new Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: <Widget>[
+                                          new Container(
+                                            child: new Text(shopItem.title),
+                                          ),
+                                          new Container(
+                                            child: new Text(shopItem.price),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    new Container(
+                                      child: new Row(
+                                        children: <Widget>[
+                                          new Container(
+                                            child: new Icon(Icons.add),
+                                          ),
+                                          new Container(
+                                            child: new Text("_"),
+                                          ),
+                                          new Container(
+                                            child:
+                                                new Icon(Icons.shopping_cart),
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              leading: new Image(
+                                image: AssetImage("images/img1.jpg"),
+                                fit: BoxFit.contain,
+                                height: 70,
+                                width: 100,
                               ),
                             ),
-                            new Container(
-                              child: new Row(
-                                children: <Widget>[
-                                  new Container(
-                                    child: new Icon(Icons.add),
-                                  ),
-                                  new Container(
-                                    child: new Text("_"),
-                                  ),
-                                  new Container(
-                                    child: new Icon(Icons.shopping_cart),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      leading: new Image(
-                        image: AssetImage("images/img1.jpg"),
-                        fit: BoxFit.contain,
-                        height: 70,
-                        width: 100,
-                      ),
+                          ))
+                      .toList(),
+                ),
+                new Container(
+                  margin: EdgeInsets.all(16),
+                  child: new ButtonTheme(
+                    child: new RaisedButton(
+                      onPressed: () {
+                        return Navigator.pushNamed(context, "/checkout");
+                      },
+                      child: new Text("Checkout"),
                     ),
-                  )).toList(),
+                    minWidth: width,
+                  ),
+                  alignment: AlignmentDirectional.bottomCenter,
+                  width: width,
+                )
+              ],
             ),
-          ),);
-        }
-    );
+          );
+        });
   }
 }
