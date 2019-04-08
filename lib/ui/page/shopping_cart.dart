@@ -33,6 +33,12 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
               title: "Nar", description: "Dummy Text", price: "2 Azn"));
           shopItems.add(new ShopItem(
               title: "Uzum", description: "Dummy Text", price: "2 Azn"));
+          shopItems.add(new ShopItem(
+              title: "Armud", description: "Dummy Text", price: "2 Azn"));
+          shopItems.add(new ShopItem(
+              title: "Nar", description: "Dummy Text", price: "2 Azn"));
+          shopItems.add(new ShopItem(
+              title: "Uzum", description: "Dummy Text", price: "2 Azn"));
           store.state.shopItems = shopItems;
         },
         converter: (Store<AppState> store) =>
@@ -46,27 +52,30 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
             ),
             body: new Stack(
               children: <Widget>[
-                new ListView(
-                  children: viewModel.shopItems
-                      .map((ShopItem shopItem) => new Container(
+                new Container(
+                  margin: EdgeInsets.only(bottom: 16),
+                  child: new ListView(
+                    children: viewModel.shopItems
+                        .map((ShopItem shopItem) => new Container(
                             color: Colors.lightGreenAccent,
                             margin: EdgeInsets.all(16),
-                            child: new ListTile(
-                              title: new Container(
-                                  alignment: AlignmentDirectional.topEnd,
-                                  child: new RaisedButton(
-                                    onPressed: () {
-                                      return viewModel.removeItem(shopItem);
-                                      print(viewModel.shopItems.toString());
-                                    },
-                                    child: new Text("X"),
-                                  )),
-                              subtitle: new SizedBox(
+                            child: new Card(
+                              child: new SizedBox(
+                                height: 100,
                                 width: width,
-                                child: new Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                child: new Stack(
                                   children: <Widget>[
+                                    new Container(
+                                      margin: EdgeInsets.all(16),
+                                      child: new Image(
+                                        image: AssetImage("images/img1.jpg"),
+                                        fit: BoxFit.contain,
+                                        height: 70,
+                                        width: 100,
+                                      ),
+                                      alignment:
+                                          AlignmentDirectional.centerStart,
+                                    ),
                                     new Container(
                                       child: new Column(
                                         mainAxisSize: MainAxisSize.min,
@@ -79,35 +88,39 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
                                           ),
                                         ],
                                       ),
+                                      alignment: FractionalOffset.center,
                                     ),
                                     new Container(
-                                      child: new Row(
-                                        children: <Widget>[
-                                          new Container(
-                                            child: new Icon(Icons.add),
-                                          ),
-                                          new Container(
-                                            child: new Text("_"),
-                                          ),
-                                          new Container(
-                                            child:
-                                                new Icon(Icons.shopping_cart),
-                                          )
-                                        ],
-                                      ),
-                                    )
+                                        margin: EdgeInsets.all(16),
+                                        child: new Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: <Widget>[
+                                            new GestureDetector(
+                                              child: new Container(
+                                                child:
+                                                    new Icon(Icons.delete),
+                                              ),
+                                              onTap: () {
+                                                return viewModel
+                                                    .removeItem(shopItem);
+                                                print(viewModel.shopItems
+                                                    .toString());
+                                              },
+                                            ),
+                                            new Container(
+                                              child: new Icon(Icons.add_circle),
+                                            )
+                                          ],
+                                        ),
+                                        alignment:
+                                            AlignmentDirectional(1.0, 0.0))
                                   ],
                                 ),
                               ),
-                              leading: new Image(
-                                image: AssetImage("images/img1.jpg"),
-                                fit: BoxFit.contain,
-                                height: 70,
-                                width: 100,
-                              ),
-                            ),
-                          ))
-                      .toList(),
+                            )))
+                        .toList(),
+                  ),
                 ),
                 new Container(
                   margin: EdgeInsets.all(16),
