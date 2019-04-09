@@ -262,7 +262,7 @@ class HomePageState extends State<HomePage> {
                                   height: 25,
                                   margin: EdgeInsets.all(8),
                                   decoration: new BoxDecoration(
-                                      color: Colors.lightGreen,
+                                      color: Colors.red,
                                       borderRadius:
                                           new BorderRadius.circular(8)),
                                   alignment: AlignmentDirectional.center,
