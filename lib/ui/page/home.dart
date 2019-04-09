@@ -28,7 +28,6 @@ class HomePageState extends State<HomePage> {
   double width = 0;
   final dataKey = new GlobalKey();
   int index = 4;
-  bool statusAdded = false;
 
   @override
   void initState() {
