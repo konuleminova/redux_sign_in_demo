@@ -28,6 +28,7 @@ class HomePageState extends State<HomePage> {
   double width = 0;
   final dataKey = new GlobalKey();
   int index = 4;
+  bool statusAdded = false;
 
   @override
   void initState() {
@@ -59,11 +60,10 @@ class HomePageState extends State<HomePage> {
         onInit: (store) {
           store.onChange.listen((onData) {
             if (onData != null) {
-              try{campaignList.addAll(onData.campaign.data);}
-              catch(exceptoon){
-
-              }
-             // print("//" + onData.campaign.data.toString() + "...");
+              try {
+                campaignList.addAll(onData.campaign.data);
+              } catch (exceptoon) {}
+              // print("//" + onData.campaign.data.toString() + "...");
             }
           });
         },
@@ -219,7 +219,7 @@ class HomePageState extends State<HomePage> {
                         child: ClipRect(
                           child: new Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
                               new SizedBox(
                                 child: new Image.network(
@@ -258,28 +258,23 @@ class HomePageState extends State<HomePage> {
                                   ],
                                 ),
                               ),
-                              new Container(
-                                margin: EdgeInsets.all(16),
-                                decoration: new BoxDecoration(
-                                    color: Colors.lightGreen,
-                                    borderRadius: new BorderRadius.circular(8)),
-                                alignment: AlignmentDirectional.bottomEnd,
-                                child: new Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: <Widget>[
-                                    new Icon(Icons.add, color: Colors.white),
-                                    new Text(
-                                      "Add",
-                                      style: new TextStyle(color: Colors.white),
-                                    ),
-                                    new Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                    )
-                                  ],
+                              new GestureDetector(
+                                child: new Container(
+                                  height: 25,
+                                  margin: EdgeInsets.all(8),
+                                  decoration: new BoxDecoration(
+                                      color: Colors.lightGreen,
+                                      borderRadius:
+                                          new BorderRadius.circular(8)),
+                                  alignment: AlignmentDirectional.center,
+                                  child: _updateCardWidget(
+                                      campaignList[index].status),
                                 ),
+                                onTap: () {
+                                  setState(() {
+                                    campaignList[index].status = true;
+                                  });
+                                },
                               )
                             ],
                           ),
@@ -398,6 +393,33 @@ class HomePageState extends State<HomePage> {
     page++;
     if (viewModel != null) {
       viewModel.onFetchCampaign(10, page);
+    }
+  }
+
+  _updateCardWidget(bool status) {
+    if (status) {
+      return new Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          new Icon(Icons.add, color: Colors.white),
+          new Text(
+            "2",
+            style: new TextStyle(fontSize: 18, color: Colors.white),
+          ),
+          new Icon(
+            Icons.add,
+            color: Colors.white,
+          )
+        ],
+      );
+    } else {
+      return new Container(
+          child: new Text(
+        "Add",
+        textAlign: TextAlign.center,
+        style: new TextStyle(color: Colors.white, fontSize: 18),
+      ));
     }
   }
 }

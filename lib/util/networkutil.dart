@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:redux_sign_in/data/model/app_state.dart';
-import 'package:redux_sign_in/data/model/campaign.dart';
+import 'package:redux_sign_in/data/model/home.dart';
 import 'package:redux_sign_in/redux/middleware/thunk_login.dart';
 
 class NetworkUtils {
@@ -42,7 +42,7 @@ class NetworkUtils {
           }),
           headers: {"Accept": "application/json"});
       if (response.statusCode == 200) {
-        return Campaign.fromJson(json.decode(response.body));
+        return Home.fromJson(json.decode(response.body));
       }else{
         return null;
       }
