@@ -184,7 +184,7 @@ class HomePageState extends State<HomePage> {
               child: new Text(
                 "Popular Mehsullar ",
                 textAlign: TextAlign.left,
-                style: new TextStyle(fontSize: 20),
+                style: new TextStyle(fontSize: 20,color: Colors.green),
               ),
               alignment: AlignmentDirectional.centerStart,
             ),
@@ -393,6 +393,7 @@ class HomePageState extends State<HomePage> {
       return Stack(
         children: <Widget>[
           new Container(
+            margin: EdgeInsets.only(top: 10),
             alignment: Alignment.topLeft,
             child: new Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
