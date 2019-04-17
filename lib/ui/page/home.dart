@@ -47,8 +47,14 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    width = MediaQuery.of(context).size.width;
-    height = MediaQuery.of(context).size.height;
+    width = MediaQuery
+        .of(context)
+        .size
+        .width;
+    height = MediaQuery
+        .of(context)
+        .size
+        .height;
     // TODO: implement build
     return StoreConnector(
         onInitialBuild: (HomeViewModel viewModel) {
@@ -153,27 +159,30 @@ class HomePageState extends State<HomePage> {
         });
   }
 
-  Widget _buildCarousel() => Container(
-        margin: EdgeInsets.all(16),
+  Widget _buildCarousel() =>
+      Container(
         child: new Carousel(
           children: [
             new AssetImage('images/img1.jpg'),
             new AssetImage('images/img2.jpg'),
             new AssetImage('images/img3.jpg'),
           ]
-              .map((bgImage) => new Image(
-                    image: bgImage,
-                    width: width,
-                    height: 200,
-                    fit: BoxFit.cover,
-                  ))
+              .map((bgImage) =>
+          new Image(
+            image: bgImage,
+            width: width,
+            height: 200,
+            fit: BoxFit.cover,
+          ))
               .toList(),
           displayDuration: const Duration(seconds: 4),
         ),
       );
 
-  _titleContainer() => new Container(
-        margin: EdgeInsets.all(10),
+  _titleContainer() =>
+      new Container(
+        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.only(top: 10),
         height: 60,
         color: Colors.grey[200],
         child: new Stack(
@@ -198,7 +207,8 @@ class HomePageState extends State<HomePage> {
         ),
       );
 
-  _itemList() => Container(
+  _itemList() =>
+      Container(
         margin: EdgeInsets.all(8),
         child: new SizedBox(
           height: 230,
@@ -206,80 +216,82 @@ class HomePageState extends State<HomePage> {
             children: <Widget>[
               new Container(
                   child: new ListView.builder(
-                scrollDirection: Axis.horizontal,
-                controller: _scrollController,
-                itemBuilder: (BuildContext context, int index) => new Container(
-                    width: 140,
-                    child: new Card(
-                        clipBehavior: Clip.hardEdge,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: ClipRect(
-                          child: new Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              new SizedBox(
-                                child: new Image.network(
-                                  campaignList[index].image,
-                                  fit: BoxFit.cover,
-                                ),
-                                width: 100,
-                                height: 120,
-                              ),
-                              new Container(
-                                margin: EdgeInsets.only(left: 10, top: 10),
-                                child: new Text(
-                                  "Alma",
-                                  textAlign: TextAlign.left,
-                                ),
-                              ),
-                              new Container(
-                                margin: EdgeInsets.only(left: 10),
-                                child: new Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    new Container(
-                                      child: new Text(
-                                        "1 kq",
-                                        textAlign: TextAlign.left,
-                                      ),
+                    scrollDirection: Axis.horizontal,
+                    controller: _scrollController,
+                    itemBuilder: (BuildContext context, int index) =>
+                    new Container(
+                        width: 140,
+                        child: new Card(
+                            clipBehavior: Clip.hardEdge,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            child: ClipRect(
+                              child: new Column(
+                                mainAxisAlignment: MainAxisAlignment
+                                    .spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  new SizedBox(
+                                    child: new Image.network(
+                                      campaignList[index].image,
+                                      fit: BoxFit.cover,
                                     ),
-                                    new Container(
-                                      margin: EdgeInsets.only(right: 10),
-                                      child: new Text(
-                                        "2 AZN",
-                                        textAlign: TextAlign.right,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              new GestureDetector(
-                                child: new Container(
-                                  height: 25,
-                                  margin: EdgeInsets.all(8),
-                                  decoration: new BoxDecoration(
-                                      color: Colors.red,
-                                      borderRadius:
+                                    width: 100,
+                                    height: 120,
+                                  ),
+                                  new Container(
+                                    margin: EdgeInsets.only(left: 10, top: 10),
+                                    child: new Text(
+                                      "Alma",
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  ),
+                                  new Container(
+                                    margin: EdgeInsets.only(left: 10),
+                                    child: new Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        new Container(
+                                          child: new Text(
+                                            "1 kq",
+                                            textAlign: TextAlign.left,
+                                          ),
+                                        ),
+                                        new Container(
+                                          margin: EdgeInsets.only(right: 10),
+                                          child: new Text(
+                                            "2 AZN",
+                                            textAlign: TextAlign.right,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  new GestureDetector(
+                                    child: new Container(
+                                      height: 25,
+                                      margin: EdgeInsets.all(8),
+                                      decoration: new BoxDecoration(
+                                          color: Colors.red,
+                                          borderRadius:
                                           new BorderRadius.circular(8)),
-                                  alignment: AlignmentDirectional.center,
-                                  child: _updateCardWidget(
-                                      campaignList[index].status),
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    campaignList[index].status = true;
-                                  });
-                                },
-                              )
-                            ],
-                          ),
-                        ))),
-                itemCount: campaignList.length,
-              )),
+                                      alignment: AlignmentDirectional.center,
+                                      child: _updateCardWidget(
+                                          campaignList[index].status),
+                                    ),
+                                    onTap: () {
+                                      setState(() {
+                                        campaignList[index].status = true;
+                                      });
+                                    },
+                                  )
+                                ],
+                              ),
+                            ))),
+                    itemCount: campaignList.length,
+                  )),
               new Container(
                 alignment: AlignmentDirectional.centerEnd,
                 child: new IconButton(
@@ -302,7 +314,8 @@ class HomePageState extends State<HomePage> {
         ),
       );
 
-  _itemListSecond() => new Container(
+  _itemListSecond() =>
+      new Container(
         margin: EdgeInsets.all(16),
         child: new SizedBox(
           height: 150,
@@ -310,22 +323,23 @@ class HomePageState extends State<HomePage> {
             children: <Widget>[
               new Container(
                   child: new ListView.builder(
-                scrollDirection: Axis.horizontal,
-                controller: _scrollControllerSecond,
-                itemBuilder: (BuildContext context, int index) => new Container(
-                    width: 120,
-                    child: new Card(
-                        clipBehavior: Clip.antiAlias,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        child: ClipRect(
-                          child: new Image.network(
-                            campaignList[index].image,
-                            fit: BoxFit.fill,
-                          ),
-                        ))),
-                itemCount: campaignList.length,
-              )),
+                    scrollDirection: Axis.horizontal,
+                    controller: _scrollControllerSecond,
+                    itemBuilder: (BuildContext context, int index) =>
+                    new Container(
+                        width: 120,
+                        child: new Card(
+                            clipBehavior: Clip.antiAlias,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            child: ClipRect(
+                              child: new Image.network(
+                                campaignList[index].image,
+                                fit: BoxFit.fill,
+                              ),
+                            ))),
+                    itemCount: campaignList.length,
+                  )),
               new Container(
                 alignment: AlignmentDirectional.centerEnd,
                 child: new IconButton(
@@ -350,7 +364,7 @@ class HomePageState extends State<HomePage> {
 
   _scrollListener() {
     if (_scrollController.offset >=
-            _scrollController.position.maxScrollExtent &&
+        _scrollController.position.maxScrollExtent &&
         !_scrollController.position.outOfRange) {
       setState(() {
         message = "reach the bottom";
@@ -359,7 +373,7 @@ class HomePageState extends State<HomePage> {
       });
     }
     if (_scrollController.offset <=
-            _scrollController.position.minScrollExtent &&
+        _scrollController.position.minScrollExtent &&
         !_scrollController.position.outOfRange) {
       setState(() {
         message = "reach the top";
@@ -370,7 +384,7 @@ class HomePageState extends State<HomePage> {
 
   _scrollListenerSecond() {
     if (_scrollControllerSecond.offset >=
-            _scrollControllerSecond.position.maxScrollExtent &&
+        _scrollControllerSecond.position.maxScrollExtent &&
         !_scrollControllerSecond.position.outOfRange) {
       setState(() {
         message = "reach the bottom";
@@ -379,7 +393,7 @@ class HomePageState extends State<HomePage> {
       });
     }
     if (_scrollControllerSecond.offset <=
-            _scrollControllerSecond.position.minScrollExtent &&
+        _scrollControllerSecond.position.minScrollExtent &&
         !_scrollControllerSecond.position.outOfRange) {
       setState(() {
         message = "reach the top";
@@ -415,10 +429,10 @@ class HomePageState extends State<HomePage> {
     } else {
       return new Container(
           child: new Text(
-        "Add",
-        textAlign: TextAlign.center,
-        style: new TextStyle(color: Colors.white, fontSize: 18),
-      ));
+            "Add",
+            textAlign: TextAlign.center,
+            style: new TextStyle(color: Colors.white, fontSize: 18),
+          ));
     }
   }
 }
