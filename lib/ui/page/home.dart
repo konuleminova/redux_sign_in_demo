@@ -29,6 +29,8 @@ class HomePageState extends State<HomePage> {
   final dataKey = new GlobalKey();
   int index = 4;
 
+  var increment=1;
+
   @override
   void initState() {
     campaignList = new List();
@@ -229,7 +231,7 @@ class HomePageState extends State<HomePage> {
                                 height: 100,
                               ),
                               new Container(
-                                margin: EdgeInsets.only(top: 4, bottom: 16),
+                                margin: EdgeInsets.only(top: 4),
                                 child: new Text(
                                   "Alma",
                                   style: new TextStyle(fontSize: 18),
@@ -237,58 +239,8 @@ class HomePageState extends State<HomePage> {
                               ),
                               new Container(
                                   margin: EdgeInsets.only(right: 4, left: 4),
-                                  child: new Stack(
-                                    children: <Widget>[
-                                      new Container(
-                                        alignment: Alignment.topLeft,
-                                        child: new Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: <Widget>[
-                                            new Container(
-                                              child: new Text(
-                                                "1 AZN",
-                                                textAlign: TextAlign.left,
-                                                style: TextStyle(
-                                                    fontSize: 17,
-                                                    color: Colors.black),
-                                              ),
-                                            ),
-                                            new Container(
-                                              child: new Text(
-                                                "1 eded",
-                                                style: TextStyle(
-                                                    fontSize: 15,
-                                                    color: Colors.grey),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      new GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            campaignList[index].status = true;
-                                          });
-                                        },
-                                        child: new Container(
-                                          child: new Container(
-                                            padding: EdgeInsets.all(8),
-                                            color: Colors.lightGreen,
-                                            child: new SizedBox(
-                                              child: new Icon(
-                                                Icons.shopping_cart,
-                                                color: Colors.white,
-                                              ),
-                                              height: 20,
-                                              width: 20,
-                                            ),
-                                          ),
-                                          alignment: Alignment.topRight,
-                                        ),
-                                      ),
-                                    ],
-                                  )),
+                                  child: _updateContainer(
+                                      campaignList[index].status, index)),
                             ],
                           ),
                         ))),
@@ -433,6 +385,129 @@ class HomePageState extends State<HomePage> {
         textAlign: TextAlign.center,
         style: new TextStyle(color: Colors.white, fontSize: 18),
       ));
+    }
+  }
+
+  _updateContainer(bool status, int index) {
+    if (status) {
+      return Stack(
+        children: <Widget>[
+          new Container(
+            alignment: Alignment.topLeft,
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                new Container(
+                  child: new Text(
+                    "1 AZN",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontSize: 17, color: Colors.black),
+                  ),
+                ),
+                new Container(
+                  child: new Text(
+                    "1 eded",
+                    style: TextStyle(fontSize: 15, color: Colors.grey),
+                  ),
+                ),
+                new Container(
+                  padding: EdgeInsets.all(2),
+                  margin: EdgeInsets.all(5),
+                  decoration: new BoxDecoration(
+                      borderRadius: BorderRadius.circular(2),
+                      color: Colors.white,
+                      border: Border.all(color: Colors.grey)),
+                  alignment: Alignment.topRight,
+                  child: new Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      new GestureDetector(
+
+                        child: new Icon(Icons.indeterminate_check_box),
+                        onTap: (){
+                          setState(() {
+                            increment=increment-1;
+                            if(increment<1){
+                              campaignList[index].status = false;
+                              increment=1;
+                            }
+                          });
+                        },
+                      ),
+                      new Text(
+                        increment.toString(),
+                        style: new TextStyle(fontSize: 18),
+                      ),
+
+                      new GestureDetector(
+                        child: new Icon(Icons.add),
+                        onTap: (){
+                          setState(() {
+                            increment=increment+1;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      );
+    } else {
+      return new Container(
+        margin: EdgeInsets.only(top: 36),
+        child: Stack(
+          children: <Widget>[
+            new Container(
+              alignment: Alignment.topLeft,
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  new Container(
+                    child: new Text(
+                      "1 AZN",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(fontSize: 17, color: Colors.black),
+                    ),
+                  ),
+                  new Container(
+                    child: new Text(
+                      "1 eded",
+                      style: TextStyle(fontSize: 15, color: Colors.grey),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            new GestureDetector(
+              child: new Container(
+                child: new Container(
+                  padding: EdgeInsets.all(8),
+                  color: Colors.lightGreen,
+                  child: new SizedBox(
+                    child: new Icon(
+                      Icons.shopping_cart,
+                      color: Colors.white,
+                    ),
+                    height: 20,
+                    width: 20,
+                  ),
+                ),
+                alignment: Alignment.topRight,
+              ),
+              onTap: () {
+                setState(() {
+                  campaignList[index].status = true;
+                });
+              },
+            ),
+          ],
+        ),
+      );
     }
   }
 }
