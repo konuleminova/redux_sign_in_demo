@@ -35,7 +35,7 @@ class ProductDetailState extends State<ProductDetailPage> {
             new Container(
               margin: EdgeInsets.only(left: 16),
               child: new Text(
-                "Biber ",
+                "Alma ",
                 style: TextStyle(color: Colors.green, fontSize: 23),
               ),
             ),
