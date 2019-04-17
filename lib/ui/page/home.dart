@@ -29,7 +29,7 @@ class HomePageState extends State<HomePage> {
   final dataKey = new GlobalKey();
   int index = 4;
 
-  var increment=1;
+  var increment = 1;
 
   @override
   void initState() {
@@ -184,7 +184,7 @@ class HomePageState extends State<HomePage> {
               child: new Text(
                 "Popular Mehsullar ",
                 textAlign: TextAlign.left,
-                style: new TextStyle(fontSize: 20,color: Colors.green),
+                style: new TextStyle(fontSize: 20, color: Colors.green),
               ),
               alignment: AlignmentDirectional.centerStart,
             ),
@@ -200,70 +200,78 @@ class HomePageState extends State<HomePage> {
         ),
       );
 
-  _itemList() => Container(
-        margin: EdgeInsets.all(8),
-        child: new SizedBox(
-          height: 230,
-          child: Stack(
-            children: <Widget>[
-              new Container(
-                  child: new ListView.builder(
-                scrollDirection: Axis.horizontal,
-                controller: _scrollController,
-                itemBuilder: (BuildContext context, int index) => new Container(
-                    width: 140,
-                    height: 150,
-                    child: new Card(
-                        clipBehavior: Clip.hardEdge,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: ClipRect(
-                          child: new Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              new SizedBox(
-                                child: new Image.network(
-                                  campaignList[index].image,
-                                  fit: BoxFit.cover,
-                                ),
-                                height: 100,
+  _itemList() => GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, "/product_detail");
+        },
+        child: Container(
+          margin: EdgeInsets.all(8),
+          child: new SizedBox(
+            height: 230,
+            child: Stack(
+              children: <Widget>[
+                new Container(
+                    child: new ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  controller: _scrollController,
+                  itemBuilder: (BuildContext context, int index) =>
+                      new Container(
+                          width: 140,
+                          height: 150,
+                          child: new Card(
+                              clipBehavior: Clip.hardEdge,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(4),
                               ),
-                              new Container(
-                                margin: EdgeInsets.only(top: 4),
-                                child: new Text(
-                                  "Alma",
-                                  style: new TextStyle(fontSize: 18),
+                              child: ClipRect(
+                                child: new Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    new SizedBox(
+                                      child: new Image.network(
+                                        campaignList[index].image,
+                                        fit: BoxFit.cover,
+                                      ),
+                                      height: 100,
+                                    ),
+                                    new Container(
+                                      margin: EdgeInsets.only(top: 4),
+                                      child: new Text(
+                                        "Alma",
+                                        style: new TextStyle(fontSize: 18),
+                                      ),
+                                    ),
+                                    new Container(
+                                        margin:
+                                            EdgeInsets.only(right: 4, left: 4),
+                                        child: _updateContainer(
+                                            campaignList[index].status, index)),
+                                  ],
                                 ),
-                              ),
-                              new Container(
-                                  margin: EdgeInsets.only(right: 4, left: 4),
-                                  child: _updateContainer(
-                                      campaignList[index].status, index)),
-                            ],
-                          ),
-                        ))),
-                itemCount: campaignList.length,
-              )),
-              new Container(
-                alignment: AlignmentDirectional.centerEnd,
-                child: new IconButton(
-                    disabledColor: Colors.white,
-                    iconSize: 40,
-                    icon: Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      _scrollController.animateTo((100.0 * index),
-                          // 100 is the height of container and index of 6th element is 5
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeOut);
-                      index = index + 3;
-                    }),
-              )
-            ],
+                              ))),
+                  itemCount: campaignList.length,
+                )),
+                new Container(
+                  alignment: AlignmentDirectional.centerEnd,
+                  child: new IconButton(
+                      disabledColor: Colors.white,
+                      iconSize: 40,
+                      icon: Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        _scrollController.animateTo((100.0 * index),
+                            // 100 is the height of container and index of 6th element is 5
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeOut);
+                        index = index + 3;
+                      }),
+                )
+              ],
+            ),
           ),
         ),
       );
@@ -425,14 +433,13 @@ class HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       new GestureDetector(
-
                         child: new Icon(Icons.indeterminate_check_box),
-                        onTap: (){
+                        onTap: () {
                           setState(() {
-                            increment=increment-1;
-                            if(increment<1){
+                            increment = increment - 1;
+                            if (increment < 1) {
                               campaignList[index].status = false;
-                              increment=1;
+                              increment = 1;
                             }
                           });
                         },
@@ -441,12 +448,11 @@ class HomePageState extends State<HomePage> {
                         increment.toString(),
                         style: new TextStyle(fontSize: 18),
                       ),
-
                       new GestureDetector(
                         child: new Icon(Icons.add),
-                        onTap: (){
+                        onTap: () {
                           setState(() {
-                            increment=increment+1;
+                            increment = increment + 1;
                           });
                         },
                       ),
