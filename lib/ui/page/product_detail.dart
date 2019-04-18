@@ -79,7 +79,7 @@ class ProductDetailState extends State<ProductDetailPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
                         new GestureDetector(
-                          child: new Icon(Icons.indeterminate_check_box),
+                          child: new Icon(Icons.remove),
                           onTap: () {
                             setState(() {
                               if (increment > 0) {

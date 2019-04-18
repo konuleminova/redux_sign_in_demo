@@ -66,62 +66,70 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
                             margin: EdgeInsets.all(16),
                             child: new Card(
                               child: new SizedBox(
-                                height: 100,
-                                width: width,
-                                child: new Stack(
-                                  children: <Widget>[
-                                    new Container(
-                                      margin: EdgeInsets.all(16),
-                                      child: new Image(
-                                        image: AssetImage("images/img1.jpg"),
-                                        fit: BoxFit.contain,
-                                        height: 70,
-                                        width: 100,
-                                      ),
-                                      alignment:
-                                          AlignmentDirectional.centerStart,
-                                    ),
-                                    new Container(
-                                      child: new Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: <Widget>[
-                                          new Container(
-                                            child: new Text(shopItem.title),
-                                          ),
-                                          new Container(
-                                            child: new Text(shopItem.price),
-                                          ),
-                                        ],
-                                      ),
-                                      alignment: FractionalOffset.center,
-                                    ),
-                                    new Container(
+                                  height: 100,
+                                  width: width,
+                                  child: new Row(
+                                    children: <Widget>[
+                                      new Container(
                                         margin: EdgeInsets.all(16),
-                                        child: new Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: <Widget>[
-                                            new GestureDetector(
-                                              child: new Container(
-                                                child: new Icon(Icons.delete),
-                                              ),
-                                              onTap: () {
-                                                return viewModel
-                                                    .removeItem(shopItem);
-                                                print(viewModel.shopItems
-                                                    .toString());
-                                              },
-                                            ),
-                                            new Container(
-                                              child: new Icon(Icons.add_circle),
-                                            )
-                                          ],
+                                        child: new Image(
+                                          image: AssetImage("images/img1.jpg"),
+                                          fit: BoxFit.contain,
+                                          height: 70,
+                                          width: 100,
                                         ),
                                         alignment:
-                                            AlignmentDirectional(1.0, 0.0))
-                                  ],
-                                ),
-                              ),
+                                            AlignmentDirectional.centerStart,
+                                      ),
+                                      new Stack(
+                                        children: <Widget>[
+                                          new Container(
+                                            child: new Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: <Widget>[
+                                                new Container(
+                                                  child:
+                                                      new Text(shopItem.title),
+                                                ),
+                                                new Container(
+                                                  child:
+                                                      new Text(shopItem.price),
+                                                ),
+                                              ],
+                                            ),
+                                            alignment: FractionalOffset.center,
+                                          ),
+                                          new Container(
+                                              margin: EdgeInsets.all(16),
+                                              child: new Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: <Widget>[
+                                                  new GestureDetector(
+                                                    child: new Container(
+                                                      child: new Icon(
+                                                          Icons.delete_forever),
+                                                    ),
+                                                    onTap: () {
+                                                      return viewModel
+                                                          .removeItem(shopItem);
+                                                      print(viewModel.shopItems
+                                                          .toString());
+                                                    },
+                                                  ),
+                                                  new Container(
+                                                    child: new Icon(
+                                                        Icons.add_circle),
+                                                  )
+                                                ],
+                                              ),
+                                              alignment: AlignmentDirectional(
+                                                  1.0, 0.0))
+                                        ],
+                                      ),
+                                    ],
+                                  )),
                             )))
                         .toList(),
                   ),
