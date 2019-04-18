@@ -26,7 +26,7 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
         onInit: (store) {
           shopItems = new List<ShopItem>();
           shopItems.add(new ShopItem(
-              title: "Alma", description: "Dummy Text", price: "2 Azn"));
+              title: "Alma", description: "Dummy Text", price: "1 kq 2 Azn"));
           shopItems.add(new ShopItem(
               title: "Armud", description: "Dummy Text", price: "2 Azn"));
           shopItems.add(new ShopItem(
@@ -63,12 +63,14 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
                                   new BoxShadow(
                                       color: Colors.grey[100], blurRadius: 20)
                                 ]),
-                            margin: EdgeInsets.all(16),
+                            margin: EdgeInsets.only(
+                                left: 16, right: 18, top: 8, bottom: 8),
                             child: new Card(
                               child: new SizedBox(
-                                  height: 100,
+                                  height: 120,
                                   width: width,
                                   child: new Row(
+                                    mainAxisSize: MainAxisSize.max,
                                     children: <Widget>[
                                       new Container(
                                         margin: EdgeInsets.all(16),
@@ -81,53 +83,104 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
                                         alignment:
                                             AlignmentDirectional.centerStart,
                                       ),
-                                      new Stack(
-                                        children: <Widget>[
-                                          new Container(
-                                            child: new Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: <Widget>[
-                                                new Container(
-                                                  child:
-                                                      new Text(shopItem.title),
-                                                ),
-                                                new Container(
-                                                  child:
-                                                      new Text(shopItem.price),
-                                                ),
-                                              ],
-                                            ),
-                                            alignment: FractionalOffset.center,
-                                          ),
-                                          new Container(
-                                              margin: EdgeInsets.all(16),
+                                      new Container(
+                                        margin: EdgeInsets.only(right: 8),
+                                        decoration: _verticalDivider(),
+                                      ),
+                                      new Expanded(
+                                        // color: Colors.red,
+                                        child: new Stack(
+                                          children: <Widget>[
+                                            new Container(
                                               child: new Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
-                                                        .spaceBetween,
+                                                        .spaceEvenly,
                                                 children: <Widget>[
-                                                  new GestureDetector(
-                                                    child: new Container(
-                                                      child: new Icon(
-                                                          Icons.delete_forever),
+                                                  new Container(
+                                                    child: new Text(
+                                                      shopItem.title,
+                                                      style: new TextStyle(
+                                                          color: Colors.green,
+                                                          fontSize: 20),
                                                     ),
-                                                    onTap: () {
-                                                      return viewModel
-                                                          .removeItem(shopItem);
-                                                      print(viewModel.shopItems
-                                                          .toString());
-                                                    },
                                                   ),
                                                   new Container(
-                                                    child: new Icon(
-                                                        Icons.add_circle),
-                                                  )
+                                                    child: new Text(
+                                                        shopItem.price),
+                                                  ),
+                                                  new Container(
+                                                    child: new Text(
+                                                        shopItem.price),
+                                                  ),
                                                 ],
                                               ),
-                                              alignment: AlignmentDirectional(
-                                                  1.0, 0.0))
-                                        ],
-                                      ),
+                                              alignment:
+                                                  FractionalOffset.centerLeft,
+                                            ),
+                                            new Positioned(
+                                                right: 30,
+                                                top: 5,
+                                                bottom: 5,
+                                                child: new Container(
+                                                  margin: EdgeInsets.all(16),
+                                                  child: new Container(
+                                                    decoration: new BoxDecoration(
+                                                        border: new Border.all(
+                                                            color: Colors.grey),
+                                                        borderRadius:
+                                                            new BorderRadius
+                                                                .circular(20)),
+                                                    child: new Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceEvenly,
+                                                      children: <Widget>[
+                                                        new GestureDetector(
+                                                          child: new Container(
+                                                            child: new Icon(
+                                                                Icons.remove),
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: 20,
+                                                          child: Divider(
+                                                            color: Colors.grey,
+                                                            indent: 1,
+                                                            height: 2,
+                                                          ),
+                                                        ),
+                                                        new Container(
+                                                          child: new Icon(
+                                                              Icons.add),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                )),
+                                            new GestureDetector(
+                                              onTap: () {
+                                                return viewModel
+                                                    .removeItem(shopItem);
+                                                print(viewModel.shopItems
+                                                    .toString());
+                                              },
+                                              child: new Container(
+                                                margin: EdgeInsets.all(8),
+                                                alignment: Alignment.topRight,
+                                                child: new Icon(
+                                                  Icons.highlight_off,
+                                                  color: Colors.red,
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      )
                                     ],
                                   )),
                             )))
@@ -153,4 +206,13 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
           );
         });
   }
+
+  _verticalDivider() => BoxDecoration(
+        border: Border(
+          right: BorderSide(
+            color: Theme.of(context).dividerColor,
+            width: 1,
+          ),
+        ),
+      );
 }
