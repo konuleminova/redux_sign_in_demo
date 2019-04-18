@@ -57,7 +57,12 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
                   child: new ListView(
                     children: viewModel.shopItems
                         .map((ShopItem shopItem) => new Container(
-                            color: Colors.lightGreenAccent,
+                            decoration: new BoxDecoration(
+                                color: Colors.grey[100],
+                                boxShadow: [
+                                  new BoxShadow(
+                                      color: Colors.grey[100], blurRadius: 20)
+                                ]),
                             margin: EdgeInsets.all(16),
                             child: new Card(
                               child: new SizedBox(
@@ -98,8 +103,7 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
                                           children: <Widget>[
                                             new GestureDetector(
                                               child: new Container(
-                                                child:
-                                                    new Icon(Icons.delete),
+                                                child: new Icon(Icons.delete),
                                               ),
                                               onTap: () {
                                                 return viewModel
