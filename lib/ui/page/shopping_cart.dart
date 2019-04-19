@@ -54,13 +54,27 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
                 title: new Text("Your Cart List"),
                 centerTitle: true,
               ),
-              body: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  _shopHeader(),
-                  _shopBody(),
-                  _shopFooter(),
-                ],
+              body: new SizedBox(
+                height: double.infinity,
+                width: double.infinity,
+                child: new Stack(
+                  children: <Widget>[
+                    new Container(
+                      margin: EdgeInsets.only(bottom: 106),
+                      alignment: AlignmentDirectional.topStart,
+                      child: new ListView(
+                        children: <Widget>[
+                          _shopHeader(),
+                          _shopBody(),
+                        ],
+                      ),
+                    ),
+                    new Align(
+                      child: _shopFooter(),
+                      alignment: AlignmentDirectional.bottomEnd,
+                    )
+                  ],
+                ),
               ));
         });
   }
@@ -226,18 +240,20 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
         width: width,
       );
 
-  Widget _shopBody() => new Expanded(
-        child: new Container(
-          margin: EdgeInsets.only(bottom: 16),
-          child: new ListView(
-            children: viewModel.shopItems
-                .map((ShopItem shopItem) => _shopListItem(viewModel, shopItem))
-                .toList(),
-          ),
+  Widget _shopBody() => new Container(
+        margin: EdgeInsets.only(bottom: 16),
+        child: new ListView(
+          shrinkWrap: true,
+          physics: ClampingScrollPhysics(),
+          children: viewModel.shopItems
+              .map((ShopItem shopItem) => _shopListItem(viewModel, shopItem))
+              .toList(),
         ),
       );
 
   Widget _shopFooter() => new Container(
+        height: 120,
+        alignment: AlignmentDirectional.bottomEnd,
         child: new Stack(
           children: <Widget>[
             new Container(
