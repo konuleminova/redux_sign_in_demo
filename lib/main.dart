@@ -7,6 +7,7 @@ import 'package:redux_sign_in/ui/page/home.dart';
 import 'package:redux_sign_in/ui/page/index.dart';
 import 'package:redux_sign_in/ui/page/login.dart';
 import 'package:redux_sign_in/ui/page/product_detail.dart';
+import 'package:redux_sign_in/ui/page/product_list.dart';
 import 'package:redux_sign_in/ui/page/register.dart';
 import 'package:redux_sign_in/data/model/app_state.dart';
 import 'package:redux/redux.dart';
@@ -35,7 +36,8 @@ class MyApp extends StatelessWidget {
           "/home": (BuildContext context) => HomePage(),
           "/shopping_cart": (BuildContext context) => ShoppingCartPage(),
           "/checkout": (BuildContext context) => CheckoutPage(),
-          "/product_detail": (BuildContext context) => ProductDetailPage()
+          "/product_detail": (BuildContext context) => ProductDetailPage(),
+          "/products": (BuildContext context) => ProductsPage()
         },
       ),
     );

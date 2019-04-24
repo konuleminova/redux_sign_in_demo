@@ -7,6 +7,7 @@ import 'package:redux_sign_in/data/model/data.dart';
 import 'package:redux_sign_in/data/model/user_login.dart';
 import 'package:redux_sign_in/data/viewmodel/home_viewmodel.dart';
 import 'package:redux_sign_in/data/viewmodel/login_viewmodel.dart';
+import 'package:redux_sign_in/ui/page/product_list.dart';
 import 'package:redux_sign_in/util/carousel.dart';
 
 class HomePage extends StatefulWidget {
@@ -49,14 +50,8 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    width = MediaQuery
-        .of(context)
-        .size
-        .width;
-    height = MediaQuery
-        .of(context)
-        .size
-        .height;
+    width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
     // TODO: implement build
     return StoreConnector(
         onInitialBuild: (HomeViewModel viewModel) {
@@ -164,28 +159,25 @@ class HomePageState extends State<HomePage> {
         });
   }
 
-  Widget _buildCarousel() =>
-      Container(
+  Widget _buildCarousel() => Container(
         child: new Carousel(
           children: [
             new AssetImage('images/img1.jpg'),
             new AssetImage('images/img2.jpg'),
             new AssetImage('images/img3.jpg'),
           ]
-              .map((bgImage) =>
-          new Image(
-            image: bgImage,
-            width: width,
-            height: 200,
-            fit: BoxFit.cover,
-          ))
+              .map((bgImage) => new Image(
+                    image: bgImage,
+                    width: width,
+                    height: 200,
+                    fit: BoxFit.cover,
+                  ))
               .toList(),
           displayDuration: const Duration(seconds: 4),
         ),
       );
 
-  _titleContainer() =>
-      new Container(
+  _titleContainer() => new Container(
         padding: EdgeInsets.all(10),
         margin: EdgeInsets.only(top: 10),
         height: 60,
@@ -212,8 +204,7 @@ class HomePageState extends State<HomePage> {
         ),
       );
 
-  _itemList() =>
-      GestureDetector(
+  _itemList() => GestureDetector(
         onTap: () {
           Navigator.pushNamed(context, "/product_detail");
         },
@@ -225,9 +216,9 @@ class HomePageState extends State<HomePage> {
               children: <Widget>[
                 new Container(
                     child: new ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      controller: _scrollController,
-                      itemBuilder: (BuildContext context, int index) =>
+                  scrollDirection: Axis.horizontal,
+                  controller: _scrollController,
+                  itemBuilder: (BuildContext context, int index) =>
                       new Container(
                           width: 140,
                           height: 150,
@@ -239,7 +230,7 @@ class HomePageState extends State<HomePage> {
                               child: ClipRect(
                                 child: new Column(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
+                                      MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
                                     new SizedBox(
@@ -258,14 +249,14 @@ class HomePageState extends State<HomePage> {
                                     ),
                                     new Container(
                                         margin:
-                                        EdgeInsets.only(right: 4, left: 4),
+                                            EdgeInsets.only(right: 4, left: 4),
                                         child: _updateContainer(
                                             campaignList[index].status, index)),
                                   ],
                                 ),
                               ))),
-                      itemCount: campaignList.length,
-                    )),
+                  itemCount: campaignList.length,
+                )),
                 new Container(
                   alignment: AlignmentDirectional.centerEnd,
                   child: new IconButton(
@@ -289,8 +280,7 @@ class HomePageState extends State<HomePage> {
         ),
       );
 
-  _itemListSecond() =>
-      new Container(
+  _itemListSecond() => new Container(
         margin: EdgeInsets.all(16),
         child: new SizedBox(
           height: 150,
@@ -298,23 +288,22 @@ class HomePageState extends State<HomePage> {
             children: <Widget>[
               new Container(
                   child: new ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    controller: _scrollControllerSecond,
-                    itemBuilder: (BuildContext context, int index) =>
-                    new Container(
-                        width: 120,
-                        child: new Card(
-                            clipBehavior: Clip.antiAlias,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            child: ClipRect(
-                              child: new Image.network(
-                                campaignList[index].image,
-                                fit: BoxFit.fill,
-                              ),
-                            ))),
-                    itemCount: campaignList.length,
-                  )),
+                scrollDirection: Axis.horizontal,
+                controller: _scrollControllerSecond,
+                itemBuilder: (BuildContext context, int index) => new Container(
+                    width: 120,
+                    child: new Card(
+                        clipBehavior: Clip.antiAlias,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: ClipRect(
+                          child: new Image.network(
+                            campaignList[index].image,
+                            fit: BoxFit.fill,
+                          ),
+                        ))),
+                itemCount: campaignList.length,
+              )),
               new Container(
                 alignment: AlignmentDirectional.centerEnd,
                 child: new IconButton(
@@ -339,7 +328,7 @@ class HomePageState extends State<HomePage> {
 
   _scrollListener() {
     if (_scrollController.offset >=
-        _scrollController.position.maxScrollExtent &&
+            _scrollController.position.maxScrollExtent &&
         !_scrollController.position.outOfRange) {
       setState(() {
         message = "reach the bottom";
@@ -348,7 +337,7 @@ class HomePageState extends State<HomePage> {
       });
     }
     if (_scrollController.offset <=
-        _scrollController.position.minScrollExtent &&
+            _scrollController.position.minScrollExtent &&
         !_scrollController.position.outOfRange) {
       setState(() {
         message = "reach the top";
@@ -359,7 +348,7 @@ class HomePageState extends State<HomePage> {
 
   _scrollListenerSecond() {
     if (_scrollControllerSecond.offset >=
-        _scrollControllerSecond.position.maxScrollExtent &&
+            _scrollControllerSecond.position.maxScrollExtent &&
         !_scrollControllerSecond.position.outOfRange) {
       setState(() {
         message = "reach the bottom";
@@ -368,7 +357,7 @@ class HomePageState extends State<HomePage> {
       });
     }
     if (_scrollControllerSecond.offset <=
-        _scrollControllerSecond.position.minScrollExtent &&
+            _scrollControllerSecond.position.minScrollExtent &&
         !_scrollControllerSecond.position.outOfRange) {
       setState(() {
         message = "reach the top";
@@ -404,10 +393,10 @@ class HomePageState extends State<HomePage> {
     } else {
       return new Container(
           child: new Text(
-            "Add",
-            textAlign: TextAlign.center,
-            style: new TextStyle(color: Colors.white, fontSize: 18),
-          ));
+        "Add",
+        textAlign: TextAlign.center,
+        style: new TextStyle(color: Colors.white, fontSize: 18),
+      ));
     }
   }
 
@@ -692,23 +681,21 @@ class BuildSearchDelegate extends SearchDelegate<String> {
   @override
   Widget buildResults(BuildContext context) {
     // TODO: implement buildResults
-    return new Container(
-      color: Colors.red,
-      child: new Text("search result"),
-    );
+    return ProductsPage();
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
     final suggesstionList = query.isEmpty
-        ? recentVegetables
+        ? vegetables
         : vegetables.where((p) => p.startsWith(query)).toList();
     // TODO: implement buildSuggestions
     return ListView.builder(
       itemBuilder: (context, index) {
         return ListTile(
           onTap: () {
-            showResults(context);
+            // showResults(context);
+            Navigator.pushNamed(context, "/products");
           },
           title: new Text(suggesstionList[index]),
         );
@@ -723,7 +710,5 @@ class BuildSearchDelegate extends SearchDelegate<String> {
     return theme.copyWith(
         primaryColor: Colors.lightGreen,
         primaryIconTheme: theme.primaryIconTheme);
-
   }
-
 }
