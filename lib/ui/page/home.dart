@@ -103,6 +103,11 @@ class HomePageState extends State<HomePage> {
                       ))
                 ],
               ),
+              floatingActionButton: new FloatingActionButton(
+                backgroundColor: Colors.lightGreen,
+                onPressed: null,
+                child: new Icon(Icons.chat),
+              ),
               drawer: new Drawer(
                 child: ListView(
                   children: <Widget>[
