@@ -87,7 +87,10 @@ class HomePageState extends State<HomePage> {
                       Icons.search,
                       color: Colors.white,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      showSearch(
+                          context: context, delegate: BuildSearchDelegate());
+                    },
                   ),
                   new IconButton(
                       onPressed: () {
@@ -518,23 +521,187 @@ class HomePageState extends State<HomePage> {
     }
   }
 }
-/*
-new GestureDetector(
-                                child: new Container(
-                                  height: 25,
-                                  margin: EdgeInsets.all(8),
-                                  decoration: new BoxDecoration(
-                                      color: Colors.red,
-                                      borderRadius:
-                                          new BorderRadius.circular(8)),
-                                  alignment: AlignmentDirectional.center,
-                                  child: _updateCardWidget(
-                                      campaignList[index].status),
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    campaignList[index].status = true;
-                                  });
-                                },
-                              )
- */
+
+class BuildSearchDelegate extends SearchDelegate<String> {
+  final vegetables = [
+    "apple",
+    "alfalfa sprout",
+    "amaranth",
+    "anise",
+    "artichoke",
+    "arugula",
+    "asparagus",
+    "aubergine",
+    "azuki bean",
+    "banana squash",
+    "basil",
+    "bean sprout",
+    "beet",
+    "black bean",
+    "black-eyed pea",
+    "bok choy",
+    "borlotti bean",
+    "broad beans",
+    "broccoflower",
+    "broccoli",
+    "brussels sprout",
+    "butternut squash",
+    "cabbage",
+    "calabrese",
+    "caraway",
+    "carrot",
+    "cauliflower",
+    "cayenne pepper",
+    "celeriac",
+    "celery",
+    "chamomile",
+    "chard",
+    "chayote",
+    "chickpea",
+    "chives",
+    "cilantro",
+    "collard green",
+    "corn",
+    "corn salad",
+    "courgette",
+    "cucumber",
+    "daikon",
+    "delicata",
+    "dill",
+    "eggplant",
+    "endive",
+    "fennel",
+    "fiddlehead",
+    "frisee",
+    "garlic",
+    "gem squash",
+    "ginger",
+    "green bean",
+    "green pepper",
+    "habanero",
+    "herbs and spice",
+    "horseradish",
+    "hubbard squash",
+    "jalapeno",
+    "jerusalem artichoke",
+    "jicama",
+    "kale",
+    "kidney bean",
+    "kohlrabi",
+    "lavender",
+    "leek ",
+    "legume",
+    "lemon grass",
+    "lentils",
+    "lettuce",
+    "lima bean",
+    "mamey",
+    "mangetout",
+    "marjoram",
+    "mung bean",
+    "mushrooms",
+    "mustard green",
+    "navy bean",
+    "nettles",
+    "new zealand spinach",
+    "nopale",
+    "okra",
+    "onion",
+    "oregano",
+    "paprika",
+    "parsley",
+    "parsnip",
+    "patty pan",
+    "peas",
+    "pinto bean",
+    "potato",
+    "pumpkin",
+    "radicchio",
+    "radish",
+    "rhubarb",
+    "rosemary",
+    "runner bean",
+    "rutabaga",
+    "sage",
+    "scallion",
+    "shallot",
+    "skirret",
+    "snap pea",
+    "soy bean",
+    "spaghetti squash",
+    "spinach",
+    "squash ",
+    "sweet potato",
+    "tabasco pepper",
+    "taro",
+    "tat soi",
+    "thyme",
+    "tomato",
+    "topinambur",
+    "tubers",
+    "turnip",
+    "wasabi",
+    "water chestnut",
+    "watercress",
+    "white radish",
+    "yam",
+    "zucchini"
+  ];
+  final recentVegetables = [
+    "apple",
+    "banana",
+  ];
+
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    // TODO: implement buildActions
+    return [
+      IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: (){
+              query="";
+        },
+      )
+    ];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    // TODO: implement buildLeading
+    return IconButton(
+      icon: AnimatedIcon(
+          icon: AnimatedIcons.menu_arrow, progress: transitionAnimation),
+      onPressed: (){
+        Navigator.pop(context);
+      },
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    // TODO: implement buildResults
+    return new Container(
+      color: Colors.red,
+      child: new Text("search result"),
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    final suggesstionList = query.isEmpty
+        ? recentVegetables
+        : vegetables.where((p) => p.startsWith(query)).toList();
+    // TODO: implement buildSuggestions
+    return ListView.builder(
+      itemBuilder: (context, index) {
+        return ListTile(
+          onTap: () {
+            showResults(context);
+          },
+          title: new Text(suggesstionList[index]),
+        );
+      },
+      itemCount: suggesstionList.length,
+    );
+  }
+}
