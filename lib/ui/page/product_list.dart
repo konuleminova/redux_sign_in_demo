@@ -26,6 +26,7 @@ class ProductsState extends State<ProductsPage> {
             ),
             automaticallyImplyLeading: false,
             expandedHeight: 80,
+            floating: true,
             backgroundColor: Colors.grey[200],
             actions: <Widget>[
               new Container(
