@@ -63,7 +63,7 @@ class ProductsState extends State<ProductsPage> {
                   mainAxisSpacing: 12,
                   crossAxisCount: 2,
                   childAspectRatio: MediaQuery.of(context).size.width /
-                      (MediaQuery.of(context).size.height / 1.3)),
+                      (MediaQuery.of(context).size.height/1.2 )),
               delegate: new SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
                 return new Container(
