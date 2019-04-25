@@ -39,8 +39,17 @@ class ProductDetailState extends State<ProductDetailPage> {
                 //crossAxisAlignment: CrossAxisAlignment.start,
                 //mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  new Container(
-                    child: new Image(image: AssetImage('images/img3.jpg')),
+                  new Stack(
+                    children: <Widget>[
+                      new Container(
+                        child: new Image(image: AssetImage('images/img3.jpg')),
+                      ),
+                      new Container(
+                        child: new Icon(Icons.favorite_border,size: 30,color: Colors.redAccent[100],),
+                        alignment: Alignment.topRight,
+                        padding: EdgeInsets.all(16),
+                      )
+                    ],
                   ),
                   new Container(
                     width: width,
