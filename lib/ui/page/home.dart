@@ -235,14 +235,27 @@ class HomePageState extends State<HomePage> {
                                       MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    new Container(
-                                      child: new Image.network(
-                                        campaignList[index].image,
-                                        fit: BoxFit.contain,
-                                      ),
-                                      width: width,
-                                      height: 100,
-                                      padding: EdgeInsets.all(10),
+                                    new Stack(
+                                      children: <Widget>[
+                                        new Container(
+                                          child: new Image.network(
+                                            campaignList[index].image,
+                                            fit: BoxFit.contain,
+                                          ),
+                                          width: width,
+                                          height: 100,
+                                          padding: EdgeInsets.only(left: 10,right: 10,top: 25,bottom: 4)
+                                        ),
+                                        new Container(
+                                          child: new Icon(
+                                            Icons.favorite_border,
+                                            size: 23,
+                                            color: Colors.redAccent[100],
+                                          ),
+                                          alignment: Alignment.topRight,
+                                          padding: EdgeInsets.only(right: 8),
+                                        )
+                                      ],
                                     ),
                                     new Container(
                                       alignment: Alignment.topLeft,
