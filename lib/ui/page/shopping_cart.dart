@@ -51,8 +51,31 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
           return new Scaffold(
               appBar: new AppBar(
                 backgroundColor: Colors.lightGreen,
-                title: new Text("Your Cart List"),
-                centerTitle: true,
+                title: new Text("Sebet"),
+                actions: <Widget>[
+                  new Container(
+                    child:  DropdownButtonHideUnderline(
+                        child: new DropdownButton<String>(
+                            items: <String>[
+                              'gunluk',
+                              'heftelik',
+                              'ayliq'
+                            ].map((String value) {
+                              return new DropdownMenuItem<String>(
+                                value: value,
+                                child: new Text(value),
+                              );
+                            }).toList(),
+                            onChanged: (value) {
+                              return Text(value);
+                            },
+                            hint: new Container(
+                              child: new Text("Yenilenme periodu",),
+                              margin: EdgeInsets.only(left: 3),
+                            ))),
+                    margin: EdgeInsets.all(16),
+                  ),
+                ],
               ),
               body: new SizedBox(
                 height: double.infinity,
@@ -64,7 +87,6 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
                       alignment: AlignmentDirectional.topStart,
                       child: new ListView(
                         children: <Widget>[
-                          _shopHeader(),
                           _shopBody(),
                         ],
                       ),
@@ -241,7 +263,7 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
       );
 
   Widget _shopBody() => new Container(
-        margin: EdgeInsets.only(bottom: 16),
+        margin: EdgeInsets.only(bottom: 16, top: 16),
         child: new ListView(
           shrinkWrap: true,
           physics: ClampingScrollPhysics(),
