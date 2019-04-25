@@ -4,6 +4,7 @@ import 'package:redux/redux.dart';
 import 'package:redux_sign_in/data/model/app_state.dart';
 import 'package:redux_sign_in/data/model/data.dart';
 import 'package:redux_sign_in/data/viewmodel/home_viewmodel.dart';
+import 'package:redux_sign_in/ui/page/cards.dart';
 import 'package:redux_sign_in/ui/page/product_list.dart';
 import 'package:redux_sign_in/util/carousel.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
@@ -716,7 +717,7 @@ class BuildSearchDelegate extends SearchDelegate<String> {
   @override
   Widget buildResults(BuildContext context) {
     // TODO: implement buildResults
-    return ProductsPage();
+    return CardsPage();
   }
 
   @override
@@ -730,7 +731,7 @@ class BuildSearchDelegate extends SearchDelegate<String> {
         return ListTile(
           onTap: () {
             // showResults(context);
-            Navigator.pushNamed(context, "/products");
+            Navigator.pushNamed(context, "/cards");
           },
           title: new Text(suggesstionList[index]),
         );
