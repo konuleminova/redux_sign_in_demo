@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_sign_in/data/model/app_state.dart';
 import 'package:redux_sign_in/data/model/data.dart';
-import 'package:redux_sign_in/data/model/user_login.dart';
 import 'package:redux_sign_in/data/viewmodel/home_viewmodel.dart';
-import 'package:redux_sign_in/data/viewmodel/login_viewmodel.dart';
 import 'package:redux_sign_in/ui/page/product_list.dart';
 import 'package:redux_sign_in/util/carousel.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -216,7 +214,7 @@ class HomePageState extends State<HomePage> {
         child: Container(
           margin: EdgeInsets.all(8),
           child: new SizedBox(
-            height: 230,
+            height: 270,
             child: Stack(
               children: <Widget>[
                 new Container(
@@ -225,8 +223,8 @@ class HomePageState extends State<HomePage> {
                   controller: _scrollController,
                   itemBuilder: (BuildContext context, int index) =>
                       new Container(
-                          width: 140,
-                          height: 150,
+                        margin: EdgeInsets.only(left: 4),
+                          width: 160,
                           child: new Card(
                               clipBehavior: Clip.hardEdge,
                               shape: RoundedRectangleBorder(
@@ -236,25 +234,32 @@ class HomePageState extends State<HomePage> {
                                 child: new Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    new SizedBox(
+                                    new Container(
                                       child: new Image.network(
                                         campaignList[index].image,
-                                        fit: BoxFit.cover,
+                                        fit: BoxFit.contain,
                                       ),
+                                      width: width,
                                       height: 100,
+                                      padding: EdgeInsets.all(10),
                                     ),
                                     new Container(
-                                      margin: EdgeInsets.only(top: 4),
+                                      alignment: Alignment.topLeft,
+                                      margin: EdgeInsets.only(top: 8, left: 8),
                                       child: new Text(
                                         "Alma",
-                                        style: new TextStyle(fontSize: 18),
+                                        style: new TextStyle(fontSize: 20),
                                       ),
+                                    ),
+                                    new Container(
+                                      margin: EdgeInsets.only(left: 8,top: 4),
+                                      child: ratingStarWidget(),
                                     ),
                                     new Container(
                                         margin:
-                                            EdgeInsets.only(right: 4, left: 4),
+                                            EdgeInsets.only(left: 8,right: 8),
                                         child: _updateContainer(
                                             campaignList[index].status, index)),
                                   ],
@@ -431,7 +436,7 @@ class HomePageState extends State<HomePage> {
                 ),
                 new Container(
                   padding: EdgeInsets.all(2),
-                  margin: EdgeInsets.all(5),
+                  margin: EdgeInsets.only(top: 8,bottom: 8),
                   decoration: new BoxDecoration(
                       borderRadius: BorderRadius.circular(2),
                       color: Colors.white,
@@ -475,7 +480,7 @@ class HomePageState extends State<HomePage> {
       );
     } else {
       return new Container(
-        margin: EdgeInsets.only(top: 36),
+        margin: EdgeInsets.only(top: 16),
         child: Stack(
           children: <Widget>[
             new Container(
@@ -526,6 +531,19 @@ class HomePageState extends State<HomePage> {
       );
     }
   }
+
+  Widget ratingStarWidget() =>SmoothStarRating(
+    allowHalfRating: false,
+    onRatingChanged: (v) {
+     // rating = v;
+      setState(() {});
+    },
+    starCount: 5,
+    rating: 4,
+    size: 20.0,
+    color: Colors.green,
+    borderColor: Colors.green,
+  );
 }
 
 class BuildSearchDelegate extends SearchDelegate<String> {
