@@ -70,9 +70,9 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
                               return Text(value);
                             },
                             hint: new Container(
-                              child: new Text("Yenilenme periodu",),
+                              child: new Text("Yenilenme periodu",  style: new TextStyle(color: Colors.white),),
                               margin: EdgeInsets.only(left: 3),
-                            ))),
+                            ),)),
                     margin: EdgeInsets.all(16),
                   ),
                 ],
@@ -274,7 +274,7 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
       );
 
   Widget _shopFooter() => new Container(
-        height: 120,
+        height: 80,
         alignment: AlignmentDirectional.bottomEnd,
         child: new Stack(
           children: <Widget>[
@@ -300,7 +300,7 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
               child: new Container(
                 child: new Text(
                   "Umumi mebleg",
-                  style: new TextStyle(color: Colors.green),
+                  style: new TextStyle(color: Colors.white),
                 ),
                 alignment: Alignment.bottomRight,
               ),
@@ -311,7 +311,7 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
               child: new Container(
                 child: new Text(
                   "12.00 AZN",
-                  style: new TextStyle(color: Colors.green, fontSize: 20),
+                  style: new TextStyle(color: Colors.white, fontSize: 20),
                 ),
                 alignment: Alignment.bottomRight,
               ),
@@ -320,6 +320,6 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
             )
           ],
         ),
-        color: Colors.grey[200],
+        color: Colors.lightGreen[500],
       );
 }
