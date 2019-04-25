@@ -61,11 +61,11 @@ class CardsState extends State<CardsPage> {
                   crossAxisSpacing: 12,
                   mainAxisSpacing: 12,
                   crossAxisCount: 2,
-                  childAspectRatio: MediaQuery.of(context).size.width /
-                      (MediaQuery.of(context).size.height / 1.2)),
+                  childAspectRatio: 0.6),
               delegate: new SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
                 return new Container(
+                  decoration: BoxDecoration(border: Border.all(color: Colors.grey[100])),
                     margin: EdgeInsets.only(right: 4),
                     width: 160,
                     child: new Card(
@@ -130,7 +130,7 @@ class CardsState extends State<CardsPage> {
                                 child: new Row(
                                   children: <Widget>[
                                     Icon(
-                                      Icons.shopping_basket,
+                                      Icons.shopping_cart,
                                       color: Colors.white,
                                       size: 20,
                                     ),
