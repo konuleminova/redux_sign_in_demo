@@ -156,8 +156,7 @@ class HomePageState extends State<HomePage> {
                 _titleContainer(),
                 _itemList(),
                 _titleContainer(),
-                _itemListSecond(),
-                _titleContainer()
+                _itemList(),
               ]));
         });
   }
@@ -223,7 +222,7 @@ class HomePageState extends State<HomePage> {
                   controller: _scrollController,
                   itemBuilder: (BuildContext context, int index) =>
                       new Container(
-                        margin: EdgeInsets.only(left: 4),
+                          margin: EdgeInsets.only(right: 4),
                           width: 160,
                           child: new Card(
                               clipBehavior: Clip.hardEdge,
@@ -254,12 +253,12 @@ class HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                     new Container(
-                                      margin: EdgeInsets.only(left: 8,top: 4),
+                                      margin: EdgeInsets.only(left: 8, top: 4),
                                       child: ratingStarWidget(),
                                     ),
                                     new Container(
                                         margin:
-                                            EdgeInsets.only(left: 8,right: 8),
+                                            EdgeInsets.only(left: 8, right: 8),
                                         child: _updateContainer(
                                             campaignList[index].status, index)),
                                   ],
@@ -436,7 +435,7 @@ class HomePageState extends State<HomePage> {
                 ),
                 new Container(
                   padding: EdgeInsets.all(2),
-                  margin: EdgeInsets.only(top: 8,bottom: 8),
+                  margin: EdgeInsets.only(top: 8, bottom: 8),
                   decoration: new BoxDecoration(
                       borderRadius: BorderRadius.circular(2),
                       color: Colors.white,
@@ -532,18 +531,18 @@ class HomePageState extends State<HomePage> {
     }
   }
 
-  Widget ratingStarWidget() =>SmoothStarRating(
-    allowHalfRating: false,
-    onRatingChanged: (v) {
-     // rating = v;
-      setState(() {});
-    },
-    starCount: 5,
-    rating: 4,
-    size: 20.0,
-    color: Colors.green,
-    borderColor: Colors.green,
-  );
+  Widget ratingStarWidget() => SmoothStarRating(
+        allowHalfRating: false,
+        onRatingChanged: (v) {
+          // rating = v;
+          setState(() {});
+        },
+        starCount: 5,
+        rating: 4,
+        size: 20.0,
+        color: Colors.green,
+        borderColor: Colors.green,
+      );
 }
 
 class BuildSearchDelegate extends SearchDelegate<String> {
