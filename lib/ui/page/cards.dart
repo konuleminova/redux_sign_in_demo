@@ -112,6 +112,15 @@ class CardsState extends State<CardsPage> {
                                 ),
                               ),
                               new Container(
+                                margin: EdgeInsets.only(top: 4, left: 8),
+                                child: new Text(
+                                  "2 AZN /1kq",
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 17),
+                                ),
+                                alignment: Alignment.bottomLeft,
+                              ),
+                              new Container(
                                 margin: EdgeInsets.only(left: 8, top: 4),
                                 child: ratingStarWidget(),
                               ),
