@@ -4,6 +4,7 @@ import 'package:redux/redux.dart';
 import 'package:redux_sign_in/data/model/app_state.dart';
 import 'package:redux_sign_in/data/model/data.dart';
 import 'package:redux_sign_in/data/viewmodel/home_viewmodel.dart';
+import 'package:redux_sign_in/ui/widgets/dropdown.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/product_list_item.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 
@@ -67,32 +68,19 @@ class ProductListPageState extends State<ProductListPage> {
                 backgroundColor: Colors.lightGreen,
                 title: Text("Product List"),
                 actions: <Widget>[
-                  new Container(
-                    child: DropdownButtonHideUnderline(
-                        child: new DropdownButton<String>(
-                            items: <String>[
-                              'Price:Lower to High',
-                              'Price:High to Lower',
-                              'Name:A-Z',
-                              'Name:Z-A'
-                            ].map((String value) {
-                              return new DropdownMenuItem<String>(
-                                value: value,
-                                child: new Text(value),
-                              );
-                            }).toList(),
-                            onChanged: (value) {
-                              return Text(value);
-                            },
-                            hint: new Container(
-                              child: new Text(
-                                "Sort By",
-                              ),
-                              margin: EdgeInsets.only(left: 3),
-                            ))),
-                    margin: EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      border: new Border.all(width: 1, color: Colors.white),
+                  GestureDetector(
+                    child: new Container(
+                      child: Icon(Icons.sort),
+                      margin: EdgeInsets.all(16),
+                    ),
+                    onTap: () {
+                     //_showDialog();
+                    },
+                  ),
+                  GestureDetector(
+                    child: new Container(
+                      child: Icon(Icons.shopping_cart),
+                      margin: EdgeInsets.only(right: 8),
                     ),
                   )
                 ],
@@ -117,6 +105,24 @@ class ProductListPageState extends State<ProductListPage> {
                 controller: _scrollController,
               ));
         });
+  }
+
+  void _showDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Alert Dialog title"),
+          content: new Text("Alert Dialog body"),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+           DropdownMenu()
+          ],
+        );
+      },
+    );
   }
 
   void loadMore() {
@@ -146,3 +152,27 @@ class ProductListPageState extends State<ProductListPage> {
     }
   }
 }
+/*
+return DropdownButtonHideUnderline(
+                          child: new DropdownButton<String>(
+                              items: <String>[
+                                'Price:Lower to High',
+                                'Price:High to Lower',
+                                'Name:A-Z',
+                                'Name:Z-A'
+                              ].map((String value) {
+                                return new DropdownMenuItem<String>(
+                                  value: value,
+                                  child: new Text(value),
+                                );
+                              }).toList(),
+                              onChanged: (value) {
+                                return Text(value);
+                              },
+                              hint: new Container(
+                                child: new Text(
+                                  "Sort By",
+                                ),
+                                margin: EdgeInsets.only(left: 3),
+                              )));
+ */
