@@ -122,26 +122,21 @@ class HomePageState extends State<HomePage> {
                 //   _titleContainer(),
                 //   HomeListItemWidget(_scrollControllerSecond, productList),
 
-                GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, "/product_detail");
-                    },
-                    child: Container(
-                        margin: EdgeInsets.all(8),
-                        child: new SizedBox(
-                            height: 270,
-                            child: Stack(children: <Widget>[
-                              new Container(
-                                  child: new ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                controller: _scrollController,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return HomeListItemWidget(
-                                      _scrollController, productList, index);
-                                },
-                                itemCount: productList.length,
-                              ))
-                            ]))))
+                Container(
+                    margin: EdgeInsets.all(8),
+                    child: new SizedBox(
+                        height: 270,
+                        child: Stack(children: <Widget>[
+                          new Container(
+                              child: new ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            controller: _scrollController,
+                            itemBuilder: (BuildContext context, int index) {
+                              return HomeListItemWidget(productList, index);
+                            },
+                            itemCount: productList.length,
+                          ))
+                        ])))
               ]));
         });
   }

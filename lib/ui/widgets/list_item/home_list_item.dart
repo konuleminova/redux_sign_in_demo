@@ -3,11 +3,10 @@ import 'package:redux_sign_in/data/model/data.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 
 class HomeListItemWidget extends StatefulWidget {
-  ScrollController scrollController;
   List<Product> productList;
   int index;
 
-  HomeListItemWidget(this.scrollController, this.productList, this.index);
+  HomeListItemWidget(this.productList, this.index);
 
   @override
   State<StatefulWidget> createState() {
@@ -21,66 +20,67 @@ class HomeListItemState extends State<HomeListItemWidget> {
 
   @override
   Widget build(BuildContext context) {
-    width = MediaQuery
-        .of(context)
-        .size
-        .width;
+    width = MediaQuery.of(context).size.width;
     // TODO: implement build
-    return new Container(
-      margin: EdgeInsets.only(right: 4),
-      width: 160,
-      child: new Card(
-        clipBehavior: Clip.hardEdge,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
-        ),
-        child: ClipRect(
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              new Stack(
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, "/product_detail");
+      },
+      child: new Container(
+        margin: EdgeInsets.only(right: 4),
+        width: 160,
+        child: new Card(
+            clipBehavior: Clip.hardEdge,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: ClipRect(
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
+                  new Stack(
+                    children: <Widget>[
+                      new Container(
+                          child: new Image.network(
+                            widget.productList[widget.index].image,
+                            fit: BoxFit.contain,
+                          ),
+                          width: width,
+                          height: 100,
+                          padding: EdgeInsets.only(
+                              left: 10, right: 10, top: 25, bottom: 4)),
+                      new Container(
+                        child: new Icon(
+                          Icons.favorite_border,
+                          size: 23,
+                          color: Colors.redAccent[100],
+                        ),
+                        alignment: Alignment.topRight,
+                        padding: EdgeInsets.only(right: 8),
+                      )
+                    ],
+                  ),
                   new Container(
-                      child: new Image.network(
-                        widget.productList[widget.index].image,
-                        fit: BoxFit.contain,
-                      ),
-                      width: width,
-                      height: 100,
-                      padding: EdgeInsets.only(
-                          left: 10, right: 10, top: 25, bottom: 4)),
-                  new Container(
-                    child: new Icon(
-                      Icons.favorite_border,
-                      size: 23,
-                      color: Colors.redAccent[100],
+                    alignment: Alignment.topLeft,
+                    margin: EdgeInsets.only(top: 8, left: 8),
+                    child: new Text(
+                      "Alma",
+                      style: new TextStyle(fontSize: 20),
                     ),
-                    alignment: Alignment.topRight,
-                    padding: EdgeInsets.only(right: 8),
-                  )
+                  ),
+                  new Container(
+                      margin: EdgeInsets.only(left: 8, top: 4),
+                      child: RatingStarWidget(5, 4, 20.0)),
+                  new Container(
+                      margin: EdgeInsets.only(left: 8, right: 8),
+                      child: _updateContainer(
+                        widget.productList[widget.index].status,
+                        widget.index,
+                      )),
                 ],
               ),
-              new Container(
-                alignment: Alignment.topLeft,
-                margin: EdgeInsets.only(top: 8, left: 8),
-                child: new Text(
-                  "Alma",
-                  style: new TextStyle(fontSize: 20),
-                ),
-              ),
-              new Container(
-                  margin: EdgeInsets.only(left: 8, top: 4),
-                  child: RatingStarWidget(5, 4, 20.0)),
-              new Container(
-                  margin: EdgeInsets.only(left: 8, right: 8),
-                  child: _updateContainer(
-                    widget.productList[widget.index].status,
-                    widget.index,
-                  )),
-            ],
-          ),
-        ),
+            )),
       ),
     );
   }

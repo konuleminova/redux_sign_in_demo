@@ -104,8 +104,7 @@ class ProductListPageState extends State<ProductListPage> {
                             childAspectRatio: 0.6,),
                         delegate: new SliverChildBuilderDelegate(
                             (BuildContext context, int index) {
-                          return HomeListItemWidget(
-                              _scrollController, productList, index);
+                          return HomeListItemWidget(productList, index);
                         },childCount: productList.length)))
               ],controller: _scrollController,));
         });
