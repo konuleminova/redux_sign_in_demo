@@ -3,8 +3,8 @@ import 'package:redux_sign_in/data/model/data.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 class HomeListItemWidget extends StatefulWidget {
   ScrollController scrollController;
-  List<Data> campaignList;
-  HomeListItemWidget(this.scrollController, this.campaignList);
+  List<Data> productList;
+  HomeListItemWidget(this.scrollController, this.productList);
 
   @override
   State<StatefulWidget> createState() {
@@ -51,7 +51,7 @@ class HomeListItemState extends State<HomeListItemWidget> {
                                 children: <Widget>[
                                   new Container(
                                       child: new Image.network(
-                                        widget.campaignList[index].image,
+                                        widget.productList[index].image,
                                         fit: BoxFit.contain,
                                       ),
                                       width: width,
@@ -86,13 +86,13 @@ class HomeListItemState extends State<HomeListItemWidget> {
                               new Container(
                                   margin: EdgeInsets.only(left: 8, right: 8),
                                   child: _updateContainer(
-                                    widget.campaignList[index].status,
+                                    widget.productList[index].status,
                                     index,
                                   )),
                             ],
                           ),
                         ))),
-                itemCount: widget.campaignList.length,
+                itemCount: widget.productList.length,
               )),
             ],
           ),
@@ -141,23 +141,23 @@ class HomeListItemState extends State<HomeListItemWidget> {
                         child: new Icon(Icons.remove),
                         onTap: () {
                           setState(() {
-                            widget.campaignList[index].amount =   widget.campaignList[index].amount- 1;
-                            if ( widget.campaignList[index].amount < 1) {
-                              widget.campaignList[index].status = false;
-                              widget.campaignList[index].amount=1;
+                            widget.productList[index].amount =   widget.productList[index].amount- 1;
+                            if ( widget.productList[index].amount < 1) {
+                              widget.productList[index].status = false;
+                              widget.productList[index].amount=1;
                             }
                           });
                         },
                       ),
                       new Text(
-                        widget.campaignList[index].amount.toString(),
+                        widget.productList[index].amount.toString(),
                         style: new TextStyle(fontSize: 18),
                       ),
                       new GestureDetector(
                         child: new Icon(Icons.add),
                         onTap: () {
                           setState(() {
-                            widget.campaignList[index].amount =  widget.campaignList[index].amount + 1;
+                            widget.productList[index].amount =  widget.productList[index].amount + 1;
                           });
                         },
                       ),
@@ -213,7 +213,7 @@ class HomeListItemState extends State<HomeListItemWidget> {
               ),
               onTap: () {
                 setState(() {
-                  widget.campaignList[index].status = true;
+                  widget.productList[index].status = true;
                 });
               },
             ),

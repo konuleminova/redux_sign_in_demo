@@ -5,12 +5,12 @@ import 'package:redux_sign_in/service/networks.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:redux/redux.dart';
 
-ThunkAction<AppState> campaignThunkAction(int limit, int page) {
+ThunkAction<AppState> getProductListThunkAction(int limit, int page) {
   return (Store<AppState> store) async {
     Home response = await Networks.fetchProducts(limit, page);
     if (response != null) {
-      store.state.campaign=response;
-      store.dispatch(OnFetchCampaignAction(campaign: response));
+      store.state.home=response;
+      store.dispatch(OnFetchHomeAction(home: response));
     }
   };
 }

@@ -11,8 +11,8 @@ AppState appStateReducer(AppState state, dynamic action) {
     return AppState(user_info: action.userLogin);
   } else if (action is OnRegisterAction) {
     return AppState(userRegister: action.userRegister);
-  } else if (action is OnFetchCampaignAction) {
-    return AppState(campaign: action.campaign);
+  } else if (action is OnFetchHomeAction) {
+    return AppState(home: action.home);
   } else if (action is OnShoppingCartAction) {
     List<ShopItem> shopItems = new List<ShopItem>();
     shopItems.addAll(List.unmodifiable(

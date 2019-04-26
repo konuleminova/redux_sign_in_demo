@@ -21,7 +21,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  List<Data> campaignList;
+  List<Data> productList;
   ScrollController _scrollController, _scrollControllerSecond;
   String message;
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -36,7 +36,7 @@ class HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    campaignList = new List();
+    productList = new List();
     _scrollController = new ScrollController();
     _scrollController.addListener(_scrollListener);
     _scrollControllerSecond = new ScrollController();
@@ -57,7 +57,7 @@ class HomePageState extends State<HomePage> {
     // TODO: implement build
     return StoreConnector(
         onInitialBuild: (HomeViewModel viewModel) {
-          viewModel.onFetchCampaign(10, page);
+          viewModel.onFetchProductList(10, page);
           this.viewModel = viewModel;
         },
         converter: (Store<AppState> store) => HomeViewModel.create(store),
@@ -65,7 +65,7 @@ class HomePageState extends State<HomePage> {
           store.onChange.listen((onData) {
             if (onData != null) {
               try {
-                campaignList.addAll(onData.campaign.data);
+                productList.addAll(onData.home.data);
               } catch (exceptoon) {}
               // print("//" + onData.campaign.data.toString() + "...");
             }
@@ -118,9 +118,9 @@ class HomePageState extends State<HomePage> {
                   child: new PageView(children: <Widget>[_buildCarousel()]),
                 ),
                 _titleContainer(),
-                HomeListItemWidget(_scrollController, campaignList),
+                HomeListItemWidget(_scrollController, productList),
                 _titleContainer(),
-                HomeListItemWidget(_scrollControllerSecond, campaignList),
+                HomeListItemWidget(_scrollControllerSecond, productList),
               ]));
         });
   }
@@ -213,7 +213,7 @@ class HomePageState extends State<HomePage> {
   void loadMore() {
     page++;
     if (viewModel != null) {
-      viewModel.onFetchCampaign(10, page);
+      viewModel.onFetchProductList(10, page);
     }
   }
 }

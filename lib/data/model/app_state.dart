@@ -8,16 +8,16 @@ import 'package:redux_sign_in/util/sharedpref_util.dart';
 class AppState {
   UserRegister userRegister;
   UserLogin user_info;
-  Home campaign;
+  Home home;
   int code;
   List<ShopItem>shopItems;
 
   AppState.initialState()
       : user_info = UserLogin(),
         userRegister = UserRegister(),
-        campaign = Home(),shopItems=new List<ShopItem>();
+        home = Home(),shopItems=new List<ShopItem>();
 
-  AppState({this.userRegister, this.user_info, this.code, this.campaign,this.shopItems});
+  AppState({this.userRegister, this.user_info, this.code, this.home,this.shopItems});
 
   static AppState fromJson(dynamic json) {
     if (json != null) {
