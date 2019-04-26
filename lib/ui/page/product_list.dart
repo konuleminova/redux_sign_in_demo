@@ -101,12 +101,13 @@ class ProductListPageState extends State<ProductListPage> {
                             crossAxisSpacing: 12,
                             mainAxisSpacing: 12,
                             crossAxisCount: 2,
-                            childAspectRatio: 0.6),
+                            childAspectRatio: 0.6,),
                         delegate: new SliverChildBuilderDelegate(
                             (BuildContext context, int index) {
-                            return HomeListItemWidget(_scrollController, productList);
-                        })))
-              ]));
+                          return HomeListItemWidget(
+                              _scrollController, productList, index);
+                        },childCount: productList.length)))
+              ],controller: _scrollController,));
         });
   }
 

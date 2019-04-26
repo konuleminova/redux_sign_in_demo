@@ -118,11 +118,11 @@ class HomePageState extends State<HomePage> {
                   child: new PageView(children: <Widget>[_buildCarousel()]),
                 ),
                 _titleContainer(),
-                HomeListItemWidget(_scrollController, productList),
-                _titleContainer(),
-                HomeListItemWidget(_scrollControllerSecond, productList),
+                // HomeListItemWidget(_scrollController, productList),
+                //   _titleContainer(),
+                //   HomeListItemWidget(_scrollControllerSecond, productList),
 
-                /*   GestureDetector(
+                GestureDetector(
                     onTap: () {
                       Navigator.pushNamed(context, "/product_detail");
                     },
@@ -133,15 +133,15 @@ class HomePageState extends State<HomePage> {
                             child: Stack(children: <Widget>[
                               new Container(
                                   child: new ListView.builder(
-                                      scrollDirection: Axis.horizontal,
-                                      controller: _scrollController,
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return HomeListItemWidget(
-                                            _scrollController, productList);
-                                      }))
+                                scrollDirection: Axis.horizontal,
+                                controller: _scrollController,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return HomeListItemWidget(
+                                      _scrollController, productList, index);
+                                },
+                                itemCount: productList.length,
+                              ))
                             ]))))
-                            */
               ]));
         });
   }
