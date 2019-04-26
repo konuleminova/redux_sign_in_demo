@@ -1,74 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:redux_sign_in/data/model/data.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
+class HomeListItemWidget extends StatefulWidget {
+  ScrollController scrollController;
+  List<Data> campaignList;
 
-class CardsPage extends StatefulWidget {
+  var increment = 1;
+
+  HomeListItemWidget(this.scrollController, this.campaignList);
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return new CardsState();
+    return HomeListItemState();
   }
 }
 
-class CardsState extends State<CardsPage> {
-  var width;
-
-  var increment = 1;
+class HomeListItemState extends State<HomeListItemWidget> {
+  double width;
 
   @override
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
     // TODO: implement build
-    return new Scaffold(
-      appBar: new AppBar(
-        backgroundColor: Colors.lightGreen,
-        title: Text("Product List"),
-        actions: <Widget>[
-          new Container(
-            child: DropdownButtonHideUnderline(
-                child: new DropdownButton<String>(
-                    items: <String>[
-                      'Price:Lower to High',
-                      'Price:High to Lower',
-                      'Name:A-Z',
-                      'Name:Z-A'
-                    ].map((String value) {
-                      return new DropdownMenuItem<String>(
-                        value: value,
-                        child: new Text(value),
-                      );
-                    }).toList(),
-                    onChanged: (value) {
-                      return Text(value);
-                    },
-                    hint: new Container(
-                      child: new Text(
-                        "Sort By",
-                      ),
-                      margin: EdgeInsets.only(left: 3),
-                    ))),
-            margin: EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: new Border.all(width: 1, color: Colors.white),
-            ),
-          )
-        ],
-      ),
-      body: new CustomScrollView(
-        slivers: <Widget>[
-          SliverPadding(
-            padding: const EdgeInsets.all(16),
-            sliver: new SliverGrid(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisSpacing: 12,
-                  mainAxisSpacing: 12,
-                  crossAxisCount: 2,
-                  childAspectRatio: 0.6),
-              delegate: new SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                return new Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey[100])),
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, "/product_detail");
+      },
+      child: Container(
+        margin: EdgeInsets.all(8),
+        child: new SizedBox(
+          height: 270,
+          child: Stack(
+            children: <Widget>[
+              new Container(
+                  child: new ListView.builder(
+                scrollDirection: Axis.horizontal,
+                controller: widget.scrollController,
+                itemBuilder: (BuildContext context, int index) => new Container(
                     margin: EdgeInsets.only(right: 4),
                     width: 160,
                     child: new Card(
@@ -78,18 +47,18 @@ class CardsState extends State<CardsPage> {
                         ),
                         child: ClipRect(
                           child: new Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               new Stack(
                                 children: <Widget>[
                                   new Container(
-                                      child: new Image.asset(
-                                        "images/img2.jpg",
+                                      child: new Image.network(
+                                        widget.campaignList[index].image,
                                         fit: BoxFit.contain,
                                       ),
                                       width: width,
-                                      height: 120,
+                                      height: 100,
                                       padding: EdgeInsets.only(
                                           left: 10,
                                           right: 10,
@@ -115,45 +84,22 @@ class CardsState extends State<CardsPage> {
                                 ),
                               ),
                               new Container(
-                                margin: EdgeInsets.only(top: 4, left: 8),
-                                child: new Text(
-                                  "2 AZN /1kq",
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 17),
-                                ),
-                                alignment: Alignment.bottomLeft,
-                              ),
+                                  margin: EdgeInsets.only(left: 8, top: 4),
+                                  child: RatingStarWidget(5, 4, 20.0)),
                               new Container(
-                                margin: EdgeInsets.only(left: 8, top: 4),
-                                child: RatingStarWidget(5, 4, 20.0),
-                              ),
-                              new Container(
-                                padding: EdgeInsets.all(8),
-                                color: Colors.lightGreen,
-                                child: new Row(
-                                  children: <Widget>[
-                                    Icon(
-                                      Icons.shopping_cart,
-                                      color: Colors.white,
-                                      size: 20,
-                                    ),
-                                    new Text(
-                                      "Sebete elave et",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 14),
-                                    )
-                                  ],
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                ),
-                              )
+                                  margin: EdgeInsets.only(left: 8, right: 8),
+                                  child: _updateContainer(
+                                    widget.campaignList[index].status,
+                                    index,
+                                  )),
                             ],
                           ),
-                        )));
-              }),
-            ),
-          )
-        ],
+                        ))),
+                itemCount: widget.campaignList.length,
+              )),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -198,23 +144,23 @@ class CardsState extends State<CardsPage> {
                         child: new Icon(Icons.remove),
                         onTap: () {
                           setState(() {
-                            increment = increment - 1;
-                            if (increment < 1) {
-                              //campaignList[index].status = false;
-                              increment = 1;
+                            widget.increment = widget.increment - 1;
+                            if (widget.increment < 1) {
+                              widget.campaignList[index].status = false;
+                              widget.increment = 1;
                             }
                           });
                         },
                       ),
                       new Text(
-                        increment.toString(),
+                        widget.increment.toString(),
                         style: new TextStyle(fontSize: 18),
                       ),
                       new GestureDetector(
                         child: new Icon(Icons.add),
                         onTap: () {
                           setState(() {
-                            increment = increment + 1;
+                            widget.increment = widget.increment + 1;
                           });
                         },
                       ),
@@ -270,7 +216,7 @@ class CardsState extends State<CardsPage> {
               ),
               onTap: () {
                 setState(() {
-                  //campaignList[index].status = true;
+                  widget.campaignList[index].status = true;
                 });
               },
             ),

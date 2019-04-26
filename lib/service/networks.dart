@@ -5,7 +5,7 @@ import 'package:redux_sign_in/data/model/app_state.dart';
 import 'package:redux_sign_in/data/model/home.dart';
 import 'package:redux_sign_in/redux/middleware/thunk_login.dart';
 
-class NetworkUtils {
+class Networks {
   static final String BASE_URL = "http://35.240.80.11/app/";
   static String LOGIN_ENDPOINT = "login/";
   static String FETCH_PRODUCT =

@@ -4,7 +4,7 @@ import 'package:redux/redux.dart';
 import 'package:redux_sign_in/data/model/app_state.dart';
 import 'package:redux_sign_in/data/model/user_login.dart';
 import 'package:redux_sign_in/redux/action/OnLoginAction.dart';
-import 'package:redux_sign_in/util/networkutil.dart';
+import 'package:redux_sign_in/service/networks.dart';
 import 'package:redux_sign_in/util/sharedpref_util.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 
@@ -13,7 +13,7 @@ ThunkAction<AppState> loginThunkFunction(String username, String password) {
     UserLogin userLogin = new UserLogin();
     userLogin.status = STATUS.LOADING;
     store.dispatch(OnLoginAction(userLogin: userLogin));
-    AppState responseBody = await NetworkUtils.loginUser(username, password);
+    AppState responseBody = await Networks.loginUser(username, password);
     print(responseBody.toString()+"..");
     if (responseBody != null) {
       if (responseBody.code == 1001) {
