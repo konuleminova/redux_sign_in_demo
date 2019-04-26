@@ -5,8 +5,9 @@ class Data {
   bool liked;
   String url;
   bool status=false;
+  int amount;
 
-  Data({this.id, this.title, this.image, this.liked, this.url,this.status});
+  Data({this.id, this.title, this.image, this.liked, this.url,this.status,this.amount});
 
   factory Data.fromJson(Map<String, dynamic> json) {
     return Data(
@@ -14,7 +15,7 @@ class Data {
         title: json["TITLE"],
         image: json["IMAGE"],
         liked: json["LIKED"],
-        url: json["URL"],status: false);
+        url: json["URL"],status: false,amount: 1);
   }
 
   @override

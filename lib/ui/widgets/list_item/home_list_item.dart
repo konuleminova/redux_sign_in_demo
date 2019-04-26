@@ -4,9 +4,6 @@ import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 class HomeListItemWidget extends StatefulWidget {
   ScrollController scrollController;
   List<Data> campaignList;
-
-  var increment = 1;
-
   HomeListItemWidget(this.scrollController, this.campaignList);
 
   @override
@@ -144,23 +141,23 @@ class HomeListItemState extends State<HomeListItemWidget> {
                         child: new Icon(Icons.remove),
                         onTap: () {
                           setState(() {
-                            widget.increment = widget.increment - 1;
-                            if (widget.increment < 1) {
+                            widget.campaignList[index].amount =   widget.campaignList[index].amount- 1;
+                            if ( widget.campaignList[index].amount < 1) {
                               widget.campaignList[index].status = false;
-                              widget.increment = 1;
+                              widget.campaignList[index].amount=1;
                             }
                           });
                         },
                       ),
                       new Text(
-                        widget.increment.toString(),
+                        widget.campaignList[index].amount.toString(),
                         style: new TextStyle(fontSize: 18),
                       ),
                       new GestureDetector(
                         child: new Icon(Icons.add),
                         onTap: () {
                           setState(() {
-                            widget.increment = widget.increment + 1;
+                            widget.campaignList[index].amount =  widget.campaignList[index].amount + 1;
                           });
                         },
                       ),
