@@ -3,7 +3,7 @@ import 'package:redux_sign_in/data/model/data.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 class HomeListItemWidget extends StatefulWidget {
   ScrollController scrollController;
-  List<Data> productList;
+  List<Product> productList;
   HomeListItemWidget(this.scrollController, this.productList);
 
   @override

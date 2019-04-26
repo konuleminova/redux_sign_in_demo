@@ -21,7 +21,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  List<Data> productList;
+  List<Product> productList;
   ScrollController _scrollController, _scrollControllerSecond;
   String message;
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -121,6 +121,27 @@ class HomePageState extends State<HomePage> {
                 HomeListItemWidget(_scrollController, productList),
                 _titleContainer(),
                 HomeListItemWidget(_scrollControllerSecond, productList),
+
+                /*   GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, "/product_detail");
+                    },
+                    child: Container(
+                        margin: EdgeInsets.all(8),
+                        child: new SizedBox(
+                            height: 270,
+                            child: Stack(children: <Widget>[
+                              new Container(
+                                  child: new ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      controller: _scrollController,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        return HomeListItemWidget(
+                                            _scrollController, productList);
+                                      }))
+                            ]))))
+                            */
               ]));
         });
   }
