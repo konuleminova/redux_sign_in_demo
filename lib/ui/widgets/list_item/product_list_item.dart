@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:redux_sign_in/data/model/data.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 
-class HomeListItemWidget extends StatefulWidget {
+class ProductItemWidget extends StatefulWidget {
   List<Product> productList;
   int index;
 
-  HomeListItemWidget(this.productList, this.index);
+  ProductItemWidget(this.productList, this.index);
 
   @override
   State<StatefulWidget> createState() {
@@ -15,7 +15,7 @@ class HomeListItemWidget extends StatefulWidget {
   }
 }
 
-class HomeListItemState extends State<HomeListItemWidget> {
+class HomeListItemState extends State<ProductItemWidget> {
   double width;
 
   @override

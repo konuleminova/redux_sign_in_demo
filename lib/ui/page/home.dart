@@ -5,8 +5,9 @@ import 'package:redux_sign_in/data/model/app_state.dart';
 import 'package:redux_sign_in/data/model/data.dart';
 import 'package:redux_sign_in/data/viewmodel/home_viewmodel.dart';
 import 'package:redux_sign_in/ui/page/cards.dart';
+import 'package:redux_sign_in/ui/page/product_list.dart';
 import 'package:redux_sign_in/ui/widgets/drawer.dart';
-import 'package:redux_sign_in/ui/widgets/list_item/home_list_item.dart';
+import 'package:redux_sign_in/ui/widgets/list_item/product_list_item.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 import 'package:redux_sign_in/ui/widgets/search.dart';
 import 'package:redux_sign_in/util/carousel.dart';
@@ -117,11 +118,14 @@ class HomePageState extends State<HomePage> {
                   height: 200,
                   child: new PageView(children: <Widget>[_buildCarousel()]),
                 ),
-                _titleContainer(),
-                // HomeListItemWidget(_scrollController, productList),
-                //   _titleContainer(),
-                //   HomeListItemWidget(_scrollControllerSecond, productList),
-
+                GestureDetector(
+                  child: _titleContainer(),
+                  onTap: () {
+                    Route route = MaterialPageRoute(
+                        builder: (context) => ProductListPage("titile"));
+                    return Navigator.push(context, route);
+                  },
+                ),
                 Container(
                     margin: EdgeInsets.all(8),
                     child: new SizedBox(
@@ -132,7 +136,7 @@ class HomePageState extends State<HomePage> {
                             scrollDirection: Axis.horizontal,
                             controller: _scrollController,
                             itemBuilder: (BuildContext context, int index) {
-                              return HomeListItemWidget(productList, index);
+                              return ProductItemWidget(productList, index);
                             },
                             itemCount: productList.length,
                           ))

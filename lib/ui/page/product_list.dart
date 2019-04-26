@@ -4,10 +4,14 @@ import 'package:redux/redux.dart';
 import 'package:redux_sign_in/data/model/app_state.dart';
 import 'package:redux_sign_in/data/model/data.dart';
 import 'package:redux_sign_in/data/viewmodel/home_viewmodel.dart';
-import 'package:redux_sign_in/ui/widgets/list_item/home_list_item.dart';
+import 'package:redux_sign_in/ui/widgets/list_item/product_list_item.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 
 class ProductListPage extends StatefulWidget {
+  String title;
+
+  ProductListPage(this.title);
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -93,20 +97,25 @@ class ProductListPageState extends State<ProductListPage> {
                   )
                 ],
               ),
-              body: new CustomScrollView(slivers: <Widget>[
-                SliverPadding(
-                    padding: const EdgeInsets.all(16),
-                    sliver: new SliverGrid(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              body: new CustomScrollView(
+                slivers: <Widget>[
+                  SliverPadding(
+                      padding: const EdgeInsets.all(16),
+                      sliver: new SliverGrid(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisSpacing: 12,
                             mainAxisSpacing: 12,
                             crossAxisCount: 2,
-                            childAspectRatio: 0.6,),
-                        delegate: new SliverChildBuilderDelegate(
-                            (BuildContext context, int index) {
-                          return HomeListItemWidget(productList, index);
-                        },childCount: productList.length)))
-              ],controller: _scrollController,));
+                            childAspectRatio: 0.6,
+                          ),
+                          delegate: new SliverChildBuilderDelegate(
+                              (BuildContext context, int index) {
+                            return ProductItemWidget(productList, index);
+                          }, childCount: productList.length)))
+                ],
+                controller: _scrollController,
+              ));
         });
   }
 

@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           "/shopping_cart": (BuildContext context) => ShoppingCartPage(),
           "/checkout": (BuildContext context) => CheckoutPage(),
           "/product_detail": (BuildContext context) => ProductDetailPage(),
-          "/cards": (BuildContext context) => ProductListPage()
+         // "/product_list": (BuildContext context) => ProductListPage()
         },
       ),
     );
