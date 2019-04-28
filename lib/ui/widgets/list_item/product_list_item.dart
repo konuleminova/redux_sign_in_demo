@@ -74,7 +74,7 @@ class HomeListItemState extends State<ProductItemWidget> {
                       child: RatingStarWidget(5, 4, 20.0)),
                   new Container(
                       margin: EdgeInsets.only(left: 8, right: 8),
-                      child: _updateContainer(
+                      child: updateContainer(
                         widget.productList[widget.index].status,
                         widget.index,
                       )),
@@ -85,7 +85,7 @@ class HomeListItemState extends State<ProductItemWidget> {
     );
   }
 
-  _updateContainer(bool status, int index) {
+  updateContainer(bool status, int index) {
     if (status) {
       return Stack(
         children: <Widget>[

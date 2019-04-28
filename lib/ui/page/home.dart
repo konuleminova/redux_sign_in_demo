@@ -6,6 +6,7 @@ import 'package:redux_sign_in/data/model/data.dart';
 import 'package:redux_sign_in/data/viewmodel/home_viewmodel.dart';
 import 'package:redux_sign_in/ui/page/cards.dart';
 import 'package:redux_sign_in/ui/page/product_list.dart';
+import 'package:redux_sign_in/ui/widgets/buil_card.dart';
 import 'package:redux_sign_in/ui/widgets/drawer.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/product_list_item.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
@@ -126,6 +127,7 @@ class HomePageState extends State<HomePage> {
                     return Navigator.push(context, route);
                   },
                 ),
+                buildNewArrivalsRow(context),
                 Container(
                     margin: EdgeInsets.all(8),
                     child: new SizedBox(
