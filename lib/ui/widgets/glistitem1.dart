@@ -5,15 +5,11 @@ import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 class GroceryListItemOne extends StatefulWidget {
   final String image, title, price, subtitle;
   final int amount;
+  bool isAdded;
 
-  const GroceryListItemOne({
-    Key key,
-    @required this.image,
-    @required this.title,
-    @required this.subtitle,
-    this.price,
-    this.amount,
-  }) : super(key: key);
+
+  GroceryListItemOne({this.image, this.title, this.price, this.subtitle,
+      this.amount, this.isAdded});
 
   @override
   State<StatefulWidget> createState() {
@@ -23,9 +19,9 @@ class GroceryListItemOne extends StatefulWidget {
 }
 
 class GroceryListItemOneState extends State<GroceryListItemOne> {
-  bool isAdded = false;
   int amount=1;
   String image, title, price, subtitle;
+  bool liked;
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +108,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
   }
 
   _updateContainer() {
-    if (!isAdded) {
+    if (!widget.isAdded) {
       return new GestureDetector(
         child: new Container(
           child: new Container(
@@ -131,7 +127,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
         ),
         onTap: () {
           setState(() {
-            isAdded = true;
+            widget.isAdded=true;
           });
         },
       );
@@ -154,7 +150,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                 setState(() {
                   amount--;
                   if (amount < 1) {
-                    isAdded = false;
+                    widget.isAdded=false;
                     amount = 1;
                   }
                 });
