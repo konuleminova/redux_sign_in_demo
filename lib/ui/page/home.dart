@@ -131,11 +131,25 @@ class HomePageState extends State<HomePage> {
                 buildNewArrivalsRow(context),
 
                 new Container(
+                  padding: EdgeInsets.all(8.0),
                   child: new ListView.builder(
                     scrollDirection: Axis.horizontal,
                     controller: _scrollController,
                     itemBuilder: (BuildContext context, int index) {
-                      return buildNewArrivalsRow(context);
+                      return Container(
+                        width: width*0.48,
+                        child: InkWell(
+                          child: GroceryListItemOne(
+                            image: "images/img2.jpg",
+                            subtitle: "1 kg",
+                            title: "Local Mango",
+                            amount: 1,
+                            price: "1 AZN",
+                            isAdded: false,
+                            isLiked: true,
+                          ),
+                        )
+                      );
                     },
                     itemCount: productList.length,
                   ),width: width,
