@@ -24,12 +24,12 @@ class GroceryListItemOne extends StatefulWidget {
 
 class GroceryListItemOneState extends State<GroceryListItemOne> {
   bool status = true;
-  int amount;
+  int amount=1;
   String image, title, price, subtitle;
 
   @override
   Widget build(BuildContext context) {
-    amount = widget.amount;
+    //amount = widget.amount;
     image = widget.image;
     title = widget.title;
     price = widget.price;
@@ -94,7 +94,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       new GrocerySubtitle(text: subtitle),
-                      new GrocerySubtitle(text: amount.toString() + " AZN"),
+                      new GrocerySubtitle(text: price ),
                     ],
                   ),
                   _updateContainer(),
@@ -151,7 +151,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                   amount--;
                   if (amount < 1) {
                     status = true;
-                    //amount = 1;
+                    amount = 1;
                   }
                 });
               },
