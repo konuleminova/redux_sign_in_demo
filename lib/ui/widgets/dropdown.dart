@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:redux_sign_in/constants/Constants.dart';
-
 class DropdownMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -34,5 +32,4 @@ class DropdownMenu extends StatelessWidget {
       print('I Thired Item');
     }
   }
-}
 }
