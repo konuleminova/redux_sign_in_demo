@@ -8,6 +8,7 @@ import 'package:redux_sign_in/ui/page/cards.dart';
 import 'package:redux_sign_in/ui/page/product_list.dart';
 import 'package:redux_sign_in/ui/widgets/buil_card.dart';
 import 'package:redux_sign_in/ui/widgets/drawer.dart';
+import 'package:redux_sign_in/ui/widgets/glistitem1.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/product_list_item.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 import 'package:redux_sign_in/ui/widgets/search.dart';
@@ -128,21 +129,17 @@ class HomePageState extends State<HomePage> {
                   },
                 ),
                 buildNewArrivalsRow(context),
-                Container(
-                    margin: EdgeInsets.all(8),
-                    child: new SizedBox(
-                        height: 270,
-                        child: Stack(children: <Widget>[
-                          new Container(
-                              child: new ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            controller: _scrollController,
-                            itemBuilder: (BuildContext context, int index) {
-                              return ProductItemWidget(productList, index);
-                            },
-                            itemCount: productList.length,
-                          ))
-                        ])))
+
+                new Container(
+                  child: new ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    controller: _scrollController,
+                    itemBuilder: (BuildContext context, int index) {
+                      return buildNewArrivalsRow(context);
+                    },
+                    itemCount: productList.length,
+                  ),width: width,
+                height: 340,)
               ]));
         });
   }
