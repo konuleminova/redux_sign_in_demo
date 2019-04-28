@@ -23,7 +23,7 @@ class GroceryListItemOne extends StatefulWidget {
 }
 
 class GroceryListItemOneState extends State<GroceryListItemOne> {
-  bool status = true;
+  bool isAdded = false;
   int amount=1;
   String image, title, price, subtitle;
 
@@ -84,7 +84,11 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                                 color: Colors.grey[400],
                                 size: 30,
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                  liked=true;
+                                });
+                              },
                             ),
                           ),
                         ],
@@ -108,7 +112,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
   }
 
   _updateContainer() {
-    if (status) {
+    if (!isAdded) {
       return new GestureDetector(
         child: new Container(
           child: new Container(
@@ -127,7 +131,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
         ),
         onTap: () {
           setState(() {
-            status = false;
+            isAdded = true;
           });
         },
       );
@@ -150,7 +154,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                 setState(() {
                   amount--;
                   if (amount < 1) {
-                    status = true;
+                    isAdded = false;
                     amount = 1;
                   }
                 });
