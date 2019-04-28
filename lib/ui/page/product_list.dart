@@ -5,6 +5,7 @@ import 'package:redux_sign_in/data/model/app_state.dart';
 import 'package:redux_sign_in/data/model/data.dart';
 import 'package:redux_sign_in/data/viewmodel/home_viewmodel.dart';
 import 'package:redux_sign_in/ui/widgets/dropdown.dart';
+import 'package:redux_sign_in/ui/widgets/glistitem1.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/product_list_item.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 
@@ -88,18 +89,31 @@ class ProductListPageState extends State<ProductListPage> {
               body: new CustomScrollView(
                 slivers: <Widget>[
                   SliverPadding(
-                      padding: const EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(8),
                       sliver: new SliverGrid(
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisSpacing: 12,
-                            mainAxisSpacing: 12,
+                            crossAxisSpacing: 1,
+                            mainAxisSpacing: 1,
                             crossAxisCount: 2,
-                            childAspectRatio: 0.6,
+                                childAspectRatio: 0.55
                           ),
                           delegate: new SliverChildBuilderDelegate(
                               (BuildContext context, int index) {
-                            return ProductItemWidget(productList, index);
+                            return   Container(
+                                width: MediaQuery.of(context).size.width * 0.6,
+                                height: 350,
+                                child: InkWell(
+                                  child: GroceryListItemOne(
+                                    image: productList[index].image,
+                                    subtitle: productList[index].amount.toString(),
+                                    title: productList[index].title,
+                                    amount: 1,
+                                    price: "1 AZN",
+                                    isAdded: false,
+                                    isLiked: true,
+                                  ),
+                                ));
                           }, childCount: productList.length)))
                 ],
                 controller: _scrollController,

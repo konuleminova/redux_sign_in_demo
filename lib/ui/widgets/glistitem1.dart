@@ -39,6 +39,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
     return Container(
       decoration: BoxDecoration(
           color: Colors.white,
+          border: Border.all(color: Colors.grey[300]),
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(5.0), topRight: Radius.circular(5.0)),
           boxShadow: [
@@ -47,7 +48,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                 color: Colors.grey.shade200,
                 spreadRadius: 2.0)
           ]),
-      margin: EdgeInsets.all(10.0),
+      margin: EdgeInsets.all(4.0),
       child: Column(
         children: <Widget>[
           Expanded(
@@ -57,11 +58,13 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Center(
+                  Container(
                       child: Image.network(
-                    image,
-                    height: 150.0,
-                  )),
+                        image,
+                      ),
+                      height: 150,
+                      padding: EdgeInsets.only(
+                          left: 10, right: 10, top: 10, bottom: 4)),
                   new GroceryTitle(text: title),
                   new Container(
                       height: 20,
@@ -129,8 +132,8 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                 Icons.shopping_cart,
                 color: Colors.white,
               ),
-              height: 25,
-              width: 25,
+              height: 20,
+              width: 20,
             ),
           ),
           alignment: Alignment.topRight,

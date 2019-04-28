@@ -28,7 +28,7 @@ class GroceryTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(text, style: TextStyle(
       fontWeight: FontWeight.w700,
-      fontSize: 18.0
+      fontSize: 15.0
     ),);
   }
 }
