@@ -58,7 +58,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Center(
-                      child: Image.asset(
+                      child: Image.network(
                     image,
                     height: 150.0,
                   )),

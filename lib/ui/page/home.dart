@@ -140,9 +140,9 @@ class HomePageState extends State<HomePage> {
                         width: width*0.48,
                         child: InkWell(
                           child: GroceryListItemOne(
-                            image: "images/img2.jpg",
-                            subtitle: "1 kg",
-                            title: "Local Mango",
+                            image: productList[index].image,
+                            subtitle: productList[index].amount.toString(),
+                            title: productList[index].title,
                             amount: 1,
                             price: "1 AZN",
                             isAdded: false,
