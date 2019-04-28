@@ -5,11 +5,16 @@ import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 class GroceryListItemOne extends StatefulWidget {
   final String image, title, price, subtitle;
   final int amount;
-  bool isAdded;
+  bool isAdded, isLiked;
 
-
-  GroceryListItemOne({this.image, this.title, this.price, this.subtitle,
-      this.amount, this.isAdded});
+  GroceryListItemOne(
+      {this.image,
+      this.title,
+      this.price,
+      this.subtitle,
+      this.amount,
+      this.isAdded,
+      this.isLiked});
 
   @override
   State<StatefulWidget> createState() {
@@ -19,9 +24,8 @@ class GroceryListItemOne extends StatefulWidget {
 }
 
 class GroceryListItemOneState extends State<GroceryListItemOne> {
-  int amount=1;
+  int amount = 1;
   String image, title, price, subtitle;
-  bool liked;
 
   @override
   Widget build(BuildContext context) {
@@ -76,13 +80,19 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                           new Container(
                             child: IconButton(
                               icon: Icon(
-                                Icons.favorite_border,
+                                widget.isLiked
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
                                 color: Colors.grey[400],
                                 size: 30,
                               ),
                               onPressed: () {
                                 setState(() {
-                                  liked=true;
+                                  if (widget.isLiked) {
+                                    widget.isLiked = false;
+                                  } else {
+                                    widget.isLiked = true;
+                                  }
                                 });
                               },
                             ),
@@ -94,7 +104,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       new GrocerySubtitle(text: subtitle),
-                      new GrocerySubtitle(text: price ),
+                      new GrocerySubtitle(text: price),
                     ],
                   ),
                   _updateContainer(),
@@ -127,7 +137,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
         ),
         onTap: () {
           setState(() {
-            widget.isAdded=true;
+            widget.isAdded = true;
           });
         },
       );
@@ -150,7 +160,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                 setState(() {
                   amount--;
                   if (amount < 1) {
-                    widget.isAdded=false;
+                    widget.isAdded = false;
                     amount = 1;
                   }
                 });
