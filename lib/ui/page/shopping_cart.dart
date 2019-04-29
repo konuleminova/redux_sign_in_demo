@@ -54,25 +54,26 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
                 title: new Text("Sebet"),
                 actions: <Widget>[
                   new Container(
-                    child:  DropdownButtonHideUnderline(
+                    child: DropdownButtonHideUnderline(
                         child: new DropdownButton<String>(
-                            items: <String>[
-                              'gunluk',
-                              'heftelik',
-                              'ayliq'
-                            ].map((String value) {
-                              return new DropdownMenuItem<String>(
-                                value: value,
-                                child: new Text(value),
-                              );
-                            }).toList(),
-                            onChanged: (value) {
-                              return Text(value);
-                            },
-                            hint: new Container(
-                              child: new Text("Yenilenme periodu",  style: new TextStyle(color: Colors.white),),
-                              margin: EdgeInsets.only(left: 3),
-                            ),)),
+                      items: <String>['gunluk', 'heftelik', 'ayliq']
+                          .map((String value) {
+                        return new DropdownMenuItem<String>(
+                          value: value,
+                          child: new Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        return Text(value);
+                      },
+                      hint: new Container(
+                        child: new Text(
+                          "Yenilenme periodu",
+                          style: new TextStyle(color: Colors.white),
+                        ),
+                        margin: EdgeInsets.only(left: 3),
+                      ),
+                    )),
                     margin: EdgeInsets.all(16),
                   ),
                 ],
