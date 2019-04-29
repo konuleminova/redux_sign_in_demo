@@ -11,7 +11,11 @@ class GroceryCartTabView extends StatelessWidget {
         title: new Text("Shopping List"),
         actions: <Widget>[
           new Container(
-            child: new Icon(Icons.delete,color: Colors.white,),margin: EdgeInsets.only(right: 16),
+            child: new Icon(
+              Icons.delete,
+              color: Colors.white,
+            ),
+            margin: EdgeInsets.only(right: 16),
           )
         ],
       ),
@@ -20,27 +24,9 @@ class GroceryCartTabView extends StatelessWidget {
           Expanded(
             child: ListView(
               padding: EdgeInsets.all(10.0),
+              shrinkWrap: true,
               children: <Widget>[
-                GroceryListItemTwo(
-                  image: "images/img2.jpg",
-                  subtitle: "4 in a pack",
-                  title: "Pineapple",
-                ),
-                GroceryListItemTwo(
-                  image: "images/img1.jpg",
-                  subtitle: "1 kg",
-                  title: "cabbage",
-                ),
-                GroceryListItemTwo(
-                  image: "images/img2.jpg",
-                  subtitle: "4 in a pack",
-                  title: "Pineapple",
-                ),
-                GroceryListItemTwo(
-                  image: "images/img1.jpg",
-                  subtitle: "1 kg",
-                  title: "cabbage",
-                ),
+              _builShopListItem(),_builShopListItem(),_builShopListItem(),
               ],
             ),
           ),
@@ -116,4 +102,33 @@ class GroceryCartTabView extends StatelessWidget {
       ),
     );
   }
+  _builShopListItem() => new Stack(
+    children: <Widget>[
+      GroceryListItemTwo(
+        image: "images/img1.jpg",
+        subtitle: "1 kg",
+        title: "cabbage",
+      ),
+      Positioned(
+        top: 0,
+        right: 0,
+        child: Container(
+          height: 30,
+          width: 30,
+          alignment: Alignment.topRight,
+          child: MaterialButton(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0)),
+            padding: EdgeInsets.all(0.0),
+            color: Colors.pinkAccent,
+            child: Icon(
+              Icons.clear,
+              color: Colors.white,
+            ),
+            onPressed: () {},
+          ),
+        ),
+      ),
+    ],
+  );
 }

@@ -16,7 +16,7 @@ class GroceryListItemTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(8),
+      margin: EdgeInsets.all(12),
       child: ListTile(
         leading: Container(
             height: 80.0,
