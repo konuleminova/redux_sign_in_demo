@@ -18,8 +18,8 @@ class GroceryListItemTwo extends StatelessWidget {
     return Card(
         margin: EdgeInsets.all(12),
         child: Material(
-          borderRadius: BorderRadius.circular(10.0),
-          elevation: 3.0,
+          borderRadius: BorderRadius.circular(20.0),
+          elevation: 7.0,
           child: new Container(child: ListTile(
 
             leading: Container(
