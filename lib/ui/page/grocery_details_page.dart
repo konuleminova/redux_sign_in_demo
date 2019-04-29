@@ -169,7 +169,7 @@ class GroceryDetailsPage extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal:16.0,vertical: 8.0),
                 color: Colors.black.withOpacity(0.6),
-                child: new Container(child: new Icon(Icons.favorite_border,color: Colors.white,),),
+                child: new Container(child: new Icon(Icons.favorite_border,color: Colors.white,size: 30,),),
               ),
             ),
           ],
