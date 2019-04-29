@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redux_sign_in/ui/widgets/gtile_title.dart';
+import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 
 class GroceryListItemTwo extends StatelessWidget {
   const GroceryListItemTwo({
@@ -19,7 +20,7 @@ class GroceryListItemTwo extends StatelessWidget {
         margin: EdgeInsets.all(12),
         child: Material(
           borderRadius: BorderRadius.circular(20.0),
-          elevation: 7.0,
+          elevation: 4.0,
           child: new Container(child: ListTile(
 
             leading: Container(
@@ -37,7 +38,7 @@ class GroceryListItemTwo extends StatelessWidget {
                 children: <Widget>[
                   new GroceryTitle(text: title),
                   new GrocerySubtitle(text: subtitle),
-                  new GrocerySubtitle(text: "1 AZN")
+                  new GrocerySubtitle(text: "1 AZN"),
                 ],
               ),
             ),

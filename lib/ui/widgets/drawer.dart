@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-class DrawerWidget extends StatefulWidget{
+class DrawerWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
     return DrawerState();
   }
-
 }
 
 class DrawerState extends State<DrawerWidget> {
@@ -30,6 +29,15 @@ class DrawerState extends State<DrawerWidget> {
             leading: Icon(Icons.category),
             title: Text("Categories"),
           ),
+          GestureDetector(
+            child: ListTile(
+              leading: Icon(Icons.favorite),
+              title: Text("WhishList"),
+            ),
+            onTap: () {
+              Navigator.pushNamed(context, "/wish_list");
+            },
+          ),
           ListTile(
             leading: Icon(Icons.history),
             title: Text("Order History"),
@@ -46,10 +54,8 @@ class DrawerState extends State<DrawerWidget> {
             leading: Icon(Icons.question_answer),
             title: Text("FAG"),
           ),
-          ListTile(
-              leading: Icon(Icons.info), title: Text("About Us")),
-          ListTile(
-              leading: Icon(Icons.phone), title: Text("Contact Us")),
+          ListTile(leading: Icon(Icons.info), title: Text("About Us")),
+          ListTile(leading: Icon(Icons.phone), title: Text("Contact Us")),
         ],
       ),
     );
