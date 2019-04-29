@@ -15,43 +15,8 @@ class GroceryDetailsPage extends StatelessWidget {
           ),
           margin: EdgeInsets.only(right: 16),
         ),
-        new Container(
-          child: new Icon(
-            Icons.favorite_border,
-            color: Colors.white,
-          ),
-          margin: EdgeInsets.only(right: 16),
-        )
       ]),
-      body: DefaultTabController(
-        length: 2,
-        child: NestedScrollView(
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-            return <Widget>[
-              SliverAppBar(
-                automaticallyImplyLeading: false,
-                backgroundColor: Colors.transparent,
-                expandedHeight: 250.0,
-                floating: false,
-                pinned: false,
-                flexibleSpace: FlexibleSpaceBar(
-                  background: Image.asset(
-                    'images/img2.jpg',
-                    height: 200,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ];
-          },
-          body: Center(
-              child: new Stack(
-            children: <Widget>[
-              _buildPageContent(context),
-            ],
-          )),
-        ),
-      ),
+         body:_buildPageContent(context)
     );
   }
 
@@ -62,6 +27,7 @@ class GroceryDetailsPage extends StatelessWidget {
           child: ListView(
             children: <Widget>[
               //_buildItemCard(context),
+              _buildItemImage(image: 'images/img1.jpg'),
               new Row(
                 children: <Widget>[
                   Expanded(
@@ -149,33 +115,6 @@ class GroceryDetailsPage extends StatelessWidget {
       ],
     );
   }
-
-  Widget _buildItemCard(context) {
-    return Stack(
-      children: <Widget>[
-        Card(
-          margin: EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
-          child: Container(
-            padding: EdgeInsets.all(8),
-            child: Column(
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.favorite_border),
-                    )
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
   _addWidget(BuildContext context) => new GestureDetector(
         child: new Container(
           width: MediaQuery.of(context).size.width * 0.45,
@@ -208,4 +147,33 @@ class GroceryDetailsPage extends StatelessWidget {
           //setState(() {});
         },
       );
+
+  Container _buildItemImage({String image}) {
+    return Container(
+      padding: EdgeInsets.only(left:16.0, top: 8.0, right: 16.0, bottom: 16.0),
+      child: Material(
+        elevation: 5.0,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+        child: Stack(
+          children: <Widget>[
+            ClipRRect(
+                borderRadius: BorderRadius.circular(5.0),
+                child: new Center(child:Image.network(
+                  "https://pulapul.com/PulaPul/?action=GetImage&module=Campaigns&fileid=5&d=20190429",
+                  fit: BoxFit.cover,
+                ),)),
+            Positioned(
+              bottom: 8.0,
+              right: 8.0,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal:16.0,vertical: 8.0),
+                color: Colors.black.withOpacity(0.6),
+                child: new Container(child: new Icon(Icons.favorite_border,color: Colors.white,),),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
