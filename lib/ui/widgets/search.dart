@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redux_sign_in/ui/page/old_test_cards.dart';
-import 'package:redux_sign_in/ui/page/old_product_list.dart';
+import 'package:redux_sign_in/ui/page/grocery_product_list.dart';
 
 class SearchWidget extends SearchDelegate<String> {
   final vegetables = [
