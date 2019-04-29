@@ -16,28 +16,57 @@ class GroceryListItemTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        child: ListTile(
-          leading: Container(
+      margin: EdgeInsets.all(8),
+      child: ListTile(
+        leading: Container(
             height: 80.0,
-            child: Image.asset(image, height: 80.0,)),
-          title: Container(
-            height: 100.0,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                new GroceryTitle(text: title),
-                new GrocerySubtitle(text: subtitle)
-              ],
-            ),
-          ),
-          trailing: Column(
+            width: 100,
+            child: Image.asset(
+              image,
+              height: 80.0,
+            )),
+        title: Container(
+          height: 100.0,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              IconButton(icon: Icon(Icons.favorite_border), onPressed: (){},),
-              IconButton(icon: Icon(Icons.add,), color: Colors.green, onPressed: (){},)
+              new GroceryTitle(text: title),
+              new GrocerySubtitle(text: subtitle),
+              new GrocerySubtitle(text: "1 AZN")
             ],
           ),
         ),
-      );
+        trailing: Column(
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.favorite_border),
+              onPressed: () {},
+            ),
+      new GestureDetector(
+        child: new Container(
+          child: new Container(
+            padding: EdgeInsets.all(8),
+            color: Colors.lightGreen,
+            child: new SizedBox(
+              child: new Icon(
+                Icons.shopping_cart,
+                color: Colors.white,
+              ),
+              height: 20,
+              width: 20,
+            ),
+          ),
+        ),
+        onTap: () {
+         // setState(() {
+           /// widget.isAdded = true;
+         // });
+        },
+      )
+          ],
+        ),
+      ),
+    );
   }
 }

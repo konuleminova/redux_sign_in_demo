@@ -58,13 +58,18 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Container(
-                      child: Image.network(
-                        image,
-                      ),
-                      height: 150,
-                      padding: EdgeInsets.only(
-                          left: 10, right: 10, top: 10, bottom: 4)),
+                  GestureDetector(
+                    child: Container(
+                        child: Image.network(
+                          image,
+                        ),
+                        height: 150,
+                        padding: EdgeInsets.only(
+                            left: 10, right: 10, top: 10, bottom: 4)),
+                    onTap: () {
+                      Navigator.pushNamed(context, "/product_detail");
+                    },
+                  ),
                   new GroceryTitle(text: title),
                   new Container(
                       height: 20,
