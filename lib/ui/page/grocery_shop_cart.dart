@@ -5,7 +5,7 @@ import 'package:redux_sign_in/data/model/app_state.dart';
 import 'package:redux_sign_in/data/model/shop_item.dart';
 import 'package:redux_sign_in/data/viewmodel/shopping_cart_viewmodel.dart';
 import 'package:redux_sign_in/ui/widgets/oval_tap.dart';
-import 'package:redux_sign_in/ui/widgets/test_glistitem2.dart';
+import 'package:redux_sign_in/ui/widgets/list_item/test_glistitem2.dart';
 
 class GroceryCartTabView extends StatefulWidget {
   @override
