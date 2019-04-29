@@ -26,7 +26,7 @@ class GroceryListItemTwo extends StatelessWidget {
               height: 80.0,
             )),
         title: Container(
-          height: 100.0,
+          height: 110.0,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,

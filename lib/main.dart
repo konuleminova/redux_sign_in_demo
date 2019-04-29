@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux_sign_in/data/model/user_login.dart';
 import 'package:redux_sign_in/data/viewmodel/login_viewmodel.dart';
+import 'package:redux_sign_in/ui/page/gcarttab_test.dart';
 import 'package:redux_sign_in/ui/page/test_cards.dart';
 import 'package:redux_sign_in/ui/page/checkout.dart';
 import 'package:redux_sign_in/ui/page/home.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
           "/login": (BuildContext context) => LoginPage(),
           "/register": (BuildContext context) => RegisterPage(),
           "/home": (BuildContext context) => HomePage(),
-          "/shopping_cart": (BuildContext context) => ShoppingCartPage(),
+          "/shopping_cart": (BuildContext context) => GroceryCartTabView(),
           "/checkout": (BuildContext context) => CheckoutPage(),
           "/product_detail": (BuildContext context) => GroceryDetailsPage()
          // "/product_list": (BuildContext context) => ProductListPage()
