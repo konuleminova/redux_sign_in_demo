@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:redux_sign_in/ui/widgets/glistitem2.dart';
+import 'package:redux_sign_in/ui/widgets/test_glistitem2.dart';
 import 'package:redux_sign_in/ui/widgets/gtypography.dart';
 
 class GroceryDetailsPage extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:redux_sign_in/ui/page/cards.dart';
+import 'package:redux_sign_in/ui/page/test_cards.dart';
 import 'package:redux_sign_in/ui/page/product_list.dart';
 
 class SearchWidget extends SearchDelegate<String> {

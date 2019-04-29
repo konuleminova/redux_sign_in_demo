@@ -5,7 +5,7 @@ import 'package:redux_sign_in/data/model/app_state.dart';
 import 'package:redux_sign_in/data/model/data.dart';
 import 'package:redux_sign_in/data/viewmodel/home_viewmodel.dart';
 import 'package:redux_sign_in/ui/widgets/dropdown.dart';
-import 'package:redux_sign_in/ui/widgets/glistitem1.dart';
+import 'package:redux_sign_in/ui/widgets/list_item/glistitem1.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/product_list_item.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 

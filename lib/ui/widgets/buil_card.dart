@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:redux_sign_in/ui/widgets/glistitem1.dart';
+import 'package:redux_sign_in/ui/widgets/list_item/glistitem1.dart';
 
 Widget buildNewArrivalsRow(BuildContext context) {
   return Container(
