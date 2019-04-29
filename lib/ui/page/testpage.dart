@@ -7,13 +7,51 @@ class GroceryDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: Colors.green,
-        title: Text("Details"),
+      appBar: new AppBar(title:new Text("Product List"),backgroundColor: Colors.lightGreen, actions: <Widget>[
+        new Container(
+          child: new Icon(
+            Icons.share,
+            color: Colors.white,
+          ),
+          margin: EdgeInsets.only(right: 16),
+        ),
+        new Container(
+          child: new Icon(
+            Icons.favorite_border,
+            color: Colors.white,
+          ),
+          margin: EdgeInsets.only(right: 16),
+        )
+      ]),
+      body: DefaultTabController(
+        length: 2,
+        child: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverAppBar(
+                automaticallyImplyLeading: false,
+                backgroundColor: Colors.transparent,
+                expandedHeight: 250.0,
+                floating: false,
+                pinned: false,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: Image.asset(
+                    'images/img2.jpg',
+                    height: 200,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ];
+          },
+          body: Center(
+              child: new Stack(
+            children: <Widget>[
+              _buildPageContent(context),
+            ],
+          )),
+        ),
       ),
-      body: _buildPageContent(context),
     );
   }
 
@@ -23,7 +61,7 @@ class GroceryDetailsPage extends StatelessWidget {
         Expanded(
           child: ListView(
             children: <Widget>[
-              _buildItemCard(context),
+              //_buildItemCard(context),
               new Row(
                 children: <Widget>[
                   Expanded(
@@ -51,7 +89,7 @@ class GroceryDetailsPage extends StatelessWidget {
                   Expanded(
                     child: new Container(
                       child: _addWidget(context),
-                      margin: EdgeInsets.only(right: 16, top: 8,left: 16),
+                      margin: EdgeInsets.only(right: 20, top: 8, left: 20),
                     ),
                     flex: 1,
                   ),
@@ -104,9 +142,7 @@ class GroceryDetailsPage extends StatelessWidget {
                   image: "images/img1.jpg",
                   subtitle: "1 kg"),
               GroceryListItemTwo(
-                  title: "Cabbage",
-                  image: "images/img3.jpg",
-                  subtitle: "1 kg"),
+                  title: "Cabbage", image: "images/img3.jpg", subtitle: "1 kg"),
             ],
           ),
         ),
@@ -120,7 +156,7 @@ class GroceryDetailsPage extends StatelessWidget {
         Card(
           margin: EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
           child: Container(
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(8),
             child: Column(
               children: <Widget>[
                 Row(
@@ -131,13 +167,6 @@ class GroceryDetailsPage extends StatelessWidget {
                       icon: Icon(Icons.favorite_border),
                     )
                   ],
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Image.asset(
-                    'images/img1.jpg',
-                    height: 200,
-                  ),
                 ),
               ],
             ),
