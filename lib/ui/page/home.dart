@@ -245,7 +245,7 @@ class HomePageState extends State<HomePage> {
                     amount: 1,
                     price: "1 AZN",
                     isAdded: false,
-                    isLiked: true,
+                    isLiked: false,
                   ),
                 ));
           },
