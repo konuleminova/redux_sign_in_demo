@@ -29,6 +29,7 @@ class GroceryDetailsPage extends StatelessWidget {
               //_buildItemCard(context),
               _buildItemImage(image: 'images/img1.jpg'),
               new Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Expanded(
                       flex: 1,
@@ -55,7 +56,7 @@ class GroceryDetailsPage extends StatelessWidget {
                   Expanded(
                     child: new Container(
                       child: _addWidget(context),
-                      margin: EdgeInsets.only(right: 20, top: 8, left: 20),
+                      margin: EdgeInsets.only(right: 20, top: 30, left: 20),
                     ),
                     flex: 1,
                   ),
