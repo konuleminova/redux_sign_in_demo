@@ -51,7 +51,7 @@ class GroceryDetailsPage extends StatelessWidget {
                   Expanded(
                     child: new Container(
                       child: _addWidget(context),
-                      margin: EdgeInsets.only(right: 16, top: 8),
+                      margin: EdgeInsets.only(right: 16, top: 8,left: 16),
                     ),
                     flex: 1,
                   ),
