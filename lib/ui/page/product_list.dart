@@ -121,24 +121,6 @@ class ProductListPageState extends State<ProductListPage> {
         });
   }
 
-  void _showDialog() {
-    // flutter defined function
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        // return object of type Dialog
-        return AlertDialog(
-          title: new Text("Alert Dialog title"),
-          content: new Text("Alert Dialog body"),
-          actions: <Widget>[
-            // usually buttons at the bottom of the dialog
-           DropdownMenu()
-          ],
-        );
-      },
-    );
-  }
-
   void loadMore() {
     page++;
     if (viewModel != null) {
@@ -166,27 +148,3 @@ class ProductListPageState extends State<ProductListPage> {
     }
   }
 }
-/*
-return DropdownButtonHideUnderline(
-                          child: new DropdownButton<String>(
-                              items: <String>[
-                                'Price:Lower to High',
-                                'Price:High to Lower',
-                                'Name:A-Z',
-                                'Name:Z-A'
-                              ].map((String value) {
-                                return new DropdownMenuItem<String>(
-                                  value: value,
-                                  child: new Text(value),
-                                );
-                              }).toList(),
-                              onChanged: (value) {
-                                return Text(value);
-                              },
-                              hint: new Container(
-                                child: new Text(
-                                  "Sort By",
-                                ),
-                                margin: EdgeInsets.only(left: 3),
-                              )));
- */
