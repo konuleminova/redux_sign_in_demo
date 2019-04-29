@@ -7,7 +7,7 @@ import 'package:redux_sign_in/data/viewmodel/shopping_cart_viewmodel.dart';
 import 'package:redux_sign_in/ui/widgets/oval_tap.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/glistitem2.dart';
 
-class GroceryCartPage extends StatefulWidget {
+class GroceryShopCartPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -15,7 +15,7 @@ class GroceryCartPage extends StatefulWidget {
   }
 }
 
-class GroceryCartState extends State<GroceryCartPage> {
+class GroceryCartState extends State<GroceryShopCartPage> {
   List<ShopItem> shopItems;
   double width;
   ShoppingCartViewModel viewModel;

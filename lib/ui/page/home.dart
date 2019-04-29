@@ -5,7 +5,7 @@ import 'package:redux_sign_in/data/model/app_state.dart';
 import 'package:redux_sign_in/data/model/data.dart';
 import 'package:redux_sign_in/data/viewmodel/home_viewmodel.dart';
 import 'package:redux_sign_in/ui/page/old_test_cards.dart';
-import 'package:redux_sign_in/ui/page/grocery_product_list.dart';
+import 'package:redux_sign_in/ui/page/grocery_list.dart';
 import 'package:redux_sign_in/ui/widgets/drawer.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/glistitem1.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/old_product_list_item.dart';
@@ -123,7 +123,7 @@ class HomePageState extends State<HomePage> {
                   child: _titleContainer(),
                   onTap: () {
                     Route route = MaterialPageRoute(
-                        builder: (context) => ProductListPage("titile"));
+                        builder: (context) => GroceryListPage("titile"));
                     return Navigator.push(context, route);
                   },
                 ),

@@ -9,19 +9,19 @@ import 'package:redux_sign_in/ui/widgets/list_item/glistitem1.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/old_product_list_item.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 
-class ProductListPage extends StatefulWidget {
+class GroceryListPage extends StatefulWidget {
   String title;
 
-  ProductListPage(this.title);
+  GroceryListPage(this.title);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return new ProductListPageState();
+    return new GroceryListPageState();
   }
 }
 
-class ProductListPageState extends State<ProductListPage> {
+class GroceryListPageState extends State<GroceryListPage> {
   int page = 0;
   List<Product> productList;
   ScrollController _scrollController;

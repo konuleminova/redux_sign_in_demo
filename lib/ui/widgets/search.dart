@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redux_sign_in/ui/page/old_test_cards.dart';
-import 'package:redux_sign_in/ui/page/grocery_product_list.dart';
+import 'package:redux_sign_in/ui/page/grocery_list.dart';
 
 class SearchWidget extends SearchDelegate<String> {
   final vegetables = [
@@ -174,7 +174,7 @@ class SearchWidget extends SearchDelegate<String> {
         return ListTile(
           onTap: () {
             Route route = MaterialPageRoute(
-                builder: (context) => ProductListPage("titile"));
+                builder: (context) => GroceryListPage("titile"));
             return Navigator.push(context, route);
           },
           title: new Text(suggesstionList[index]),
