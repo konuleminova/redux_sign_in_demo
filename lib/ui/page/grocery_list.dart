@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
+import 'package:redux_sign_in/constants/Constants.dart';
 import 'package:redux_sign_in/data/model/app_state.dart';
 import 'package:redux_sign_in/data/model/data.dart';
 import 'package:redux_sign_in/data/viewmodel/home_viewmodel.dart';
@@ -69,21 +70,17 @@ class GroceryListPageState extends State<GroceryListPage> {
                 backgroundColor: Colors.lightGreen,
                 title: Text("Product List"),
                 actions: <Widget>[
-                  GestureDetector(
-                    child: new Container(
-                      child: Icon(Icons.sort),
-                      margin: EdgeInsets.all(16),
-                    ),
-                    onTap: () {
-                     //_showDialog();
+                  PopupMenuButton<String>(
+                    onSelected: choiceAction,
+                    itemBuilder: (BuildContext context) {
+                      return Constants.choices.map((String choice) {
+                        return PopupMenuItem<String>(
+                          value: choice,
+                          child: Text(choice),
+                        );
+                      }).toList();
                     },
                   ),
-                  GestureDetector(
-                    child: new Container(
-                      child: Icon(Icons.shopping_cart),
-                      margin: EdgeInsets.only(right: 8),
-                    ),
-                  )
                 ],
               ),
               body: new CustomScrollView(
@@ -93,20 +90,20 @@ class GroceryListPageState extends State<GroceryListPage> {
                       sliver: new SliverGrid(
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisSpacing: 1,
-                            mainAxisSpacing: 1,
-                            crossAxisCount: 2,
-                                childAspectRatio: 0.55
-                          ),
+                                  crossAxisSpacing: 1,
+                                  mainAxisSpacing: 1,
+                                  crossAxisCount: 2,
+                                  childAspectRatio: 0.55),
                           delegate: new SliverChildBuilderDelegate(
                               (BuildContext context, int index) {
-                            return   Container(
+                            return Container(
                                 width: MediaQuery.of(context).size.width * 0.6,
                                 height: 350,
                                 child: InkWell(
                                   child: GroceryListItemOne(
                                     image: productList[index].image,
-                                    subtitle: productList[index].amount.toString(),
+                                    subtitle:
+                                        productList[index].amount.toString(),
                                     title: productList[index].title,
                                     amount: 1,
                                     price: "1 AZN",
@@ -119,6 +116,15 @@ class GroceryListPageState extends State<GroceryListPage> {
                 controller: _scrollController,
               ));
         });
+  }
+  void choiceAction(String choice) {
+    if (choice == Constants.FirstItem) {
+      print('A-Z');
+    } else if (choice == Constants.SecondItem) {
+      print('Z-A');
+    } else if (choice == Constants.ThirdItem) {
+      print('Higher to Lower');
+    }
   }
 
   void loadMore() {

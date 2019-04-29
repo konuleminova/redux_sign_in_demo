@@ -1,7 +1,7 @@
 class Constants {
-  static const String FirstItem = 'First Item';
-  static const String SecondItem = 'Second Item';
-  static const String ThirdItem = 'Third Item';
+  static const String FirstItem = 'Price: Low to High';
+  static const String SecondItem = 'Price: How to Low';
+  static const String ThirdItem = 'Name: A-Z';
 
   static const List<String> choices = <String>[
     FirstItem,

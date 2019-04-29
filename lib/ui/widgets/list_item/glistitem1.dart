@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:redux_sign_in/ui/widgets/gtypography.dart';
+import 'package:redux_sign_in/ui/widgets/gtile_title.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 
 class GroceryListItemOne extends StatefulWidget {

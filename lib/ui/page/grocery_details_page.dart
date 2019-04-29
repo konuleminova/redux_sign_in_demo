@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/glistitem2.dart';
-import 'package:redux_sign_in/ui/widgets/gtypography.dart';
+import 'package:redux_sign_in/ui/widgets/gtile_title.dart';
 
 class GroceryDetailsPage extends StatelessWidget {
   @override
