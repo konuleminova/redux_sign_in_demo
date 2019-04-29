@@ -70,3 +70,37 @@ class GroceryListItemTwo extends StatelessWidget {
     );
   }
 }
+// is is Added case UI view
+/*
+   new Container(
+        width: 80,
+        padding: EdgeInsets.all(2),
+        margin: EdgeInsets.only(top: 8, bottom: 8),
+        decoration: new BoxDecoration(
+            borderRadius: BorderRadius.circular(2),
+            color: Colors.white,
+            border: Border.all(color: Colors.grey)),
+        alignment: Alignment.topRight,
+        child: new Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            new GestureDetector(
+              child: new Icon(Icons.remove),
+            ),
+            new Text(
+         "2",
+              style: new TextStyle(fontSize: 18),
+            ),
+            new GestureDetector(
+              child: new Icon(Icons.add),
+              onTap: () {
+              //  setState(() {
+               //   amount++;
+                //});
+              },
+            ),
+          ],
+        ),
+      )
+ */

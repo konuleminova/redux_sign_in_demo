@@ -54,7 +54,7 @@ class GroceryCartTabView extends StatelessWidget {
           color: Colors.white,
         ),
         padding:
-            EdgeInsets.only(left: 20.0, right: 20.0, top: 40.0, bottom: 10.0),
+            EdgeInsets.only(left: 20.0, right: 20.0, top: 40.0, bottom: 8.0),
         child: Column(
           children: <Widget>[
             Row(
