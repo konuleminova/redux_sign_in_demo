@@ -55,7 +55,7 @@ class GroceryListItemTwoState extends State<GroceryListItemTwo> {
                     children: <Widget>[
                       new GroceryTitle(text: title),
                       new GrocerySubtitle(text: subtitle),
-                      new GrocerySubtitle(text: "1 AZN"),
+                      new GrocerySubtitle(text: product.price),
                     ],
                   ),
                 ),

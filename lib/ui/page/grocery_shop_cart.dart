@@ -32,7 +32,7 @@ class GroceryCartState extends State<GroceryShopCartPage> {
         onInit: (store) {
           shopItems = new List<ShopItem>();
           shopItems.add(new ShopItem(
-              title: "Alma", description: "Dummy Text", price: "1 kq 2 Azn"));
+              title: "Alma", description: "Dummy Text", price: " 2 Azn"));
           shopItems.add(new ShopItem(
               title: "Armud", description: "Dummy Text", price: "2 Azn"));
           shopItems.add(new ShopItem(
@@ -157,9 +157,9 @@ class GroceryCartState extends State<GroceryShopCartPage> {
         children: <Widget>[
           GroceryListItemTwo(new Product(
               image: "images/img2.jpg",
-              title: "Sample",
-              subtitle: "Subtitle",
-              price: "1 AZN",
+              title: shopItem.title,
+              subtitle: shopItem.description,
+              price: shopItem.price,
               isLiked: false,
               status: true,
               amount: 1)),
