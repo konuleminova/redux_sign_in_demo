@@ -1,6 +1,6 @@
 import 'package:redux_sign_in/data/model/register_model.dart';
 
-class OnRegisterAction {
+class RegisterAction {
   UserRegister userRegister;
-  OnRegisterAction({this.userRegister});
+  RegisterAction({this.userRegister});
 }

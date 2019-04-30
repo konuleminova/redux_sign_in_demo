@@ -8,11 +8,11 @@ import 'package:redux_sign_in/redux/action/shop_action.dart';
 import 'package:redux_sign_in/redux/reducer/shop_reducer.dart';
 
 AppState appStateReducer(AppState state, dynamic action) {
-  if (action is OnLoginAction) {
+  if (action is LoginAction) {
     return AppState(user_info: action.userLogin);
-  } else if (action is OnRegisterAction) {
+  } else if (action is RegisterAction) {
     return AppState(userRegister: action.userRegister);
-  } else if (action is OnFetchHomeAction) {
+  } else if (action is FetchProductsAction) {
     return AppState(home: action.home);
   } else {
     return AppState(shopItems: shopReducer(state.shopItems, action));

@@ -10,7 +10,7 @@ ThunkAction<AppState> getProductListThunkAction(int limit, int page) {
     Home response = await Networks.fetchProducts(limit, page);
     if (response != null) {
       store.state.home=response;
-      store.dispatch(OnFetchHomeAction(home: response));
+      store.dispatch(FetchProductsAction(home: response));
     }
   };
 }
