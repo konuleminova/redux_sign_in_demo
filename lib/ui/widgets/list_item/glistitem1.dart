@@ -87,8 +87,10 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                                 setState(() {
                                   if (product.isLiked) {
                                     product.isLiked = false;
+                                    widget.viewModel.onAddedProduct(product);
                                   } else {
                                     product.isLiked = true;
+                                    widget.viewModel.onAddedProduct(product);
                                   }
                                 });
                               },
