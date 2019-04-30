@@ -244,8 +244,8 @@ class HomePageState extends State<HomePage> {
                     title: productList[index].title,
                     amount: 1,
                     price: "1 AZN",
-                    isAdded: false,
-                    isLiked: false,
+                    isAdded: productList[index].status,
+                    isLiked: productList[index].liked,
                   ),
                 ));
           },
