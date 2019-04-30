@@ -23,8 +23,8 @@ class Product {
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
         id: json["ID"],
-        title: json["TITLE"],
-        image: json["IMAGE"],
+        title: json["TITLE"]??"Sample Title",
+        image: json["IMAGE"]??"images/img1.jpg",
         isLiked: json["LIKED"],
         url: json["URL"],
         status: false,

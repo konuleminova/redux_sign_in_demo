@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_sign_in/data/model/app_state_model.dart';
+import 'package:redux_sign_in/data/model/product_model.dart';
 import 'package:redux_sign_in/data/model/shop_model.dart';
 import 'package:redux_sign_in/data/viewmodel/shop_viewmodel.dart';
 import 'package:redux_sign_in/ui/widgets/oval_tap.dart';
@@ -155,9 +156,10 @@ class GroceryCartState extends State<GroceryShopCartPage> {
   Widget _builShopListItem(ShopItem shopItem) => new Stack(
         children: <Widget>[
           GroceryListItemTwo(
-            image: "images/img1.jpg",
-            subtitle: shopItem.price,
-            title: shopItem.title,
+              new Product(
+                  image: "images/img2.jpg",
+                  title: "Sample",
+                  subtitle: "1kq",price: "1 AZN")
           ),
           Positioned(
             top: 5,

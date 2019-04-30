@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:redux_sign_in/data/model/product_model.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/glistitem2.dart';
 import 'package:redux_sign_in/ui/widgets/gtile_title.dart';
@@ -7,17 +8,19 @@ class GroceryDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(title:new Text("Product List"),backgroundColor: Colors.lightGreen, actions: <Widget>[
-        new Container(
-          child: new Icon(
-            Icons.share,
-            color: Colors.white,
-          ),
-          margin: EdgeInsets.only(right: 16),
-        ),
-      ]),
-         body:_buildPageContent(context)
-    );
+        appBar: new AppBar(
+            title: new Text("Product List"),
+            backgroundColor: Colors.lightGreen,
+            actions: <Widget>[
+              new Container(
+                child: new Icon(
+                  Icons.share,
+                  color: Colors.white,
+                ),
+                margin: EdgeInsets.only(right: 16),
+              ),
+            ]),
+        body: _buildPageContent(context));
   }
 
   Widget _buildPageContent(context) {
@@ -29,7 +32,7 @@ class GroceryDetailsPage extends StatelessWidget {
               //_buildItemCard(context),
               _buildItemImage(image: 'images/img1.jpg'),
               new Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Expanded(
                       flex: 1,
@@ -104,18 +107,21 @@ class GroceryDetailsPage extends StatelessWidget {
               Container(
                   padding: EdgeInsets.only(left: 20.0, bottom: 10.0),
                   child: GroceryTitle(text: "Related Items")),
-              GroceryListItemTwo(
-                  title: "Broccoli",
+              GroceryListItemTwo(new Product(
+                  image: "images/img2.jpg",
+                  title: "Sample",
+                  subtitle: "Subtitle",price: "1 AZN")),
+              GroceryListItemTwo(new Product(
                   image: "images/img1.jpg",
-                  subtitle: "1 kg"),
-              GroceryListItemTwo(
-                  title: "Cabbage", image: "images/img3.jpg", subtitle: "1 kg"),
+                  title: "Sample",
+                  subtitle: "Subtitle",price: "2 AZN")),
             ],
           ),
         ),
       ],
     );
   }
+
   _addWidget(BuildContext context) => new GestureDetector(
         child: new Container(
           width: MediaQuery.of(context).size.width * 0.45,
@@ -151,7 +157,7 @@ class GroceryDetailsPage extends StatelessWidget {
 
   Container _buildItemImage({String image}) {
     return Container(
-      padding: EdgeInsets.only(left:16.0, top: 8.0, right: 16.0, bottom: 16.0),
+      padding: EdgeInsets.only(left: 16.0, top: 8.0, right: 16.0, bottom: 16.0),
       child: Material(
         elevation: 5.0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
@@ -159,17 +165,25 @@ class GroceryDetailsPage extends StatelessWidget {
           children: <Widget>[
             ClipRRect(
                 borderRadius: BorderRadius.circular(5.0),
-                child: new Center(child:Image.network(
-                  "https://pulapul.com/PulaPul/?action=GetImage&module=Campaigns&fileid=5&d=20190429",
-                  fit: BoxFit.cover,
-                ),)),
+                child: new Center(
+                  child: Image.network(
+                    "https://pulapul.com/PulaPul/?action=GetImage&module=Campaigns&fileid=5&d=20190429",
+                    fit: BoxFit.cover,
+                  ),
+                )),
             Positioned(
               bottom: 8.0,
               right: 8.0,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal:16.0,vertical: 8.0),
+                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 color: Colors.black.withOpacity(0.6),
-                child: new Container(child: new Icon(Icons.favorite_border,color: Colors.white,size: 30,),),
+                child: new Container(
+                  child: new Icon(
+                    Icons.favorite_border,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                ),
               ),
             ),
           ],
