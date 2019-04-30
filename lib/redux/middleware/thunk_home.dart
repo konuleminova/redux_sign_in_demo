@@ -9,8 +9,9 @@ ThunkAction<AppState> getProductListThunkAction(int limit, int page) {
   return (Store<AppState> store) async {
     Home response = await Networks.fetchProducts(limit, page);
     if (response != null) {
-      store.state.home=response;
-      store.dispatch(FetchProductsAction(home: response));
+      store.state.home = response;
+      store.dispatch(
+          FetchProductsAction(result: response.result, data: response.data));
     }
   };
 }

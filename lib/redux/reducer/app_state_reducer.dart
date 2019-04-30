@@ -5,20 +5,20 @@ import 'package:redux_sign_in/redux/action/home_action.dart';
 import 'package:redux_sign_in/redux/action/login_action.dart';
 import 'package:redux_sign_in/redux/action/register_action.dart';
 import 'package:redux_sign_in/redux/action/shop_action.dart';
+import 'package:redux_sign_in/redux/reducer/home_reducer.dart';
 import 'package:redux_sign_in/redux/reducer/login_reducer.dart';
 import 'package:redux_sign_in/redux/reducer/shop_reducer.dart';
 
 AppState appStateReducer(AppState state, dynamic action) {
   if (action is RegisterAction) {
     return AppState(userRegister: action.userRegister);
-  } else if (action is FetchProductsAction) {
-    return AppState(home: action.home);
   } else {
     return AppState(
         shopItems: shopReducer(
           state.shopItems,
           action,
         ),
-        user_info: loginReducer(state.user_info, action));
+        user_info: loginReducer(state.user_info, action),
+        home: homeReducer(state.home, action));
   }
 }
