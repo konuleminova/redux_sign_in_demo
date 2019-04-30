@@ -7,7 +7,7 @@ import 'package:redux_thunk/redux_thunk.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
-enum STATUS { SUCCESS, FAIL, LOADING,NETWORK_ERROR }
+enum STATUS { SUCCESS, FAIL, LOADING, NETWORK_ERROR }
 
 class UserLogin {
   String username;
@@ -19,6 +19,15 @@ class UserLogin {
 
   static fromJson(json) {
     return UserLogin(username: json['username'], password: json['password']);
+  }
+
+  UserLogin copyWith(
+      {String username, String password, bool isLogin, STATUS status}) {
+    return UserLogin(
+        username: username ?? this.username,
+        password: password ?? this.password,
+        isLogin: isLogin ?? this.isLogin,
+        status: status ?? this.status);
   }
 
   @override

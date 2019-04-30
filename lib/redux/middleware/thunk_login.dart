@@ -12,7 +12,7 @@ ThunkAction<AppState> loginThunkFunction(String username, String password) {
   return (Store<AppState> store) async {
     UserLogin userLogin = new UserLogin();
     userLogin.status = STATUS.LOADING;
-    store.dispatch(LoginAction(userLogin: userLogin));
+    store.dispatch(LoginAction(status: STATUS.LOADING));
     AppState responseBody = await Networks.loginUser(username, password);
     print(responseBody.toString()+"..");
     if (responseBody != null) {
@@ -23,14 +23,14 @@ ThunkAction<AppState> loginThunkFunction(String username, String password) {
         userLogin.status = STATUS.SUCCESS;
         SharedPrefUtil sharedPrefUtil = new SharedPrefUtil();
         sharedPrefUtil.setUserHasLogin(userLogin.isLogin);
-        store.dispatch(LoginAction(userLogin: userLogin));
+        store.dispatch(LoginAction(username: username,password: password,isLogin: true,status: STATUS.SUCCESS));
       } else {
         userLogin.status = STATUS.FAIL;
-        store.dispatch(LoginAction(userLogin: userLogin));
+        store.dispatch(LoginAction(status: STATUS.FAIL));
       }
     } else {
       userLogin.status = STATUS.NETWORK_ERROR;
-      store.dispatch(LoginAction(userLogin: userLogin));
+      store.dispatch(LoginAction(status: STATUS.NETWORK_ERROR));
     }
   };
 }
