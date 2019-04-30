@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:redux_sign_in/data/model/app_state.dart';
-import 'package:redux_sign_in/data/model/home.dart';
+import 'package:redux_sign_in/data/model/app_state_model.dart';
+import 'package:redux_sign_in/data/model/home_model.dart';
 import 'package:redux_sign_in/redux/middleware/thunk_login.dart';
 
 class Networks {

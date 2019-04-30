@@ -1,6 +1,6 @@
-import 'package:redux_sign_in/data/model/app_state.dart';
-import 'package:redux_sign_in/data/model/home.dart';
-import 'package:redux_sign_in/redux/action/OnFetchCampaignAction.dart';
+import 'package:redux_sign_in/data/model/app_state_model.dart';
+import 'package:redux_sign_in/data/model/home_model.dart';
+import 'package:redux_sign_in/redux/action/home_action.dart';
 import 'package:redux_sign_in/service/networks.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:redux/redux.dart';

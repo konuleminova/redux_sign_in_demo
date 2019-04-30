@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-import 'package:redux_sign_in/data/model/app_state.dart';
-import 'package:redux_sign_in/data/model/data.dart';
+import 'package:redux_sign_in/data/model/app_state_model.dart';
+import 'package:redux_sign_in/data/model/data_model.dart';
 import 'package:redux_sign_in/data/viewmodel/home_viewmodel.dart';
 import 'package:redux_sign_in/ui/page/old_test_cards.dart';
 import 'package:redux_sign_in/ui/page/grocery_list.dart';

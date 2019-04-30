@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-import 'package:redux_sign_in/data/model/app_state.dart';
-import 'package:redux_sign_in/data/model/shop_item.dart';
-import 'package:redux_sign_in/data/viewmodel/shopping_cart_viewmodel.dart';
+import 'package:redux_sign_in/data/model/app_state_model.dart';
+import 'package:redux_sign_in/data/model/shop_model.dart';
+import 'package:redux_sign_in/data/viewmodel/shop_viewmodel.dart';
 
 class ShoppingCartPage extends StatefulWidget {
   @override
@@ -232,7 +232,7 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
                               )),
                           new GestureDetector(
                             onTap: () {
-                              return viewModel.removeItem(shopItem);
+                              return viewModel.removeShopItem(shopItem);
                               print(viewModel.shopItems.toString());
                             },
                             child: new Container(

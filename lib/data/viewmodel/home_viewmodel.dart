@@ -1,5 +1,5 @@
 import 'package:redux/redux.dart';
-import 'package:redux_sign_in/data/model/app_state.dart';
+import 'package:redux_sign_in/data/model/app_state_model.dart';
 import 'package:redux_sign_in/redux/middleware/thunk_campaign.dart';
 
 class HomeViewModel {

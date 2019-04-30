@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:redux_sign_in/data/model/home.dart';
-import 'package:redux_sign_in/data/model/shop_item.dart';
-import 'package:redux_sign_in/data/model/user_login.dart';
-import 'package:redux_sign_in/data/model/user_register.dart';
+import 'package:redux_sign_in/data/model/home_model.dart';
+import 'package:redux_sign_in/data/model/shop_model.dart';
+import 'package:redux_sign_in/data/model/login_model.dart';
+import 'package:redux_sign_in/data/model/register_model.dart';
 import 'package:redux_sign_in/util/sharedpref_util.dart';
 
 class AppState {

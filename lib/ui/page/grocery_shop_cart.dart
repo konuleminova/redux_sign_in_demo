@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-import 'package:redux_sign_in/data/model/app_state.dart';
-import 'package:redux_sign_in/data/model/shop_item.dart';
-import 'package:redux_sign_in/data/viewmodel/shopping_cart_viewmodel.dart';
+import 'package:redux_sign_in/data/model/app_state_model.dart';
+import 'package:redux_sign_in/data/model/shop_model.dart';
+import 'package:redux_sign_in/data/viewmodel/shop_viewmodel.dart';
 import 'package:redux_sign_in/ui/widgets/oval_tap.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/glistitem2.dart';
 
@@ -176,7 +176,7 @@ class GroceryCartState extends State<GroceryShopCartPage> {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  return viewModel.removeItem(shopItem);
+                  return viewModel.removeShopItem(shopItem);
                   print(viewModel.shopItems.toString());
                 },
               ),

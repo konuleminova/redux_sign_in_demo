@@ -1,4 +1,4 @@
-import 'package:redux_sign_in/data/model/data.dart';
+import 'package:redux_sign_in/data/model/data_model.dart';
 
 class Home {
   String result;
