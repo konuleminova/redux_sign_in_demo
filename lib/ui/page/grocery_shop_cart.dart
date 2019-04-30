@@ -38,8 +38,8 @@ class GroceryCartState extends State<GroceryShopCartPage> {
             if (store.state.products[i].status) {
               shopItems.add(new ShopItem(
                   title: store.state.products[i].title,
-                  description: store.state.products[i].subtitle,
-                  price: "2 Azn",));
+                  subtitle: store.state.products[i].subtitle,
+                  price: "2 Azn",image:store.state.products[i].image, ));
             }
           }
           /*if(store.state.products[0].status){
@@ -162,9 +162,9 @@ class GroceryCartState extends State<GroceryShopCartPage> {
   Widget _builShopListItem(ShopItem shopItem) => new Stack(
         children: <Widget>[
           GroceryListItemTwo(new Product(
-              image: "images/img2.jpg",
+              image: shopItem.image,
               title: shopItem.title,
-              subtitle: shopItem.description,
+              subtitle: shopItem.subtitle,
               price: shopItem.price,
               isLiked: false,
               status: true,

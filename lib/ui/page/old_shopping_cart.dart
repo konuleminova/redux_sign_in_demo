@@ -29,19 +29,19 @@ class ShoppingCartPageState extends State<ShoppingCartPage> {
         onInit: (store) {
           shopItems = new List<ShopItem>();
           shopItems.add(new ShopItem(
-              title: "Alma", description: "Dummy Text", price: "1 kq 2 Azn"));
+              title: "Alma", subtitle: "Dummy Text", price: "1 kq 2 Azn"));
           shopItems.add(new ShopItem(
-              title: "Armud", description: "Dummy Text", price: "2 Azn"));
+              title: "Armud", subtitle: "Dummy Text", price: "2 Azn"));
           shopItems.add(new ShopItem(
-              title: "Nar", description: "Dummy Text", price: "2 Azn"));
+              title: "Nar", subtitle: "Dummy Text", price: "2 Azn"));
           shopItems.add(new ShopItem(
-              title: "Uzum", description: "Dummy Text", price: "2 Azn"));
+              title: "Uzum", subtitle: "Dummy Text", price: "2 Azn"));
           shopItems.add(new ShopItem(
-              title: "Armud", description: "Dummy Text", price: "2 Azn"));
+              title: "Armud", subtitle: "Dummy Text", price: "2 Azn"));
           shopItems.add(new ShopItem(
-              title: "Nar", description: "Dummy Text", price: "2 Azn"));
+              title: "Nar", subtitle: "Dummy Text", price: "2 Azn"));
           shopItems.add(new ShopItem(
-              title: "Uzum", description: "Dummy Text", price: "2 Azn"));
+              title: "Uzum", subtitle: "Dummy Text", price: "2 Azn"));
           store.state.shopItems = shopItems;
         },
         converter: (Store<AppState> store) =>

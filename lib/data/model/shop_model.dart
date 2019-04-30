@@ -1,8 +1,22 @@
 class ShopItem {
   int id;
   String title;
+  String subtitle;
   String price;
-  String description;
+  String image;
+  bool isLiked;
+  String url;
+  bool status;
+  int amount;
 
-  ShopItem({this.id, this.title, this.price, this.description});
+  ShopItem(
+      {this.id,
+      this.title,
+      this.subtitle,
+      this.price,
+      this.image,
+      this.isLiked,
+      this.url,
+      this.status,
+      this.amount});
 }

@@ -69,7 +69,8 @@ class HomePageState extends State<HomePage> {
             if (onData != null) {
               try {
                 productList.addAll(onData.products);
-                //onData.home.data=productList;
+                onData.home.data=productList;
+                productList.clear();
                // productList[0].status=true;
              /*   for(int i=0;i<productList.length;i++){
 
@@ -145,7 +146,7 @@ class HomePageState extends State<HomePage> {
                 GestureDetector(
                   child: _titleContainer(),
                 ),
-               // _buildCard()
+              //  _buildCard()
               ]));
         });
   }

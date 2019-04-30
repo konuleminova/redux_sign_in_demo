@@ -43,9 +43,9 @@ class GroceryListItemTwoState extends State<GroceryListItemTwo> {
                 leading: Container(
                     height: 80.0,
                     width: 100,
-                    child: Image.asset(
+                    child: Image.network(
                       image,
-                      height: 80.0,
+                      //height: 80.0,
                     )),
                 title: Container(
                   height: 110.0,
