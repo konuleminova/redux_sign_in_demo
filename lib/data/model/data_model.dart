@@ -4,7 +4,7 @@ class Product {
   String image;
   bool liked;
   String url;
-  bool status=false;
+  bool status;
   int amount;
 
   Product({this.id, this.title, this.image, this.liked, this.url,this.status,this.amount});
