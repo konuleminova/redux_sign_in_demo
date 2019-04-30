@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_sign_in/data/model/app_state_model.dart';
 import 'package:redux_sign_in/data/model/product_model.dart';
+import 'package:redux_sign_in/data/model/shop_model.dart';
 import 'package:redux_sign_in/data/viewmodel/home_viewmodel.dart';
 import 'package:redux_sign_in/ui/page/old_test_cards.dart';
 import 'package:redux_sign_in/ui/page/grocery_list.dart';
@@ -68,6 +69,8 @@ class HomePageState extends State<HomePage> {
             if (onData != null) {
               try {
                 productList.addAll(onData.home.data);
+                onData.shopItems.add(new ShopItem(
+                    title: "Konul", description: "Dummy Text", price: "2 Azn"));
               } catch (exceptoon) {}
               // print("//" + onData.campaign.data.toString() + "...");
             }
@@ -239,7 +242,7 @@ class HomePageState extends State<HomePage> {
                 height: 350,
                 child: InkWell(
                   child: GroceryListItemOne(
-                 product: productList[index],
+                    product: productList[index],
                   ),
                 ));
           },

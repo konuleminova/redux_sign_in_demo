@@ -45,7 +45,8 @@ class GroceryCartState extends State<GroceryShopCartPage> {
               title: "Nar", description: "Dummy Text", price: "2 Azn"));
           shopItems.add(new ShopItem(
               title: "Uzum", description: "Dummy Text", price: "2 Azn"));
-          store.state.shopItems = shopItems;
+          store.state.shopItems.addAll(shopItems);
+          this.shopItems=store.state.shopItems;
         },
         converter: (Store<AppState> store) =>
             ShoppingCartViewModel.create(store),
