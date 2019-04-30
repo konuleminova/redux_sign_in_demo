@@ -3,8 +3,9 @@ import 'package:redux_sign_in/data/model/product_model.dart';
 class Home {
   String result;
   List<Product> data;
+  Product product;
 
-  Home({this.result, this.data});
+  Home({this.result, this.data,this.product});
 
   factory Home.fromJson(Map<String, dynamic> json) {
     var list = json["DATA"] as List;
@@ -14,8 +15,8 @@ class Home {
     return Home(result: json["RESULT"], data: lists);
   }
 
-  Home copyWith({String result, List<Product> data}) {
-    return Home(result: result ?? this.result, data: data ?? this.data);
+  Home copyWith({String result, List<Product> data,Product product}) {
+    return Home(result: result ?? this.result, data: data ?? this.data,product: product??this.product);
   }
 
   @override

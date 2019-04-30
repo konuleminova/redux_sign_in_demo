@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:redux_sign_in/data/model/home_model.dart';
+import 'package:redux_sign_in/data/model/product_model.dart';
 import 'package:redux_sign_in/data/model/shop_model.dart';
 import 'package:redux_sign_in/data/model/login_model.dart';
 
 class AppState {
   UserLogin user_info;
   Home home;
+  List<Product> products;
   int code;
   List<ShopItem>shopItems;
 
   AppState.initialState()
       : user_info = UserLogin(),
-        home = Home(),shopItems=new List<ShopItem>();
+        home = Home(),shopItems=new List<ShopItem>(),products=new List<Product>();
 
-  AppState({this.user_info, this.code, this.home,this.shopItems});
+  AppState({this.user_info, this.code, this.home,this.shopItems,this.products});
 
   static AppState fromJson(dynamic json) {
     if (json != null) {

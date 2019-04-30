@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:redux_sign_in/data/model/product_model.dart';
+import 'package:redux_sign_in/data/viewmodel/home_viewmodel.dart';
 import 'package:redux_sign_in/ui/widgets/gtile_title.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 
 class GroceryListItemOne extends StatefulWidget {
   Product product;
+  HomeViewModel viewModel;
 
-  GroceryListItemOne({this.product});
+  GroceryListItemOne({this.product, this.viewModel});
 
   @override
   State<StatefulWidget> createState() {
@@ -132,7 +134,8 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
         ),
         onTap: () {
           setState(() {
-         product.status = true;
+            product.status = true;
+            widget.viewModel.onAddedProduct(product);
           });
         },
       );
@@ -155,14 +158,14 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                 setState(() {
                   product.amount--;
                   if (product.amount < 1) {
-                   product.status = false;
+                    product.status = false;
                     product.amount = 1;
                   }
                 });
               },
             ),
             new Text(
-             product.amount.toString(),
+              product.amount.toString(),
               style: new TextStyle(fontSize: 18),
             ),
             new GestureDetector(

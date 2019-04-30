@@ -68,9 +68,20 @@ class HomePageState extends State<HomePage> {
           store.onChange.listen((onData) {
             if (onData != null) {
               try {
-                productList.addAll(onData.home.data);
-                onData.shopItems.add(new ShopItem(
-                    title: "Konul", description: "Dummy Text", price: "2 Azn"));
+                productList.addAll(onData.products);
+                //onData.home.data=productList;
+               // productList[0].status=true;
+             /*   for(int i=0;i<productList.length;i++){
+
+                  if (productList[i].status) {
+                    onData.shopItems.add(new ShopItem(
+                        title: productList[i].title,
+                        description: "Dummy Text",
+                        price: "2 Azn"));
+                  }
+                }
+                */
+
               } catch (exceptoon) {}
               // print("//" + onData.campaign.data.toString() + "...");
             }
@@ -134,7 +145,7 @@ class HomePageState extends State<HomePage> {
                 GestureDetector(
                   child: _titleContainer(),
                 ),
-                _buildCard()
+               // _buildCard()
               ]));
         });
   }
@@ -242,7 +253,7 @@ class HomePageState extends State<HomePage> {
                 height: 350,
                 child: InkWell(
                   child: GroceryListItemOne(
-                    product: productList[index],
+                    product: productList[index],viewModel: viewModel,
                   ),
                 ));
           },

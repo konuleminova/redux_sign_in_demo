@@ -11,5 +11,5 @@ AppState appStateReducer(AppState state, dynamic action) {
           action,
         ),
         user_info: loginReducer(state.user_info, action),
-        home: homeReducer(state.home, action));
+        products: homeReducer(state.products,action));
   }

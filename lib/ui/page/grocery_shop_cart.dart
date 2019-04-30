@@ -31,22 +31,27 @@ class GroceryCartState extends State<GroceryShopCartPage> {
         onInitialBuild: (ShoppingCartViewModel viewModel) {},
         onInit: (store) {
           shopItems = new List<ShopItem>();
-          shopItems.add(new ShopItem(
-              title: "Alma", description: "Dummy Text", price: " 2 Azn"));
-          shopItems.add(new ShopItem(
-              title: "Armud", description: "Dummy Text", price: "2 Azn"));
-          shopItems.add(new ShopItem(
-              title: "Nar", description: "Dummy Text", price: "2 Azn"));
-          shopItems.add(new ShopItem(
-              title: "Uzum", description: "Dummy Text", price: "2 Azn"));
-          shopItems.add(new ShopItem(
-              title: "Armud", description: "Dummy Text", price: "2 Azn"));
-          shopItems.add(new ShopItem(
-              title: "Nar", description: "Dummy Text", price: "2 Azn"));
-          shopItems.add(new ShopItem(
-              title: "Uzum", description: "Dummy Text", price: "2 Azn"));
-          store.state.shopItems.addAll(shopItems);
-          this.shopItems=store.state.shopItems;
+         // store.state.products[0].status=true;
+         // shopItems.clear();
+          for(int i=0;i<store.state.products.length;i++){
+
+            if (store.state.products[i].status) {
+              shopItems.add(new ShopItem(
+                  title: store.state.products[i].title,
+                  description: store.state.products[i].subtitle,
+                  price: "2 Azn",));
+            }
+          }
+          /*if(store.state.products[0].status){
+            shopItems.add(new ShopItem(
+                title: store.state.products[0].title,
+                description: "Dummy Text",
+                price: "2 Azn"));
+          }
+          */
+          store.state.shopItems.clear();
+         store.state.shopItems.addAll(shopItems);
+          //this.shopItems=store.state.shopItems;
         },
         converter: (Store<AppState> store) =>
             ShoppingCartViewModel.create(store),

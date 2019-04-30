@@ -102,6 +102,7 @@ class GroceryListPageState extends State<GroceryListPage> {
                                 child: InkWell(
                                   child: GroceryListItemOne(
                                     product: productList[index],
+                                    viewModel: viewModel,
                                   ),
                                 ));
                           }, childCount: productList.length)))
