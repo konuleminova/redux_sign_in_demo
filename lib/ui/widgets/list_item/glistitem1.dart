@@ -1,20 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:redux_sign_in/data/model/product_model.dart';
 import 'package:redux_sign_in/ui/widgets/gtile_title.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 
 class GroceryListItemOne extends StatefulWidget {
-  final String image, title, price, subtitle;
-  final int amount;
-  bool isAdded, isLiked;
+  Product product;
 
-  GroceryListItemOne(
-      {this.image,
-      this.title,
-      this.price,
-      this.subtitle,
-      this.amount,
-      this.isAdded,
-      this.isLiked});
+  GroceryListItemOne({this.product});
 
   @override
   State<StatefulWidget> createState() {
@@ -24,16 +16,11 @@ class GroceryListItemOne extends StatefulWidget {
 }
 
 class GroceryListItemOneState extends State<GroceryListItemOne> {
-  int amount = 1;
-  String image, title, price, subtitle;
+  Product product;
 
   @override
   Widget build(BuildContext context) {
-    //amount = widget.amount;
-    image = widget.image;
-    title = widget.title;
-    price = widget.price;
-    subtitle = widget.subtitle;
+    product = widget.product;
 
     // TODO: implement build
     return Container(
@@ -61,7 +48,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                   GestureDetector(
                     child: Container(
                         child: Image.network(
-                          image,
+                          product.image,
                         ),
                         height: 150,
                         padding: EdgeInsets.only(
@@ -70,7 +57,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                       Navigator.pushNamed(context, "/product_detail");
                     },
                   ),
-                  new GroceryTitle(text: title),
+                  new GroceryTitle(text: product.title),
                   new Container(
                       height: 20,
                       child: new Row(
@@ -88,7 +75,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                           new Container(
                             child: IconButton(
                               icon: Icon(
-                                widget.isLiked
+                                product.isLiked
                                     ? Icons.favorite
                                     : Icons.favorite_border,
                                 color: Colors.grey[400],
@@ -96,10 +83,10 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                               ),
                               onPressed: () {
                                 setState(() {
-                                  if (widget.isLiked) {
-                                    widget.isLiked = false;
+                                  if (product.isLiked) {
+                                    product.isLiked = false;
                                   } else {
-                                    widget.isLiked = true;
+                                    product.isLiked = true;
                                   }
                                 });
                               },
@@ -111,8 +98,8 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      new GrocerySubtitle(text: subtitle),
-                      new GrocerySubtitle(text: price),
+                      new GrocerySubtitle(text: product.subtitle),
+                      new GrocerySubtitle(text: product.price),
                     ],
                   ),
                   _updateContainer(),
@@ -126,7 +113,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
   }
 
   _updateContainer() {
-    if (!widget.isAdded) {
+    if (!product.status) {
       return new GestureDetector(
         child: new Container(
           child: new Container(
@@ -145,7 +132,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
         ),
         onTap: () {
           setState(() {
-            widget.isAdded = true;
+         product.status = true;
           });
         },
       );
@@ -166,23 +153,23 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
               child: new Icon(Icons.remove),
               onTap: () {
                 setState(() {
-                  amount--;
-                  if (amount < 1) {
-                    widget.isAdded = false;
-                    amount = 1;
+                  product.amount--;
+                  if (product.amount < 1) {
+                   product.status = false;
+                    product.amount = 1;
                   }
                 });
               },
             ),
             new Text(
-              amount.toString(),
+             product.amount.toString(),
               style: new TextStyle(fontSize: 18),
             ),
             new GestureDetector(
               child: new Icon(Icons.add),
               onTap: () {
                 setState(() {
-                  amount++;
+                  product.amount++;
                 });
               },
             ),

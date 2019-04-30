@@ -239,13 +239,7 @@ class HomePageState extends State<HomePage> {
                 height: 350,
                 child: InkWell(
                   child: GroceryListItemOne(
-                    image: productList[index].image,
-                    subtitle: productList[index].amount.toString(),
-                    title: productList[index].title,
-                    amount: 1,
-                    price: "1 AZN",
-                    isAdded: productList[index].status,
-                    isLiked: productList[index].liked,
+                 product: productList[index],
                   ),
                 ));
           },

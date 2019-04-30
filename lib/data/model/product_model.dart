@@ -1,26 +1,40 @@
 class Product {
   int id;
   String title;
+  String subtitle;
+  String price;
   String image;
-  bool liked;
+  bool isLiked;
   String url;
   bool status;
   int amount;
 
-  Product({this.id, this.title, this.image, this.liked, this.url,this.status,this.amount});
+  Product(
+      {this.id,
+      this.title,
+      this.subtitle,
+      this.price,
+      this.image,
+      this.isLiked,
+      this.url,
+      this.status,
+      this.amount});
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
         id: json["ID"],
         title: json["TITLE"],
         image: json["IMAGE"],
-        liked: json["LIKED"],
-        url: json["URL"],status: false,amount: 1);
+        isLiked: json["LIKED"],
+        url: json["URL"],
+        status: false,
+        amount: 1,
+        subtitle: "1kq",
+        price: "1 AZN");
   }
 
   @override
   String toString() {
-    return 'Data{id: $id, title: $title, image: $image, liked: $liked, url: $url}';
+    return 'Data{id: $id, title: $title, image: $image, liked: $isLiked, url: $url}';
   }
-
 }

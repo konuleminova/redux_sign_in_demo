@@ -101,14 +101,7 @@ class GroceryListPageState extends State<GroceryListPage> {
                                 height: 350,
                                 child: InkWell(
                                   child: GroceryListItemOne(
-                                    image: productList[index].image,
-                                    subtitle:
-                                        productList[index].amount.toString(),
-                                    title: productList[index].title,
-                                    amount: 1,
-                                    price: "1 AZN",
-                                    isAdded: false,
-                                    isLiked: true,
+                                    product: productList[index],
                                   ),
                                 ));
                           }, childCount: productList.length)))
@@ -117,6 +110,7 @@ class GroceryListPageState extends State<GroceryListPage> {
               ));
         });
   }
+
   void choiceAction(String choice) {
     if (choice == Constants.FirstItem) {
       print('A-Z');
