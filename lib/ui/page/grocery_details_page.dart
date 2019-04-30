@@ -110,11 +110,11 @@ class GroceryDetailsPage extends StatelessWidget {
               GroceryListItemTwo(new Product(
                   image: "images/img2.jpg",
                   title: "Sample",
-                  subtitle: "Subtitle",price: "1 AZN")),
+                  subtitle: "Subtitle",price: "1 AZN",isLiked: false,status: false,amount: 1)),
               GroceryListItemTwo(new Product(
                   image: "images/img1.jpg",
                   title: "Sample",
-                  subtitle: "Subtitle",price: "2 AZN")),
+                  subtitle: "Subtitle",price: "2 AZN",isLiked: false,status: false,amount: 1)),
             ],
           ),
         ),

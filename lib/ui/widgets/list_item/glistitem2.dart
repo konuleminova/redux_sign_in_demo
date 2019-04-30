@@ -20,6 +20,8 @@ class GroceryListItemTwoState extends State<GroceryListItemTwo> {
   String image, title, subtitle;
   bool isAdded, isLiked;
 
+  int amount;
+
   @override
   Widget build(BuildContext context) {
     product = widget.product;
@@ -27,7 +29,8 @@ class GroceryListItemTwoState extends State<GroceryListItemTwo> {
     title = product.title;
     isLiked = product.isLiked;
     isAdded = product.status;
-    subtitle=product.subtitle;
+    subtitle = product.subtitle;
+    amount = widget.product.amount;
 
     // TODO: implement build
     return Card(
@@ -59,35 +62,94 @@ class GroceryListItemTwoState extends State<GroceryListItemTwo> {
                 trailing: Column(
                   children: <Widget>[
                     IconButton(
-                      icon: Icon(Icons.favorite_border),
-                      onPressed: () {},
-                    ),
-                    new GestureDetector(
-                      child: new Container(
-                        child: new Container(
-                          padding: EdgeInsets.all(8),
-                          color: Colors.lightGreen,
-                          child: new SizedBox(
-                            child: new Icon(
-                              Icons.shopping_cart,
-                              color: Colors.white,
-                            ),
-                            height: 20,
-                            width: 20,
-                          ),
-                        ),
+                      icon: Icon(
+                        product.isLiked
+                            ? Icons.favorite
+                            : Icons.favorite_border,
                       ),
-                      onTap: () {
-                        // setState(() {
-                        /// widget.isAdded = true;
-                        // });
+                      onPressed: () {
+                        setState(() {
+                          if (product.isLiked) {
+                            product.isLiked = false;
+                          } else {
+                            product.isLiked = true;
+                          }
+                        });
                       },
-                    )
+                    ),
+                    _updateContainer(isAdded)
                   ],
                 ),
               ),
               color: Colors.white,
             )));
+  }
+
+  _updateContainer(bool isAdded) {
+    if (!isAdded) {
+      return new GestureDetector(
+        child: new Container(
+          child: new Container(
+            padding: EdgeInsets.all(8),
+            color: Colors.lightGreen,
+            child: new SizedBox(
+              child: new Icon(
+                Icons.shopping_cart,
+                color: Colors.white,
+              ),
+              height: 20,
+              width: 20,
+            ),
+          ),
+        ),
+        onTap: () {
+          setState(() {
+            widget.product.status = true;
+          });
+        },
+      );
+    } else {
+      return new Container(
+        width: 80,
+        padding: EdgeInsets.all(2),
+        margin: EdgeInsets.only(top: 8, bottom: 8),
+        decoration: new BoxDecoration(
+            borderRadius: BorderRadius.circular(2),
+            color: Colors.white,
+            border: Border.all(color: Colors.grey)),
+        alignment: Alignment.topRight,
+        child: new Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            new GestureDetector(
+              child: new Icon(Icons.remove),
+              onTap: () {
+                setState(() {
+                  widget.product.amount--;
+                  if (widget.product.amount < 1) {
+                   widget. product.status = false;
+                    widget.product.amount = 1;
+                  }
+                });
+              },
+            ),
+            new Text(
+              widget.product.amount.toString(),
+              style: new TextStyle(fontSize: 18),
+            ),
+            new GestureDetector(
+              child: new Icon(Icons.add),
+              onTap: () {
+                setState(() {
+                  widget.product.amount++;
+                });
+              },
+            ),
+          ],
+        ),
+      );
+    }
   }
 }
 // is is Added case UI view

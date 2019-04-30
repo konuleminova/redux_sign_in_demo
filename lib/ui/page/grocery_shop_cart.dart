@@ -155,12 +155,14 @@ class GroceryCartState extends State<GroceryShopCartPage> {
 
   Widget _builShopListItem(ShopItem shopItem) => new Stack(
         children: <Widget>[
-          GroceryListItemTwo(
-              new Product(
-                  image: "images/img2.jpg",
-                  title: "Sample",
-                  subtitle: "1kq",price: "1 AZN")
-          ),
+          GroceryListItemTwo(new Product(
+              image: "images/img2.jpg",
+              title: "Sample",
+              subtitle: "Subtitle",
+              price: "1 AZN",
+              isLiked: false,
+              status: true,
+              amount: 1)),
           Positioned(
             top: 5,
             right: 0,
