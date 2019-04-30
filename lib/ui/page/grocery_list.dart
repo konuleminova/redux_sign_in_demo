@@ -3,7 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_sign_in/constants/Constants.dart';
 import 'package:redux_sign_in/data/model/app_state_model.dart';
-import 'package:redux_sign_in/data/model/data_model.dart';
+import 'package:redux_sign_in/data/model/product_model.dart';
 import 'package:redux_sign_in/data/viewmodel/home_viewmodel.dart';
 import 'package:redux_sign_in/ui/widgets/dropdown.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/glistitem1.dart';
