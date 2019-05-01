@@ -30,11 +30,29 @@ class PaymentPageState extends State<PaymentPage> {
         children: <Widget>[
           _getAccountTypeSection(),
           _getDropDown(),
-         new Container(margin: EdgeInsets.only(left: 16,bottom: 8),child:  Text(
-           'Unvani daxil edin',
-           style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16.0),
-         ),),
-          _getGoogleMap()
+          new Container(
+            margin: EdgeInsets.only(left: 16, bottom: 8),
+            child: Text(
+              'Unvani daxil edin',
+              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16.0),
+            ),
+          ),
+          _getGoogleMap(),
+          new Container(
+            child: RaisedButton(
+              color: Colors.green,
+              onPressed: () {
+
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Text("NEXT", style: TextStyle(color: Colors.white)),
+                ],
+              ),
+            ),
+            margin: EdgeInsets.only(left: 16, right: 16,bottom: 8),
+          )
         ],
       ),
     );
@@ -235,7 +253,10 @@ class PaymentPageState extends State<PaymentPage> {
                                   fontWeight: FontWeight.w700,
                                   fontSize: 15.0,
                                   color: Colors.redAccent))
-                          : new SizedBox(height: 0,width: 0,),
+                          : new SizedBox(
+                              height: 0,
+                              width: 0,
+                            ),
                       alignment: AlignmentDirectional.topStart,
                     ),
                   ],
