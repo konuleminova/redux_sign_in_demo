@@ -30,7 +30,7 @@ class GroceryDetailsPage extends StatelessWidget {
           child: ListView(
             children: <Widget>[
               //_buildItemCard(context),
-              _buildItemImage(image: 'images/img1.jpg'),
+              _buildItemImage(image: 'https://pulapul.com/PulaPul/?action=GetImage&module=Campaigns&fileid=2&d=20190501'),
               new Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
@@ -108,11 +108,11 @@ class GroceryDetailsPage extends StatelessWidget {
                   padding: EdgeInsets.only(left: 20.0, bottom: 10.0),
                   child: GroceryTitle(text: "Related Items")),
               GroceryListItemTwo(new Product(
-                  image: "images/img2.jpg",
+                  image: "https://pulapul.com/PulaPul/?action=GetImage&module=Campaigns&fileid=5&d=20190429",
                   title: "Sample",
                   subtitle: "Subtitle",price: "1 AZN",isLiked: false,status: false,amount: 1)),
               GroceryListItemTwo(new Product(
-                  image: "images/img1.jpg",
+                  image: "https://pulapul.com/PulaPul/?action=GetImage&module=Campaigns&fileid=2&d=20190501",
                   title: "Sample",
                   subtitle: "Subtitle",price: "2 AZN",isLiked: false,status: false,amount: 1)),
             ],
