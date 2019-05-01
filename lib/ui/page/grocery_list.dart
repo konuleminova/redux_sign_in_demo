@@ -56,7 +56,7 @@ class GroceryListPageState extends State<GroceryListPage> {
           store.onChange.listen((onData) {
             if (onData != null) {
               try {
-                productList.addAll(onData.home.data);
+                productList.addAll(onData.products);
               } catch (exceptoon) {}
               // print("//" + onData.campaign.data.toString() + "...");
             }
