@@ -184,6 +184,7 @@ class SearchWidget extends SearchDelegate<String> {
     );
   }
 
+
   @override
   ThemeData appBarTheme(BuildContext context) {
     final ThemeData theme = Theme.of(context);
