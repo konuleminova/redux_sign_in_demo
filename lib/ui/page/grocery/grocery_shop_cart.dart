@@ -146,7 +146,7 @@ class GroceryCartState extends State<GroceryShopCartPage> {
             RaisedButton(
               color: Colors.green,
               onPressed: () {
-                Navigator.pushNamed(context, "/payment1");
+                Navigator.pushNamed(context, "/checkout");
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

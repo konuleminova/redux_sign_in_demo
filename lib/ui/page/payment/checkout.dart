@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:redux_sign_in/constants/Constants.dart';
 import 'package:redux_sign_in/ui/page/map.dart';
 
-class PaymentPage extends StatefulWidget {
+ class CheckoutsPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return new PaymentPageState();
+    return new CheckoutsPageState();
   }
 }
 
-class PaymentPageState extends State<PaymentPage> {
+class CheckoutsPageState extends State<CheckoutsPage> {
   var selectedIndex = 0;
   String choice = "11:30-13:00";
 
@@ -20,7 +20,7 @@ class PaymentPageState extends State<PaymentPage> {
     return new Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightGreen,
-        title: Text("Payment"),
+        title: Text("Checkout"),
         centerTitle: true,
         actions: <Widget>[
           IconButton(icon: Icon(Icons.more_vert), onPressed: () {})
@@ -88,11 +88,11 @@ class PaymentPageState extends State<PaymentPage> {
                         stops: [0.0, 0.5],
                         colors: selectedIndex == 0
                             ? [
-                                // Colors are easy thanks to Flutter's
-                                // Colors class.
-                                Color(0xFF47E497),
-                                Color(0xFF47E0D6)
-                              ]
+                          // Colors are easy thanks to Flutter's
+                          // Colors class.
+                          Color(0xFF47E497),
+                          Color(0xFF47E0D6)
+                        ]
                             : [Colors.white, Colors.white],
                       ),
                     ),
@@ -148,11 +148,11 @@ class PaymentPageState extends State<PaymentPage> {
                         stops: [0.0, 0.5],
                         colors: selectedIndex == 1
                             ? [
-                                // Colors are easy thanks to Flutter's
-                                // Colors class.
-                                Color(0xFF47E497),
-                                Color(0xFF47E0D6)
-                              ]
+                          // Colors are easy thanks to Flutter's
+                          // Colors class.
+                          Color(0xFF47E497),
+                          Color(0xFF47E0D6)
+                        ]
                             : [Colors.white, Colors.white],
                       ),
                     ),
@@ -197,75 +197,75 @@ class PaymentPageState extends State<PaymentPage> {
   }
 
   _getDropDown() => Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-              child: Text(
-                'Catdirilma vaxti',
-                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16.0),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 1.0),
-              child: Container(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        Padding(
+          padding:
+          const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+          child: Text(
+            'Catdirilma vaxti',
+            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16.0),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 1.0),
+          child: Container(
 //              height: 42.0,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    new Card(
-                      margin: EdgeInsets.only(left: 8),
-                      child: PopupMenuButton<String>(
-                          onSelected: choiceAction,
-                          itemBuilder: (BuildContext context) {
-                            return Constants.deliveryTimes.map((String choice) {
-                              return PopupMenuItem<String>(
-                                value: choice,
-                                child: Text(choice),
-                              );
-                            }).toList();
-                          },
-                          child: new Container(
-                              height: 50,
-                              padding: EdgeInsets.only(top: 1, bottom: 1),
-                              width: MediaQuery.of(context).size.width * 0.5,
-                              child: ListTile(
-                                title: Text(
-                                  choice,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 14.0),
-                                ),
-                                trailing: new Icon(
-                                  Icons.arrow_drop_down,
-                                  size: 20,
-                                ),
-                              ))),
-                    ),
-                    new Container(
-                      padding: EdgeInsets.all(12),
-                      child: (choice == "Tecili catdirilma")
-                          ? Text('Təcili sifarişlərə 2 AZN əlavə tətbiq olunur',
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                new Card(
+                  margin: EdgeInsets.only(left: 8),
+                  child: PopupMenuButton<String>(
+                      onSelected: choiceAction,
+                      itemBuilder: (BuildContext context) {
+                        return Constants.deliveryTimes.map((String choice) {
+                          return PopupMenuItem<String>(
+                            value: choice,
+                            child: Text(choice),
+                          );
+                        }).toList();
+                      },
+                      child: new Container(
+                          height: 50,
+                          padding: EdgeInsets.only(top: 1, bottom: 1),
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          child: ListTile(
+                            title: Text(
+                              choice,
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
-                                  fontSize: 15.0,
-                                  color: Colors.redAccent))
-                          : new SizedBox(
-                              height: 0,
-                              width: 0,
+                                  fontSize: 14.0),
                             ),
-                      alignment: AlignmentDirectional.topStart,
-                    ),
-                  ],
+                            trailing: new Icon(
+                              Icons.arrow_drop_down,
+                              size: 20,
+                            ),
+                          ))),
                 ),
-              ),
+                new Container(
+                  padding: EdgeInsets.all(12),
+                  child: (choice == "Tecili catdirilma")
+                      ? Text('Təcili sifarişlərə 2 AZN əlavə tətbiq olunur',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 15.0,
+                          color: Colors.redAccent))
+                      : new SizedBox(
+                    height: 0,
+                    width: 0,
+                  ),
+                  alignment: AlignmentDirectional.topStart,
+                ),
+              ],
             ),
-          ],
+          ),
         ),
-      );
+      ],
+    ),
+  );
 
   void choiceAction(String choice) {
     setState(() {

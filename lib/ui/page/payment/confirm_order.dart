@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ConfirmOrderPage extends StatelessWidget{
-  final String address = "Chabahil, Kathmandu";
+  final String address = "Hesen bey zerdabi, Baki";
   final String phone="9818522122";
   final double total = 50;
   final double delivery = 10;
@@ -111,7 +111,9 @@ class ConfirmOrderPage extends StatelessWidget{
             width: double.infinity,
             child: RaisedButton(
               color:  Colors.green,
-              onPressed: ()=> {},
+              onPressed: ()=> {
+                Navigator.pushNamed(context, "/card_storage")
+              },
               child: Text("Confirm Order", style: TextStyle(
                   color: Colors.white
               ),),
