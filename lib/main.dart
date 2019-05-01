@@ -11,6 +11,7 @@ import 'package:redux_sign_in/ui/page/index.dart';
 import 'package:redux_sign_in/ui/page/login.dart';
 import 'package:redux_sign_in/ui/page/old_product_detail.dart';
 import 'package:redux_sign_in/ui/page/grocery_list.dart';
+import 'package:redux_sign_in/ui/page/payment1/screens/challenge_one_screen.dart';
 import 'package:redux_sign_in/ui/page/register.dart';
 import 'package:redux_sign_in/data/model/app_state_model.dart';
 import 'package:redux/redux.dart';
@@ -43,7 +44,8 @@ class MyApp extends StatelessWidget {
           "/checkout": (BuildContext context) => CheckoutPage(),
           "/product_detail": (BuildContext context) => GroceryDetailsPage(),
           "/drop_down": (BuildContext context) => DropdownMenu(),
-          "/wish_list": (BuildContext context) =>   GroceryWishlistTabView()
+          "/wish_list": (BuildContext context) =>   GroceryWishlistTabView(),
+          "/payment1":(context)=>PaymentOneScreen()
 
          // "/product_list": (BuildContext context) => ProductListPage()
         },
