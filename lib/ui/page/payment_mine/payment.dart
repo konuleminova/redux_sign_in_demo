@@ -11,6 +11,7 @@ class PaymentPage extends StatefulWidget {
 
 class PaymentPageState extends State<PaymentPage> {
   var selectedIndex = 0;
+  String choice = "11:30-13:00";
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class PaymentPageState extends State<PaymentPage> {
         title: Text("Payment"),
         centerTitle: true,
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.search), onPressed: () {})
+          IconButton(icon: Icon(Icons.more_vert), onPressed: () {})
         ],
       ),
       body: new ListView(
@@ -176,7 +177,7 @@ class PaymentPageState extends State<PaymentPage> {
               padding:
                   const EdgeInsets.symmetric(vertical: 30.0, horizontal: 16.0),
               child: Text(
-                'Catdirilma vaxtini secin',
+                'Catdirilma vaxti',
                 style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20.0),
               ),
             ),
@@ -193,7 +194,7 @@ class PaymentPageState extends State<PaymentPage> {
                       child: PopupMenuButton<String>(
                           onSelected: choiceAction,
                           itemBuilder: (BuildContext context) {
-                            return Constants.choices.map((String choice) {
+                            return Constants.deliveryTimes.map((String choice) {
                               return PopupMenuItem<String>(
                                 value: choice,
                                 child: Text(choice),
@@ -206,7 +207,7 @@ class PaymentPageState extends State<PaymentPage> {
                               width: MediaQuery.of(context).size.width * 0.5,
                               child: ListTile(
                                 title: Text(
-                                  "11:30_19:30",
+                                  choice,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 14.0),
@@ -219,7 +220,13 @@ class PaymentPageState extends State<PaymentPage> {
                     ),
                     new Container(
                       margin: EdgeInsets.all(16),
-                      child: new Text("Ctadirlma elave 2 AZN",style: TextStyle(color: Colors.redAccent),),
+                      child: (choice == "Tecili catdirilma")
+                          ? Text('Təcili sifarişlərə 2 AZN əlavə tətbiq olunur',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 15.0,
+                                  color: Colors.redAccent))
+                          : Text(""),
                       alignment: AlignmentDirectional.topStart,
                     ),
                   ],
@@ -230,7 +237,10 @@ class PaymentPageState extends State<PaymentPage> {
         ),
       );
 
-  static void choiceAction(String choice) {
+  void choiceAction(String choice) {
+    setState(() {
+      this.choice = choice;
+    });
     if (choice == Constants.FirstItem) {
       print('I First Item');
     } else if (choice == Constants.SecondItem) {
