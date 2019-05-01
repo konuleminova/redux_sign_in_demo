@@ -91,7 +91,7 @@ class _PaymentOneScreenState extends State<PaymentOneScreen> with SingleTickerPr
                     {
                       return ClipRRect(
                         borderRadius: BorderRadius.circular(4.0),
-                        child: Image.network("https://yt3.ggpht.com/a-/AAuE7mBEASlXHkdg16NWBRho8SPa2uXuHalrzP4rjQ=s900-mo-c-c0xffffffff-rj-k-no",width: 60.0,height: 60.0,),
+                        child: Image.asset("images/img1.jpg",width: 60.0,height: 60.0,),
                       );
                     }
                     return Expanded(
@@ -101,7 +101,7 @@ class _PaymentOneScreenState extends State<PaymentOneScreen> with SingleTickerPr
                             setState(() {
                               _currentIndex=index;
                             });
-                          }, child: Container(padding: EdgeInsets.all(12.0),decoration: BoxDecoration(border: index==_currentIndex?Border(bottom: BorderSide(color: Colors.red,width: 3.0)):Border()),child: Text(options[index],style: TextStyle(inherit: true,fontSize: 16.0,fontWeight:index==_currentIndex? FontWeight.bold:FontWeight.w300),)),
+                          }, child: Container(padding: EdgeInsets.all(12.0),decoration: BoxDecoration(border: index==_currentIndex?Border(bottom: BorderSide(color: Colors.green,width: 3.0)):Border()),child: Text(options[index],style: TextStyle(inherit: true,fontSize: 16.0,fontWeight:index==_currentIndex? FontWeight.bold:FontWeight.w300),)),
                           ),
                         );}
 
