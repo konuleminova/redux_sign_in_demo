@@ -9,5 +9,5 @@ Reducer<List<ShopItem>> shopReducer =
 
 List<ShopItem> removeShopItemReducer(
     List<ShopItem> shopItems, RemoveShopItemAction action) {
-  return List.unmodifiable(List.from(shopItems)..remove(action.removeShopItem));
+  return List.from(shopItems)..remove(action.removeShopItem);
 }
