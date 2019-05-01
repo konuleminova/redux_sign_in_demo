@@ -23,7 +23,7 @@ class DropdownMenu extends StatelessWidget {
       ),
     );
   }
-  void choiceAction(String choice) {
+static   void choiceAction(String choice) {
     if (choice == Constants.FirstItem) {
       print('I First Item');
     } else if (choice == Constants.SecondItem) {
