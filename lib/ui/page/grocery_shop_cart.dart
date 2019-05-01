@@ -145,7 +145,9 @@ class GroceryCartState extends State<GroceryShopCartPage> {
             ),
             RaisedButton(
               color: Colors.green,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, "/checkout");
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
