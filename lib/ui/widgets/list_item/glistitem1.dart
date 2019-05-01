@@ -28,7 +28,8 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
     return Container(
       decoration: BoxDecoration(
           color: Colors.white,
-          border: Border.all(color: Colors.grey[300]),
+          border: Border.all(
+              color: product.status ? Colors.lightGreen : Colors.grey[300]),
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(5.0), topRight: Radius.circular(5.0)),
           boxShadow: [
