@@ -34,7 +34,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
             )),
         new Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 0.5,
+          height: MediaQuery.of(context).size.height * 0.3,
           alignment: AlignmentDirectional.topCenter,
           child: GoogleMap(
               markers: _markers,

@@ -42,7 +42,7 @@ class PaymentPageState extends State<PaymentPage> {
             child: RaisedButton(
               color: Colors.green,
               onPressed: () {
-
+                Navigator.pushNamed(context, "/confirm_order");
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -51,7 +51,7 @@ class PaymentPageState extends State<PaymentPage> {
                 ],
               ),
             ),
-            margin: EdgeInsets.only(left: 16, right: 16,bottom: 8),
+            margin: EdgeInsets.only(left: 16, right: 16, bottom: 8),
           )
         ],
       ),

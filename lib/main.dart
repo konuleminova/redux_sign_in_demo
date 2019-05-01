@@ -13,6 +13,7 @@ import 'package:redux_sign_in/ui/page/login.dart';
 import 'package:redux_sign_in/ui/page/old_product_detail.dart';
 import 'package:redux_sign_in/ui/page/grocery_list.dart';
 import 'package:redux_sign_in/ui/page/payment1/screens/challenge_one_screen.dart';
+import 'package:redux_sign_in/ui/page/payment_mine/confirm_order.dart';
 import 'package:redux_sign_in/ui/page/payment_mine/payment.dart';
 import 'package:redux_sign_in/ui/page/register.dart';
 import 'package:redux_sign_in/data/model/app_state_model.dart';
@@ -48,9 +49,10 @@ class MyApp extends StatelessWidget {
           "/product_detail": (BuildContext context) => GroceryDetailsPage(),
           "/drop_down": (BuildContext context) => DropdownMenu(),
           "/wish_list": (BuildContext context) =>   GroceryWishlistTabView(),
-          "/payment1":(context)=>PaymentPage()
+          "/payment1":(context)=>PaymentPage(),
+          "/confirm_order":(context)=>ConfirmOrderPage()
 
-         // "/product_list": (BuildContext context) => ProductListPage()
+          // "/product_list": (BuildContext context) => ProductListPage()
         },
       ),
     );
