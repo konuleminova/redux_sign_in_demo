@@ -175,10 +175,10 @@ class PaymentPageState extends State<PaymentPage> {
           children: <Widget>[
             Padding(
               padding:
-                  const EdgeInsets.symmetric(vertical: 30.0, horizontal: 16.0),
+                  const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
               child: Text(
                 'Catdirilma vaxti',
-                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20.0),
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.0),
               ),
             ),
             Padding(
