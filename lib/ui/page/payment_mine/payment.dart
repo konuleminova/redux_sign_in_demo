@@ -26,7 +26,7 @@ class PaymentPageState extends State<PaymentPage> {
         ],
       ),
       body: new ListView(
-        children: <Widget>[_getAccountTypeSection(), _getDropDown()],
+        children: <Widget>[_getAccountTypeSection(), _getDropDown(),_getGoogleMap()],
       ),
     );
   }
@@ -249,4 +249,6 @@ class PaymentPageState extends State<PaymentPage> {
       print('I Thired Item');
     }
   }
+
+  _getGoogleMap() =>Container();
 }
