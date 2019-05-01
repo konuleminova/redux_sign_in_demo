@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
           "/product_detail": (BuildContext context) => GroceryDetailsPage(),
           "/drop_down": (BuildContext context) => DropdownMenu(),
           "/wish_list": (BuildContext context) =>   GroceryWishlistTabView(),
-          "/payment1":(context)=>GoogleMapPage()
+          "/payment1":(context)=>PaymentPage()
 
          // "/product_list": (BuildContext context) => ProductListPage()
         },

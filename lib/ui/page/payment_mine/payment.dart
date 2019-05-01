@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redux_sign_in/constants/Constants.dart';
+import 'package:redux_sign_in/ui/page/map.dart';
 
 class PaymentPage extends StatefulWidget {
   @override
@@ -29,6 +30,10 @@ class PaymentPageState extends State<PaymentPage> {
         children: <Widget>[
           _getAccountTypeSection(),
           _getDropDown(),
+         new Container(margin: EdgeInsets.only(left: 16,bottom: 8),child:  Text(
+           'Unvani daxil edin',
+           style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16.0),
+         ),),
           _getGoogleMap()
         ],
       ),
@@ -182,7 +187,7 @@ class PaymentPageState extends State<PaymentPage> {
                   const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
               child: Text(
                 'Catdirilma vaxti',
-                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.0),
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16.0),
               ),
             ),
             Padding(
@@ -223,14 +228,14 @@ class PaymentPageState extends State<PaymentPage> {
                               ))),
                     ),
                     new Container(
-                      margin: EdgeInsets.all(16),
+                      padding: EdgeInsets.all(12),
                       child: (choice == "Tecili catdirilma")
                           ? Text('Təcili sifarişlərə 2 AZN əlavə tətbiq olunur',
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 15.0,
                                   color: Colors.redAccent))
-                          : Text(""),
+                          : new SizedBox(height: 0,width: 0,),
                       alignment: AlignmentDirectional.topStart,
                     ),
                   ],
@@ -254,5 +259,5 @@ class PaymentPageState extends State<PaymentPage> {
     }
   }
 
-  _getGoogleMap() => Container();
+  _getGoogleMap() => GoogleMapPage();
 }
