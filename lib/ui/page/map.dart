@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geocoder/geocoder.dart';
 
-class GoogleMapPage extends StatefulWidget {
+class MapPage1 extends StatefulWidget {
   @override
-  _GoogleMapPageState createState() => _GoogleMapPageState();
+  _MapPage1State createState() => _MapPage1State();
 }
 
-class _GoogleMapPageState extends State<GoogleMapPage> {
+class _MapPage1State extends State<MapPage1> {
   static const LatLng _bakuLatLng = const LatLng(40.409264, 49.867092);
   GoogleMapController _mapController;
   final Set<Marker> _markers = {};

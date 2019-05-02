@@ -280,5 +280,5 @@ class CheckoutsPageState extends State<CheckoutsPage> {
     }
   }
 
-  _getGoogleMap() => GoogleMapPage();
+  _getGoogleMap() => MapPage1();
 }
