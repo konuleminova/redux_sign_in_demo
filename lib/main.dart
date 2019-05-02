@@ -8,7 +8,7 @@ import 'package:redux_sign_in/ui/page/grocery/grocery_shop_cart.dart';
 import 'package:redux_sign_in/ui/page/grocery/gwishlisttab.dart';
 import 'package:redux_sign_in/ui/page/payment/checkout.dart';
 import 'package:redux_sign_in/ui/page/payment/confirm_order.dart';
-import 'package:redux_sign_in/ui/page/map.dart';
+import 'package:redux_sign_in/ui/page/flutter_map.dart';
 import 'package:redux_sign_in/ui/page/test/old_test_cards.dart';
 import 'package:redux_sign_in/ui/page/home.dart';
 import 'package:redux_sign_in/ui/page/index.dart';

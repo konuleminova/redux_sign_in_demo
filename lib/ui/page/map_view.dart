@@ -13,12 +13,8 @@ import 'package:map_view/polyline.dart';
 /// - iOS Maps API
 const API_KEY = "AIzaSyC5b4ygf2aPikhkstqxTgme891YjorFKg4";
 
-class MapDemoPage extends StatefulWidget {
-  @override
-  _MapDemoPageState createState() => new _MapDemoPageState();
-}
-
-class _MapDemoPageState extends State<MapDemoPage> {
+class MapDemoPage {
+  //
   MapView mapView = new MapView();
   CameraPosition cameraPosition;
   var compositeSubscription = new CompositeSubscription();
@@ -53,7 +49,6 @@ class _MapDemoPageState extends State<MapDemoPage> {
         width: 15.0,
         color: Colors.blue),
   ];
-
 
   //Drawing
   List<Polygon> _polygons = <Polygon>[
@@ -366,40 +361,8 @@ class _MapDemoPageState extends State<MapDemoPage> {
         fillColor: Colors.blue),
   ];
 
-  @override
-  initState() {
-    super.initState();
-    MapView.setApiKey(API_KEY);
-    cameraPosition =
-    new CameraPosition(new Location(40.409264, 49.867092), 3.0);
-    staticMapUri = staticMapProvider.getStaticUri(
-        new Location(40.409264, 49.867092), 14,
-        width: 900, height: 400, mapType: StaticMapViewType.roadmap);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return new Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        new Container(
-          height: 250.0,
-          child: new Stack(
-            children: <Widget>[
-              new InkWell(
-                child: new Center(
-                  child: new Image.network(staticMapUri.toString()),
-                ),
-                onTap: showMap,
-              )
-            ],
-          ),
-        )
-      ],
-    );
-  }
-
   showMap() {
+    MapView.setApiKey(API_KEY);
     mapView.show(
         new MapOptions(
           mapViewType: MapViewType.normal,
@@ -407,9 +370,9 @@ class _MapDemoPageState extends State<MapDemoPage> {
           showMyLocationButton: true,
           showCompassButton: true,
           initialCameraPosition:
-          new CameraPosition(new Location(40.3716222, 49.8555191), 11.0),
+              new CameraPosition(new Location(40.3716222, 49.8555191), 11.0),
           hideToolbar: false,
-          title: "Kendden Shehere",
+          title: "Mehsul zonalari",
         ),
         toolbarActions: [new ToolbarAction("Close", 1)]);
     StreamSubscription sub = mapView.onMapReady.listen((_) {
@@ -442,8 +405,8 @@ class _MapDemoPageState extends State<MapDemoPage> {
     sub = mapView.onMapTapped
         .listen((location) => print("Touched location $location"));
     compositeSubscription.add(sub);
-    sub = mapView.onCameraChanged.listen((cameraPosition) =>
-        this.setState(() => this.cameraPosition = cameraPosition));
+    //  sub = mapView.onCameraChanged.listen((cameraPosition) =>
+    //  this.setState(() => this.cameraPosition = cameraPosition));
     compositeSubscription.add(sub);
     sub = mapView.onAnnotationDragStart.listen((markerMap) {
       var marker = markerMap.keys.first;
@@ -456,14 +419,14 @@ class _MapDemoPageState extends State<MapDemoPage> {
     sub = mapView.onAnnotationDrag.listen((markerMap) {
       var marker = markerMap.keys.first;
       var location = markerMap[marker];
-      print("Annotation ${marker.id} moved to ${location.latitude} , ${location
-          .longitude}");
+      print(
+          "Annotation ${marker.id} moved to ${location.latitude} , ${location.longitude}");
     });
     compositeSubscription.add(sub);
     sub = mapView.onToolbarAction.listen((id) {
       print("Toolbar button id = $id");
       if (id == 1) {
-        _handleDismiss();
+      mapView.dismiss();
       }
     });
     compositeSubscription.add(sub);
@@ -473,24 +436,24 @@ class _MapDemoPageState extends State<MapDemoPage> {
     compositeSubscription.add(sub);
     compositeSubscription.add(sub);
     compositeSubscription.add(sub);
-  }
 
-  _handleDismiss() async {
-    double zoomLevel = await mapView.zoomLevel;
-    Location centerLocation = await mapView.centerLocation;
-    List<Marker> visibleAnnotations = await mapView.visibleAnnotations;
-    List<Polyline> visibleLines = await mapView.visiblePolyLines;
-    List<Polygon> visiblePolygons = await mapView.visiblePolygons;
-    print("Zoom Level: $zoomLevel");
-    print("Center: $centerLocation");
-    print("Visible Annotation Count: ${visibleAnnotations.length}");
-    print("Visible Polylines Count: ${visibleLines.length}");
-    print("Visible Polygons Count: ${visiblePolygons.length}");
-    var uri = await staticMapProvider.getImageUriFromMap(mapView,
-        width: 900, height: 400);
-    setState(() => staticMapUri = uri);
-    mapView.dismiss();
-    compositeSubscription.cancel();
+    _handleDismiss() async {
+      double zoomLevel = await mapView.zoomLevel;
+      Location centerLocation = await mapView.centerLocation;
+      List<Marker> visibleAnnotations = await mapView.visibleAnnotations;
+      List<Polyline> visibleLines = await mapView.visiblePolyLines;
+      List<Polygon> visiblePolygons = await mapView.visiblePolygons;
+      print("Zoom Level: $zoomLevel");
+      print("Center: $centerLocation");
+      print("Visible Annotation Count: ${visibleAnnotations.length}");
+      print("Visible Polylines Count: ${visibleLines.length}");
+      print("Visible Polygons Count: ${visiblePolygons.length}");
+      var uri = await staticMapProvider.getImageUriFromMap(mapView,
+          width: 900, height: 400);
+      //setState(() => staticMapUri = uri);
+      mapView.dismiss();
+      compositeSubscription.cancel();
+    }
   }
 }
 
@@ -524,3 +487,26 @@ class CompositeSubscription {
     return this._subscriptions.toList();
   }
 }
+/*
+  showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                    return AlertDialog(
+                            title: new Text("Map tapped!"),
+                            content: new Text("You tapped in " +
+                                location.latitude.toString() +
+                                ", " +
+                                location.longitude.toString()),
+                            actions: <Widget>[
+                              // usually buttons at the bottom of the dialog
+                              new FlatButton(
+                                child: new Text("Close"),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        });
+
+ */
