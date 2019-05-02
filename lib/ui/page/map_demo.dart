@@ -13,16 +13,15 @@ import 'package:map_view/polyline.dart';
 /// - iOS Maps API
 const API_KEY = "AIzaSyC5b4ygf2aPikhkstqxTgme891YjorFKg4";
 
-class GoogleMapPage extends StatefulWidget {
+class MapDemoPage extends StatefulWidget {
   @override
-  _GoogleMapPageState createState() => new _GoogleMapPageState();
+  _MapDemoPageState createState() => new _MapDemoPageState();
 }
 
-class _GoogleMapPageState extends State<GoogleMapPage> {
+class _MapDemoPageState extends State<MapDemoPage> {
   MapView mapView = new MapView();
   CameraPosition cameraPosition;
-
-  // var compositeSubscription = new CompositeSubscription();
+  var compositeSubscription = new CompositeSubscription();
   var staticMapProvider = new StaticMapProvider(API_KEY);
   Uri staticMapUri;
 
@@ -42,6 +41,19 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
       ),
     ),
   ];
+
+  //Line
+  List<Polyline> _lines = <Polyline>[
+    new Polyline(
+        "11",
+        <Location>[
+          new Location(45.52309483308097, -122.67339684069155),
+          new Location(45.52298442915803, -122.66339991241693),
+        ],
+        width: 15.0,
+        color: Colors.blue),
+  ];
+
 
   //Drawing
   List<Polygon> _polygons = <Polygon>[
@@ -359,7 +371,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
     super.initState();
     MapView.setApiKey(API_KEY);
     cameraPosition =
-        new CameraPosition(new Location(40.409264, 49.867092), 2.0);
+    new CameraPosition(new Location(40.409264, 49.867092), 3.0);
     staticMapUri = staticMapProvider.getStaticUri(
         new Location(40.409264, 49.867092), 14,
         width: 900, height: 400, mapType: StaticMapViewType.roadmap);
@@ -395,16 +407,14 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
           showMyLocationButton: true,
           showCompassButton: true,
           initialCameraPosition:
-              new CameraPosition(new Location(40.3716222, 49.8555191), 11.0),
+          new CameraPosition(new Location(40.3716222, 49.8555191), 11.0),
           hideToolbar: false,
           title: "Kendden Shehere",
         ),
         toolbarActions: [new ToolbarAction("Close", 1)]);
     StreamSubscription sub = mapView.onMapReady.listen((_) {
       mapView.setMarkers(_markers);
-      //mapView.setPolylines(_lines);
-      // mapView.setPolygons(_polygons);
-      // mapView.setPolygons(_polygons2);
+      mapView.setPolylines(_lines);
       for (int i = 0; i < _polygons2.length; i++) {
         mapView.addPolygon(_polygons2[i]);
       }
@@ -415,7 +425,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
         mapView.addPolygon(_polygons3[i]);
       }
     });
-    /* compositeSubscription.add(sub);
+    compositeSubscription.add(sub);
     sub = mapView.onLocationUpdated.listen((location) {
       print("Location updated $location");
     });
@@ -446,8 +456,8 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
     sub = mapView.onAnnotationDrag.listen((markerMap) {
       var marker = markerMap.keys.first;
       var location = markerMap[marker];
-      print(
-          "Annotation ${marker.id} moved to ${location.latitude} , ${location.longitude}");
+      print("Annotation ${marker.id} moved to ${location.latitude} , ${location
+          .longitude}");
     });
     compositeSubscription.add(sub);
     sub = mapView.onToolbarAction.listen((id) {
@@ -460,10 +470,12 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
     sub = mapView.onInfoWindowTapped.listen((marker) {
       print("Info Window Tapped for ${marker.title}");
     });
-    */
+    compositeSubscription.add(sub);
+    compositeSubscription.add(sub);
+    compositeSubscription.add(sub);
   }
 
-/* _handleDismiss() async {
+  _handleDismiss() async {
     double zoomLevel = await mapView.zoomLevel;
     Location centerLocation = await mapView.centerLocation;
     List<Marker> visibleAnnotations = await mapView.visibleAnnotations;
@@ -478,12 +490,11 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
         width: 900, height: 400);
     setState(() => staticMapUri = uri);
     mapView.dismiss();
-    //compositeSubscription.cancel();
+    compositeSubscription.cancel();
   }
-  */
 }
 
-/*class CompositeSubscription {
+class CompositeSubscription {
   Set<StreamSubscription> _subscriptions = new Set();
 
   void cancel() {
@@ -513,4 +524,3 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
     return this._subscriptions.toList();
   }
 }
-*/
