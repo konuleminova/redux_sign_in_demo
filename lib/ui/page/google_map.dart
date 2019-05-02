@@ -14,16 +14,15 @@ import 'package:map_view/polyline.dart';
 const API_KEY = "AIzaSyC5b4ygf2aPikhkstqxTgme891YjorFKg4";
 
 class GoogleMapPage extends StatefulWidget {
-
   @override
   _GoogleMapPageState createState() => new _GoogleMapPageState();
 }
 
 class _GoogleMapPageState extends State<GoogleMapPage> {
-
   MapView mapView = new MapView();
   CameraPosition cameraPosition;
-  var compositeSubscription = new CompositeSubscription();
+
+  // var compositeSubscription = new CompositeSubscription();
   var staticMapProvider = new StaticMapProvider(API_KEY);
   Uri staticMapUri;
 
@@ -44,27 +43,11 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
     ),
   ];
 
-  //Line
-  List<Polyline> _lines = <Polyline>[
-    new Polyline(
-        "11",
-        <Location>[
-          new Location(45.52309483308097, -122.67339684069155),
-          new Location(45.52298442915803, -122.66339991241693),
-        ],
-        width: 15.0,
-        color: Colors.blue),
-  ];
-
   //Drawing
   List<Polygon> _polygons = <Polygon>[
     new Polygon(
         "111",
         <Location>[
-          new Location(45.5231233, -122.6733130),
-          new Location(45.5231195, -122.6706147),
-          new Location(45.5231120, -122.6677823),
-          new Location(45.5230894, -122.6670957),
           new Location(45.5230518, -122.6660979),
           new Location(45.5230518, -122.6655185),
           new Location(45.5232849, -122.6652074),
@@ -74,11 +57,68 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
           new Location(45.5231195, -122.6638663),
           new Location(45.5231947, -122.6638770),
           new Location(45.5233074, -122.6639950),
+          new Location(45.5232698, -122.6643813),
+          new Location(45.5235480, -122.6644349),
+          new Location(45.5244349, -122.6645529),
+          new Location(45.5245928, -122.6639628),
+          new Location(45.5248108, -122.6632762),
+          new Location(45.5249385, -122.6626861),
         ],
         jointType: FigureJointType.bevel,
         strokeWidth: 5.0,
         strokeColor: Colors.red,
         fillColor: Color.fromARGB(75, 255, 0, 0)),
+  ];
+  List<Polygon> _polygons2 = <Polygon>[
+    new Polygon(
+        "112",
+        <Location>[
+          new Location(45.5274866, -122.6649177),
+          new Location(45.5271258, -122.6651645),
+          new Location(45.5269605, -122.6653790),
+          new Location(45.5267049, -122.6654434),
+          new Location(45.5262990, -122.6657224),
+          new Location(45.5261337, -122.6666021),
+          new Location(45.5256677, -122.6678467),
+          new Location(45.5245777, -122.6687801),
+          new Location(45.5236908, -122.6690161),
+          new Location(45.5233751, -122.6692307),
+          new Location(45.5233826, -122.6714945),
+          new Location(45.5233337, -122.6729804),
+          new Location(45.5233225, -122.6732969),
+          new Location(45.5232398, -122.6733506),
+          new Location(45.5231233, -122.6733130),
+        ],
+        jointType: FigureJointType.bevel,
+        strokeWidth: 5.0,
+        strokeColor: Colors.green,
+        fillColor: Colors.lightGreenAccent),
+  ];
+  List<Polygon> _polygons3 = <Polygon>[
+    new Polygon(
+        "114",
+        <Location>[
+          new Location(45.5249385, -122.6626861),
+          new Location(45.5249310, -122.6622677),
+          new Location(45.5250212, -122.6621926),
+          new Location(45.5251490, -122.6621711),
+          new Location(45.5251791, -122.6623106),
+          new Location(45.5252242, -122.6625681),
+          new Location(45.5251791, -122.6632118),
+          new Location(45.5249010, -122.6640165),
+          new Location(45.5247431, -122.6646388),
+          new Location(45.5249611, -122.6646602),
+          new Location(45.5253820, -122.6642525),
+          new Location(45.5260811, -122.6642525),
+          new Location(45.5260435, -122.6637161),
+          new Location(45.5261713, -122.6635551),
+          new Location(45.5263066, -122.6634800),
+          new Location(45.5265471, -122.6635873),
+        ],
+        jointType: FigureJointType.bevel,
+        strokeWidth: 5.0,
+        strokeColor: Colors.blue,
+        fillColor: Colors.blue),
   ];
 
   @override
@@ -96,49 +136,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
         appBar: new AppBar(
           title: new Text('Map View Example'),
         ),
-        body: new Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            new Container(
-              height: 250.0,
-              child: new Stack(
-                children: <Widget>[
-                  new Center(
-                      child: new Container(
-                        child: new Text(
-                          "You are supposed to see a map here.\n\nAPI Key is not valid.\n\n"
-                              "To view maps in the example application set the "
-                              "API_KEY variable in example/lib/main.dart. "
-                              "\n\nIf you have set an API Key but you still see this text "
-                              "make sure you have enabled all of the correct APIs "
-                              "in the Google API Console. See README for more detail.",
-                          textAlign: TextAlign.center,
-                        ),
-                        padding: const EdgeInsets.all(20.0),
-                      )),
-                  new InkWell(
-                    child: new Center(
-                      child: new Image.network(staticMapUri.toString()),
-                    ),
-                    onTap: showMap,
-                  )
-                ],
-              ),
-            ),
-            new Container(
-              padding: new EdgeInsets.only(top: 10.0),
-              child: new Text(
-                "Tap the map to interact",
-                style: new TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-            new Container(
-              padding: new EdgeInsets.only(top: 25.0),
-              child: new Text(
-                  "Camera Position: \n\nLat: ${cameraPosition.center.latitude}\n\nLng:${cameraPosition.center.longitude}\n\nZoom: ${cameraPosition.zoom}"),
-            ),
-          ],
-        ));
+        body: showMap());
   }
 
   showMap() {
@@ -154,11 +152,21 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
             title: "Recently Visited"),
         toolbarActions: [new ToolbarAction("Close", 1)]);
     StreamSubscription sub = mapView.onMapReady.listen((_) {
-      //mapView.setMarkers(_markers);
+      mapView.setMarkers(_markers);
       //mapView.setPolylines(_lines);
-      mapView.setPolygons(_polygons);
+     // mapView.setPolygons(_polygons);
+     // mapView.setPolygons(_polygons2);
+     for(int i=0;i<_polygons2.length;i++){
+        mapView.addPolygon(_polygons2[i]);
+     }
+      for(int i=0;i<_polygons.length;i++){
+        mapView.addPolygon(_polygons[i]);
+      }
+      for(int i=0;i<_polygons3.length;i++){
+        mapView.addPolygon(_polygons3[i]);
+      }
     });
-    compositeSubscription.add(sub);
+    /* compositeSubscription.add(sub);
     sub = mapView.onLocationUpdated.listen((location) {
       print("Location updated $location");
     });
@@ -203,9 +211,10 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
     sub = mapView.onInfoWindowTapped.listen((marker) {
       print("Info Window Tapped for ${marker.title}");
     });
+    */
   }
 
-  _handleDismiss() async {
+/* _handleDismiss() async {
     double zoomLevel = await mapView.zoomLevel;
     Location centerLocation = await mapView.centerLocation;
     List<Marker> visibleAnnotations = await mapView.visibleAnnotations;
@@ -220,11 +229,12 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
         width: 900, height: 400);
     setState(() => staticMapUri = uri);
     mapView.dismiss();
-    compositeSubscription.cancel();
+    //compositeSubscription.cancel();
   }
+  */
 }
 
-class CompositeSubscription {
+/*class CompositeSubscription {
   Set<StreamSubscription> _subscriptions = new Set();
 
   void cancel() {
@@ -254,3 +264,4 @@ class CompositeSubscription {
     return this._subscriptions.toList();
   }
 }
+*/
