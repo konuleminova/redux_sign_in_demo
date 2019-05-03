@@ -3,7 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux_sign_in/data/model/login_model.dart';
 import 'package:redux_sign_in/data/viewmodel/login_viewmodel.dart';
 import 'package:redux_sign_in/ui/page/grocery/grocery_details_page.dart';
-import 'package:redux_sign_in/ui/page/grocery/grocery_shop_cart.dart';
+import 'package:redux_sign_in/ui/page/grocery/grocery_shop_list.dart';
 import 'package:redux_sign_in/ui/page/grocery/gwishlisttab.dart';
 import 'package:redux_sign_in/ui/page/payment/checkout.dart';
 import 'package:redux_sign_in/ui/page/payment/confirm_order.dart';
