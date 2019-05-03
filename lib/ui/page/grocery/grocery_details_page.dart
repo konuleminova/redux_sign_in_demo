@@ -13,6 +13,8 @@ class GroceryDetailsPage extends StatefulWidget {
 }
 
 class GroceryDetailsState extends State<GroceryDetailsPage> {
+  bool isAdded=false, isLiked=false;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -196,13 +198,26 @@ class GroceryDetailsState extends State<GroceryDetailsPage> {
               bottom: 8.0,
               right: 8.0,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
                 color: Colors.black.withOpacity(0.6),
-                child: new Container(
-                  child: new Icon(
-                    Icons.favorite_border,
-                    color: Colors.white,
-                    size: 30,
+                child: Container(
+                  child: IconButton(
+                    icon: Icon(
+                      isLiked ? Icons.favorite : Icons.favorite_border,
+                      color: Colors.grey[400],
+                      size: 30,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        if (isLiked) {
+                          isLiked = false;
+                          // widget.viewModel.onAddedProduct(product);
+                        } else {
+                          isLiked = true;
+                          //   widget.viewModel.onAddedProduct(product);
+                        }
+                      });
+                    },
                   ),
                 ),
               ),
