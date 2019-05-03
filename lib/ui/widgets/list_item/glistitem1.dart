@@ -107,7 +107,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                       new GrocerySubtitle(text: product.price),
                     ],
                   ),
-                  _updateContainer(),
+                  addedWidget(),
                 ],
               ),
             ),
@@ -117,7 +117,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
     );
   }
 
-  _updateContainer() {
+  addedWidget() {
     if (!product.status) {
       return new GestureDetector(
         child: new Container(

@@ -15,6 +15,8 @@ class GroceryDetailsPage extends StatefulWidget {
 class GroceryDetailsState extends State<GroceryDetailsPage> {
   bool isAdded=false, isLiked=false;
 
+  var amount=1;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -71,7 +73,7 @@ class GroceryDetailsState extends State<GroceryDetailsPage> {
                       )),
                   Expanded(
                     child: new Container(
-                      child: _addWidget(context),
+                      child:addedWidget(),
                       margin: EdgeInsets.only(right: 20, top: 30, left: 20),
                     ),
                     flex: 1,
@@ -145,7 +147,9 @@ class GroceryDetailsState extends State<GroceryDetailsPage> {
     );
   }
 
-  _addWidget(BuildContext context) => new GestureDetector(
+  addedWidget() {
+    if (!isAdded) {
+      return new GestureDetector(
         child: new Container(
           width: MediaQuery.of(context).size.width * 0.45,
           child: new Container(
@@ -174,10 +178,54 @@ class GroceryDetailsState extends State<GroceryDetailsPage> {
           alignment: Alignment.centerRight,
         ),
         onTap: () {
-          //setState(() {});
+          setState(() {
+            isAdded = true;
+            // widget.viewModel.onAddedProduct(product);
+          });
         },
       );
-
+    } else {
+      return new Container(
+        padding: EdgeInsets.all(2),
+        margin: EdgeInsets.only(top: 8, bottom: 8),
+        decoration: new BoxDecoration(
+            borderRadius: BorderRadius.circular(2),
+            color: Colors.white,
+            border: Border.all(color: Colors.grey)),
+        alignment: Alignment.topRight,
+        child: new Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            new GestureDetector(
+              child: new Icon(Icons.remove),
+              onTap: () {
+                setState(() {
+                  amount--;
+                  if (amount < 1) {
+                    isAdded = false;
+                    amount = 1;
+                  }
+                });
+              },
+            ),
+            new Text(
+              amount.toString(),
+              style: new TextStyle(fontSize: 18),
+            ),
+            new GestureDetector(
+              child: new Icon(Icons.add),
+              onTap: () {
+                setState(() {
+                  amount++;
+                });
+              },
+            ),
+          ],
+        ),
+      );
+    }
+  }
   Container _buildItemImage({String image}) {
     return Container(
       padding: EdgeInsets.only(left: 16.0, top: 8.0, right: 16.0, bottom: 16.0),
