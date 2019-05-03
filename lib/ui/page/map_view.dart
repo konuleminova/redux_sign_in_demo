@@ -372,7 +372,7 @@ class MapDemoPage {
           initialCameraPosition:
               new CameraPosition(new Location(40.3716222, 49.8555191), 11.0),
           hideToolbar: false,
-          title: "Mehsul zonalari",
+          title: "Zonalar",
         ),
         toolbarActions: [new ToolbarAction("Close", 1)]);
     StreamSubscription sub = mapView.onMapReady.listen((_) {

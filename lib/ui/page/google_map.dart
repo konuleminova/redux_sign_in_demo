@@ -381,7 +381,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
             title: "Kendden Shehere",),
         toolbarActions: [new ToolbarAction("Close", 1)]);
     StreamSubscription sub = mapView.onMapReady.listen((_) {
-      mapView.setMarkers(_markers);
+      //mapView.setMarkers(_markers);
       //mapView.setPolylines(_lines);
       // mapView.setPolygons(_polygons);
       // mapView.setPolygons(_polygons2);
