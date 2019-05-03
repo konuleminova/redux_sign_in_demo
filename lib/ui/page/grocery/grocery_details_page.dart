@@ -4,9 +4,18 @@ import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/glistitem2.dart';
 import 'package:redux_sign_in/ui/widgets/gtile_title.dart';
 
-class GroceryDetailsPage extends StatelessWidget {
+class GroceryDetailsPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return new GroceryDetailsState();
+  }
+}
+
+class GroceryDetailsState extends State<GroceryDetailsPage> {
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
     return Scaffold(
         appBar: new AppBar(
             title: new Text("Product List"),
@@ -30,7 +39,9 @@ class GroceryDetailsPage extends StatelessWidget {
           child: ListView(
             children: <Widget>[
               //_buildItemCard(context),
-              _buildItemImage(image: 'https://pulapul.com/PulaPul/?action=GetImage&module=Campaigns&fileid=2&d=20190501'),
+              _buildItemImage(
+                  image:
+                      'https://pulapul.com/PulaPul/?action=GetImage&module=Campaigns&fileid=2&d=20190501'),
               new Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
@@ -108,13 +119,23 @@ class GroceryDetailsPage extends StatelessWidget {
                   padding: EdgeInsets.only(left: 20.0, bottom: 10.0),
                   child: GroceryTitle(text: "Related Items")),
               GroceryListItemTwo(new Product(
-                  image: "https://pulapul.com/PulaPul/?action=GetImage&module=Campaigns&fileid=5&d=20190429",
+                  image:
+                      "https://pulapul.com/PulaPul/?action=GetImage&module=Campaigns&fileid=5&d=20190429",
                   title: "Sample",
-                  subtitle: "Subtitle",price: "1 AZN",isLiked: false,status: false,amount: 1)),
+                  subtitle: "Subtitle",
+                  price: "1 AZN",
+                  isLiked: false,
+                  status: false,
+                  amount: 1)),
               GroceryListItemTwo(new Product(
-                  image: "https://pulapul.com/PulaPul/?action=GetImage&module=Campaigns&fileid=2&d=20190501",
+                  image:
+                      "https://pulapul.com/PulaPul/?action=GetImage&module=Campaigns&fileid=2&d=20190501",
                   title: "Sample",
-                  subtitle: "Subtitle",price: "2 AZN",isLiked: false,status: false,amount: 1)),
+                  subtitle: "Subtitle",
+                  price: "2 AZN",
+                  isLiked: false,
+                  status: false,
+                  amount: 1)),
             ],
           ),
         ),
