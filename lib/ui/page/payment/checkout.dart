@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redux_sign_in/constants/Constants.dart';
 import 'package:redux_sign_in/main.dart';
-import 'package:redux_sign_in/ui/page/google_map.dart';
 import 'package:redux_sign_in/ui/page/flutter_map.dart';
 import 'package:redux_sign_in/ui/page/map_view.dart';
 
