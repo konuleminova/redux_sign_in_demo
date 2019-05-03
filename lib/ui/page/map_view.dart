@@ -376,7 +376,7 @@ class MapDemoPage {
         ),
         toolbarActions: [new ToolbarAction("Close", 1)]);
     StreamSubscription sub = mapView.onMapReady.listen((_) {
-      mapView.setMarkers(_markers);
+      //mapView.setMarkers(_markers);
       mapView.setPolylines(_lines);
       for (int i = 0; i < _polygons2.length; i++) {
         mapView.addPolygon(_polygons2[i]);
