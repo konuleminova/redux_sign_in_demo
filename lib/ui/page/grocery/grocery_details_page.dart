@@ -3,6 +3,7 @@ import 'package:redux_sign_in/data/model/product_model.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/glistitem2.dart';
 import 'package:redux_sign_in/ui/widgets/gtile_title.dart';
+import 'package:share/share.dart';
 
 class GroceryDetailsPage extends StatefulWidget {
   @override
@@ -13,9 +14,9 @@ class GroceryDetailsPage extends StatefulWidget {
 }
 
 class GroceryDetailsState extends State<GroceryDetailsPage> {
-  bool isAdded=false, isLiked=false;
+  bool isAdded = false, isLiked = false;
 
-  var amount=1;
+  var amount = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +26,21 @@ class GroceryDetailsState extends State<GroceryDetailsPage> {
             title: new Text("Product List"),
             backgroundColor: Colors.lightGreen,
             actions: <Widget>[
-              new Container(
-                child: new Icon(
-                  Icons.share,
-                  color: Colors.white,
+              GestureDetector(
+                child: new Container(
+                  child: new Icon(
+                    Icons.share,
+                    color: Colors.white,
+                  ),
+                  margin: EdgeInsets.only(right: 16),
                 ),
-                margin: EdgeInsets.only(right: 16),
-              ),
+                onTap: () {
+                  final RenderBox box = context.findRenderObject();
+                  Share.share("https://pulapul.com/PulaPul/?action=GetImage&module=Campaigns&fileid=2&d=20190503",
+                      sharePositionOrigin:
+                          box.localToGlobal(Offset.zero) & box.size);
+                },
+              )
             ]),
         body: _buildPageContent(context));
   }
@@ -73,7 +82,7 @@ class GroceryDetailsState extends State<GroceryDetailsPage> {
                       )),
                   Expanded(
                     child: new Container(
-                      child:addedWidget(),
+                      child: addedWidget(),
                       margin: EdgeInsets.only(right: 20, top: 30, left: 20),
                     ),
                     flex: 1,
@@ -226,6 +235,7 @@ class GroceryDetailsState extends State<GroceryDetailsPage> {
       );
     }
   }
+
   Container _buildItemImage({String image}) {
     return Container(
       padding: EdgeInsets.only(left: 16.0, top: 8.0, right: 16.0, bottom: 16.0),
