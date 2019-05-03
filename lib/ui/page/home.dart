@@ -37,6 +37,8 @@ class HomePageState extends State<HomePage> {
 
   var increment = 1;
 
+  int counter = 0;
+
   @override
   void initState() {
     productList = new List();
@@ -69,10 +71,10 @@ class HomePageState extends State<HomePage> {
             if (onData != null) {
               try {
                 productList.addAll(onData.products);
-                onData.home.data=productList;
+                onData.home.data = productList;
                 productList.clear();
-               // productList[0].status=true;
-             /*   for(int i=0;i<productList.length;i++){
+                // productList[0].status=true;
+                /*   for(int i=0;i<productList.length;i++){
 
                   if (productList[i].status) {
                     onData.shopItems.add(new ShopItem(
@@ -111,19 +113,55 @@ class HomePageState extends State<HomePage> {
                       showSearch(context: context, delegate: SearchWidget());
                     },
                   ),
-                  new IconButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, "/shopping_cart");
-                      },
-                      icon: Icon(
-                        Icons.shopping_cart,
-                        color: Colors.white,
-                      ))
+                  new Stack(
+                    children: <Widget>[
+                      new IconButton(
+                          icon: Icon(
+                            Icons.shopping_cart,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              counter = 0;
+                              Navigator.pushNamed(context, "/shopping_cart");
+                            });
+                          }),
+                      counter != 0
+                          ? new Positioned(
+                              right: 11,
+                              top: 11,
+                              child: new Container(
+                                padding: EdgeInsets.all(2),
+                                decoration: new BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
+                                constraints: BoxConstraints(
+                                  minWidth: 14,
+                                  minHeight: 14,
+                                ),
+                                child: Text(
+                                  '$counter',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 8,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            )
+                          : new Container()
+                    ],
+                  ),
                 ],
               ),
               floatingActionButton: new FloatingActionButton(
                 backgroundColor: Colors.lightGreen,
-                onPressed: null,
+                onPressed: () {
+                  setState(() {
+                    counter++;
+                  });
+                },
                 child: new Icon(Icons.chat),
               ),
               drawer: DrawerWidget(),
@@ -146,7 +184,7 @@ class HomePageState extends State<HomePage> {
                 GestureDetector(
                   child: _titleContainer(),
                 ),
-              //  _buildCard()
+                //  _buildCard()
               ]));
         });
   }
@@ -254,7 +292,8 @@ class HomePageState extends State<HomePage> {
                 height: 350,
                 child: InkWell(
                   child: GroceryListItemOne(
-                    product: productList[index],viewModel: viewModel,
+                    product: productList[index],
+                    viewModel: viewModel,
                   ),
                 ));
           },

@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
     return StoreProvider<AppState>(
       store: store,
       child: new MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: IndexPage(),
         routes: <String, WidgetBuilder>{
           "/index": (BuildContext context) => IndexPage(),
