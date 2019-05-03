@@ -36,7 +36,6 @@ class HomePageState extends State<HomePage> {
   int index = 4;
 
   var increment = 1;
-
   int counter = 0;
 
   @override
@@ -55,8 +54,10 @@ class HomePageState extends State<HomePage> {
     _scrollController.dispose();
   }
 
+
   @override
   Widget build(BuildContext context) {
+
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     // TODO: implement build
@@ -71,7 +72,20 @@ class HomePageState extends State<HomePage> {
             if (onData != null) {
               try {
                 productList.addAll(onData.products);
-                onData.home.data = productList;
+                // productList[0].status = true;
+                //onData.home.data = productList;
+                for (int i = 0; i < productList.length; i++) {
+                  if (productList[i].status) {
+                    counter=0;
+                    print(productList[i].status.toString()+i.toString());
+                    setState(() {
+                      counter++;
+                    });
+                  } else {
+                     //counter--;
+                  }
+                }
+                onData.home.products = productList;
                 productList.clear();
                 // productList[0].status=true;
                 /*   for(int i=0;i<productList.length;i++){
@@ -188,7 +202,6 @@ class HomePageState extends State<HomePage> {
               ]));
         });
   }
-
   Widget _buildCarousel() => Container(
         child: new Carousel(
           children: [
