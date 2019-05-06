@@ -11,7 +11,7 @@ class MapPage1 extends StatefulWidget {
 }
 
 class _MapPage1State extends State<MapPage1> {
-  static const LatLng _bakuLatLng = const LatLng(40.409264, 49.867092);
+  static const LatLng _bakuLatLng = const LatLng(40.3716222, 49.8555191);
   GoogleMapController _mapController;
   final Set<Marker> _markers = {};
   LatLng _lastMapPositon = _bakuLatLng;
@@ -63,7 +63,7 @@ class _MapPage1State extends State<MapPage1> {
                   onCameraMove: _onCameraMove,
                   onMapCreated: _onMapCreated,
                   initialCameraPosition:
-                      CameraPosition(target: _lastMapPositon, zoom: 12.00),
+                      CameraPosition(target: _lastMapPositon, zoom: 11.00),
                 ),
                 onTap: () {
                   MapDemoPage mp = new MapDemoPage();
@@ -162,7 +162,6 @@ class _MapPage1State extends State<MapPage1> {
     points.add(new LatLng(40.371101, 49.8550869));
     points.add(new LatLng(40.3715097, 49.8551513));
     points.add(new LatLng(40.3716222, 49.8555191));
-
 
     //
     List<LatLng> points2 = new List<LatLng>();
@@ -289,21 +288,116 @@ class _MapPage1State extends State<MapPage1> {
     points2.add(new LatLng(40.3420666, 49.83723));
     points2.add(new LatLng(40.3385315, 49.8338732));
 
+    ///
+    List<LatLng> points3 = new List<LatLng>();
+    points3.add(new LatLng(40.3739614, 49.8961811));
+    points3.add(new LatLng(40.3647513, 49.9293135));
+    points3.add(new LatLng(40.3562141, 49.945106));
+    points3.add(new LatLng(40.356915, 49.9499148));
+    points3.add(new LatLng(40.3522948, 49.9586715));
+    points3.add(new LatLng(40.3481526, 49.96185));
+    points3.add(new LatLng(40.348196, 49.9669364));
+    points3.add(new LatLng(40.3499838, 49.9686215));
+    points3.add(new LatLng(40.3546061, 49.9680909));
+    points3.add(new LatLng(40.3596208, 49.9668734));
+    points3.add(new LatLng(40.3599923, 49.9651359));
+    points3.add(new LatLng(40.3695976, 49.9634925));
+    points3.add(new LatLng(40.3724057, 49.9645579));
+    points3.add(new LatLng(40.3827028, 49.9651339));
+    points3.add(new LatLng(40.3837324, 49.9696261));
+    points3.add(new LatLng(40.3860454, 49.9710998));
+    points3.add(new LatLng(40.3851752, 49.9745846));
+    points3.add(new LatLng(40.3934548, 49.9758338));
+    points3.add(new LatLng(40.3930322, 49.972493));
+    points3.add(new LatLng(40.4035404, 49.9723672));
+    points3.add(new LatLng(40.4185973, 49.9632041));
+    points3.add(new LatLng(40.4276345, 49.9392699));
+    points3.add(new LatLng(40.4256118, 49.9169554));
+    points3.add(new LatLng(40.4350824, 49.8874282));
+    points3.add(new LatLng(40.439786, 49.8644255));
+    points3.add(new LatLng(40.4404392, 49.8381614));
+    points3.add(new LatLng(40.4288105, 49.8117255));
+    points3.add(new LatLng(40.4137817, 49.794731));
+    points3.add(new LatLng(40.3953505, 49.7866629));
+    points3.add(new LatLng(40.3901528, 49.7856331));
+    points3.add(new LatLng(40.3844321, 49.7870066));
+    points3.add(new LatLng(40.37116, 49.7906112));
+    points3.add(new LatLng(40.3657321, 49.7941305));
+    points3.add(new LatLng(40.3599118, 49.7959327));
+    points3.add(new LatLng(40.3536191, 49.7965548));
+    points3.add(new LatLng(40.3485692, 49.7957177));
+    points3.add(new LatLng(40.3452067, 49.793014));
+    points3.add(new LatLng(40.3360477, 49.8082489));
+    points3.add(new LatLng(40.3325801, 49.8106521));
+    points3.add(new LatLng(40.3235178, 49.8164891));
+    points3.add(new LatLng(40.3220125, 49.8212093));
+    points3.add(new LatLng(40.3207365, 49.8280329));
+    points3.add(new LatLng(40.3187077, 49.8384184));
+    points3.add(new LatLng(40.3368655, 49.8448986));
+    points3.add(new LatLng(40.3381623, 49.8373938));
+    points3.add(new LatLng(40.3382571, 49.8347267));
+    points3.add(new LatLng(40.3380542, 49.834199));
+    points3.add(new LatLng(40.3385315, 49.8338732));
+    points3.add(new LatLng(40.3420666, 49.83723));
+    points3.add(new LatLng(40.3426277, 49.8348523));
+    points3.add(new LatLng(40.3454104, 49.8306053));
+    points3.add(new LatLng(40.3473169, 49.8287714));
+    points3.add(new LatLng(40.3503998, 49.8242812));
+    points3.add(new LatLng(40.3513438, 49.821019));
+    points3.add(new LatLng(40.3512983, 49.8195692));
+    points3.add(new LatLng(40.3515144, 49.8176474));
+    points3.add(new LatLng(40.3523718, 49.8180522));
+    points3.add(new LatLng(40.3526802, 49.8168878));
+    points3.add(new LatLng(40.3523814, 49.8162326));
+    points3.add(new LatLng(40.3527157, 49.8152763));
+    points3.add(new LatLng(40.352396, 49.8143201));
+    points3.add(new LatLng(40.3522081, 49.8111981));
+    points3.add(new LatLng(40.3551268, 49.8104791));
+    points3.add(new LatLng(40.3655257, 49.8103933));
+    points3.add(new LatLng(40.3819383, 49.8084192));
+    points3.add(new LatLng(40.3903719, 49.8071746));
+    points3.add(new LatLng(40.408347, 49.824727));
+    points3.add(new LatLng(40.4107989, 49.8344678));
+    points3.add(new LatLng(40.4170072, 49.8361845));
+    points3.add(new LatLng(40.4195636, 49.8484692));
+    points3.add(new LatLng(40.4218089, 49.853652));
+    points3.add(new LatLng(40.4195219, 49.8656682));
+    points3.add(new LatLng(40.421515, 49.8700242));
+    points3.add(new LatLng(40.4155684, 49.8749809));
+    points3.add(new LatLng(40.4112123, 49.8804325));
+    points3.add(new LatLng(40.4051446, 49.8855809));
+    points3.add(new LatLng(40.3957648, 49.8998941));
+    points3.add(new LatLng(40.3904373, 49.90176));
+    points3.add(new LatLng(40.3896522, 49.8955692));
+    points3.add(new LatLng(40.3806301, 49.8973504));
+    points3.add(new LatLng(40.3739614, 49.8961811));
+
     List<Polyline> _lines = <Polyline>[
       new Polyline(
           polylineId: new PolylineId("111"),
           points: points,
-          color: Colors.redAccent),
+          color: Colors.redAccent,zIndex: 2),
     ];
     List<Polyline> _lines2 = <Polyline>[
       new Polyline(
           polylineId: new PolylineId("112"),
           points: points2,
-          color: Colors.green,width: 6,zIndex: 1),
+          color: Colors.green,
+          width: 10,
+          zIndex: 1),
+    ];
+    List<Polyline> _lines3 = <Polyline>[
+      new Polyline(
+          polylineId: new PolylineId("113"),
+          points: points3,
+          color: Colors.blue,
+          width: 10,
+          zIndex: 0),
     ];
     Set<Polyline> plo = new Set();
     plo.addAll(_lines);
     plo.addAll(_lines2);
+    plo.addAll(_lines3);
     return plo;
   }
 
