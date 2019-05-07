@@ -138,7 +138,7 @@ class GroceryDetailsState extends State<GroceryDetailsPage> {
                   subtitle: "Subtitle",
                   price: "1 AZN",
                   isLiked: false,
-                  status: false,
+                  isAdded: false,
                   amount: 1)),
               GroceryListItemTwo(new Product(
                   image:
@@ -147,7 +147,7 @@ class GroceryDetailsState extends State<GroceryDetailsPage> {
                   subtitle: "Subtitle",
                   price: "2 AZN",
                   isLiked: false,
-                  status: false,
+                  isAdded: false,
                   amount: 1)),
             ],
           ),

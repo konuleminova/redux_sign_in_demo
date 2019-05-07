@@ -29,7 +29,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
       decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(
-              color: product.status ? Colors.lightGreen : Colors.grey[300]),
+              color: product.isAdded ? Colors.lightGreen : Colors.grey[300]),
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(5.0), topRight: Radius.circular(5.0)),
           boxShadow: [
@@ -118,7 +118,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
   }
 
   addedWidget() {
-    if (!product.status) {
+    if (!product.isAdded) {
       return new GestureDetector(
         child: new Container(
           child: new Container(
@@ -137,7 +137,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
         ),
         onTap: () {
           setState(() {
-            product.status = true;
+            product.isAdded = true;
             widget.viewModel.onAddedProduct(product);
           });
         },
@@ -161,7 +161,7 @@ class GroceryListItemOneState extends State<GroceryListItemOne> {
                 setState(() {
                   product.amount--;
                   if (product.amount < 1) {
-                    product.status = false;
+                    product.isAdded = false;
                     product.amount = 1;
                   }
                 });

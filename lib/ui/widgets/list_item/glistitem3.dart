@@ -3,19 +3,19 @@ import 'package:redux_sign_in/data/model/product_model.dart';
 import 'package:redux_sign_in/ui/widgets/gtile_title.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 
-class GroceryListItemTwo extends StatefulWidget {
+class GroceryListItemThree extends StatefulWidget {
   Product product;
 
-  GroceryListItemTwo(this.product);
+  GroceryListItemThree(this.product);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return GroceryListItemTwoState();
+    return GroceryListItemThreeState();
   }
 }
 
-class GroceryListItemTwoState extends State<GroceryListItemTwo> {
+class GroceryListItemThreeState extends State<GroceryListItemThree> {
   Product product;
   String image, title, subtitle;
   bool isAdded, isLiked;
@@ -128,7 +128,7 @@ class GroceryListItemTwoState extends State<GroceryListItemTwo> {
                 setState(() {
                   widget.product.amount--;
                   if (widget.product.amount < 1) {
-                   widget. product.isAdded = false;
+                    widget. product.isAdded = false;
                     widget.product.amount = 1;
                   }
                 });
@@ -152,4 +152,3 @@ class GroceryListItemTwoState extends State<GroceryListItemTwo> {
     }
   }
 }
-

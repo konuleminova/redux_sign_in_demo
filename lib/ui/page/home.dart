@@ -75,9 +75,9 @@ class HomePageState extends State<HomePage> {
                 // productList[0].status = true;
                 //onData.home.data = productList;
                 for (int i = 0; i < productList.length; i++) {
-                  if (productList[i].status) {
+                  if (productList[i].isAdded) {
                     counter=0;
-                    print(productList[i].status.toString()+i.toString());
+                    print(productList[i].isAdded.toString()+i.toString());
                     setState(() {
                       counter++;
                     });

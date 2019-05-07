@@ -75,7 +75,7 @@ class HomeListItemState extends State<ProductItemWidget> {
                   new Container(
                       margin: EdgeInsets.only(left: 8, right: 8),
                       child: updateContainer(
-                        widget.productList[widget.index].status,
+                        widget.productList[widget.index].isAdded,
                         widget.index,
                       )),
                 ],
@@ -128,7 +128,7 @@ class HomeListItemState extends State<ProductItemWidget> {
                             widget.productList[index].amount =
                                 widget.productList[index].amount - 1;
                             if (widget.productList[index].amount < 1) {
-                              widget.productList[index].status = false;
+                              widget.productList[index].isAdded = false;
                               widget.productList[index].amount = 1;
                             }
                           });
@@ -199,7 +199,7 @@ class HomeListItemState extends State<ProductItemWidget> {
               ),
               onTap: () {
                 setState(() {
-                  widget.productList[index].status = true;
+                  widget.productList[index].isAdded = true;
                 });
               },
             ),

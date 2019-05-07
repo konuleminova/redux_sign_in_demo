@@ -6,7 +6,7 @@ class Product {
   String image;
   bool isLiked;
   String url;
-  bool status;
+  bool isAdded;
   int amount;
 
   Product(
@@ -17,7 +17,7 @@ class Product {
       this.image,
       this.isLiked,
       this.url,
-      this.status,
+      this.isAdded,
       this.amount});
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -27,7 +27,7 @@ class Product {
         image: json["IMAGE"]??"images/img1.jpg",
         isLiked: json["LIKED"],
         url: json["URL"],
-        status: false,
+        isAdded: false,
         amount: 1,
         subtitle: "1kq",
         price: "1 AZN");

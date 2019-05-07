@@ -102,7 +102,7 @@ class GroceryWishlistTabViewState extends State<GroceryWishlistTabView> {
           subtitle: shopItem.subtitle,
           price: shopItem.price,
           isLiked: true,
-          status: false,
+          isAdded: false,
           amount: 1)),
     ],
   );

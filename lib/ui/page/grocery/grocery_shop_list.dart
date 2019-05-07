@@ -35,7 +35,7 @@ class GroceryCartState extends State<GroceryShopCartPage> {
          // shopItems.clear();
           for(int i=0;i<store.state.products.length;i++){
 
-            if (store.state.products[i].status) {
+            if (store.state.products[i].isAdded) {
               shopItems.add(new ShopItem(
                   title: store.state.products[i].title,
                   subtitle: store.state.products[i].subtitle,
@@ -169,7 +169,7 @@ class GroceryCartState extends State<GroceryShopCartPage> {
               subtitle: shopItem.subtitle,
               price: shopItem.price,
               isLiked: false,
-              status: true,
+              isAdded: true,
               amount: 1)),
           Positioned(
             top: 5,
