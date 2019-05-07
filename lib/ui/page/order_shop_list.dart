@@ -3,6 +3,7 @@ import 'package:redux_sign_in/data/model/order_history_model.dart';
 import 'package:redux_sign_in/data/model/product_model.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/glistitem3.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/glistitem4.dart';
+import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 
 class OrderShopListPage extends StatelessWidget {
   List<Product> products = new List();
@@ -50,10 +51,6 @@ class OrderShopListPage extends StatelessWidget {
         title: new Text("Order History"),
         actions: <Widget>[
           new Container(
-            child: new Icon(Icons.filter_list),
-            margin: EdgeInsets.only(right: 8),
-          ),
-          new Container(
             child: new Icon(Icons.more_vert),
             margin: EdgeInsets.only(right: 8),
           ),
@@ -65,7 +62,7 @@ class OrderShopListPage extends StatelessWidget {
           SizedBox(
             height: 10.0,
           ),
-          // _buildTotals()
+          _buildRatingStar(),
         ],
       ),
     );
@@ -97,4 +94,18 @@ class OrderShopListPage extends StatelessWidget {
           Navigator.pushNamed(context, "/order_shop_list");
         },
       );
+
+  _buildRatingStar() => Container(
+      height: 100,
+      padding: EdgeInsets.only(bottom: 16),
+      child: new Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          new Text(
+            "Write a Review",
+            style: TextStyle(color: Colors.green, fontSize: 22),
+          ),
+          new RatingStarWidget(5, 4, 35),
+        ],
+      ));
 }
