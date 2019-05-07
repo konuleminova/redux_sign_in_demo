@@ -51,7 +51,7 @@ class RatingStarDialog extends StatelessWidget {
                             children: <Widget>[
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[RatingStarWidget(5, 4, 30)],
+                                children: <Widget>[RatingStarWidget(5, 0, 30)],
                               ),
                               SizedBox(width: 10.0),
                               CircleAvatar(

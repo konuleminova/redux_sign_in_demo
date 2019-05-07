@@ -116,7 +116,7 @@ class OrderShopListPage extends StatelessWidget {
             "Write a Review",
             style: TextStyle(color: Colors.green, fontSize: 22),
           ),
-          new RatingStarWidget(5, 4, 35),
+          new RatingStarWidget(5, 0, 35),
         ],
       ));
 }
