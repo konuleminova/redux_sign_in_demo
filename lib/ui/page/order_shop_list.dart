@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:redux_sign_in/data/model/order_history_model.dart';
 import 'package:redux_sign_in/data/model/product_model.dart';
+import 'package:redux_sign_in/ui/widgets/dialog/dialog.dart';
+import 'package:redux_sign_in/ui/widgets/dialog/payment_success_dialog.dart';
+import 'package:redux_sign_in/ui/widgets/dialog/rating_star_dialog.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/glistitem3.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/glistitem4.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
@@ -11,7 +14,7 @@ class OrderShopListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context = this.context;
+    //context = this.context;
     products.add(
       new Product(
           title: "Order Name",
@@ -62,7 +65,15 @@ class OrderShopListPage extends StatelessWidget {
           SizedBox(
             height: 10.0,
           ),
-          _buildRatingStar(),
+          GestureDetector(
+              child: _buildRatingStar(),
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (buildContext) {
+                      return RatingStarDialog();
+                    });
+              })
         ],
       ),
     );
