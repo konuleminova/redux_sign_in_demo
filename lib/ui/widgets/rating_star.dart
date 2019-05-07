@@ -19,10 +19,13 @@ class RatingStarState extends State<RatingStarWidget> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return SmoothStarRating(
-      allowHalfRating: false,
+      allowHalfRating: true,
       onRatingChanged: (v) {
         // rating = v;
-        setState(() {});
+        widget.rating = v;
+        setState(() {
+          print("rate chage");
+        });
       },
       starCount: widget.starCount,
       rating: widget.rating,
