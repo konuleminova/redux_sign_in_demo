@@ -56,7 +56,9 @@ class RatingStarDialog extends StatelessWidget {
                               SizedBox(width: 10.0),
                               CircleAvatar(
                                 backgroundColor: Colors.green,
-                                child: Icon(Icons.send),
+                                child:  new IconButton(icon:new Icon(Icons.send),onPressed: (){
+                                  Navigator.pop(context);
+                                },)
                               ),
                             ],
                           ),
