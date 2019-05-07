@@ -1,34 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:redux_sign_in/data/model/order_history_model.dart';
+import 'package:redux_sign_in/data/model/product_model.dart';
 import 'package:redux_sign_in/ui/widgets/gtile_title.dart';
 import 'package:redux_sign_in/ui/widgets/rating_star.dart';
 
-class GroceryListItemThree extends StatefulWidget {
-  OrderItem orderItem;
+class GroceryListItemFour extends StatefulWidget {
+  Product orderProduct;
 
-  GroceryListItemThree(this.orderItem);
+  GroceryListItemFour(this.orderProduct);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return GroceryListItemThreeState();
+    return GroceryListItemFourState();
   }
 }
 
-class GroceryListItemThreeState extends State<GroceryListItemThree> {
-  OrderItem orderItem;
-  String title, subtitle, price;
-  bool status;
+class GroceryListItemFourState extends State<GroceryListItemFour> {
+  Product orderProduct;
+  String title, subtitle, price, image;
   int amount;
 
   @override
   Widget build(BuildContext context) {
-    orderItem = widget.orderItem;
-    title = orderItem.title;
-    status = orderItem.status;
-    subtitle = orderItem.subtitle;
-    amount = widget.orderItem.amount;
-    price = widget.orderItem.price;
+    orderProduct = widget.orderProduct;
+    title = orderProduct.title;
+    subtitle = orderProduct.subtitle;
+    amount = widget.orderProduct.amount;
+    price = widget.orderProduct.price;
+    image = widget.orderProduct.image;
 
     // TODO: implement build
     return Card(
@@ -38,24 +38,30 @@ class GroceryListItemThreeState extends State<GroceryListItemThree> {
             elevation: 3.0,
             child: new Container(
               decoration: new BoxDecoration(
-                  color: Colors.white, border: new Border.all(width: 0.5,color: Colors.lightGreen)),
+                  color: Colors.white,
+                  border: new Border.all(width: 0.5, color: Colors.lightGreen)),
               child: ListTile(
-                onTap: (){
-                  Navigator.pushNamed(context, "/order_shop_list");
-                },
+                  leading: Container(
+                      height: 80.0,
+                      width: 100,
+                      child: Image.network(
+                        image,
+                        //height: 80.0,
+                      )),
                   title: Container(
-                    height: 90.0,
+                    height: 110.0,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         new GroceryTitle(text: title),
                         new GrocerySubtitle(text: subtitle),
+                        new GrocerySubtitle(text: amount.toString()+"kq"),
                       ],
                     ),
                   ),
                   trailing: new Container(
-                    height: 70,
+                    height: 80,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -72,18 +78,10 @@ class GroceryListItemThreeState extends State<GroceryListItemThree> {
   }
 
   _statusWidget() {
-    if (status) {
-      return Text(
-        "Deliverid",
-        style: TextStyle(
-            color: Colors.green, fontSize: 18, fontWeight: FontWeight.bold),
-      );
-    } else {
-      return Text(
-        "Processing",
-        style: TextStyle(
-            color: Colors.red, fontSize: 18, fontWeight: FontWeight.bold),
-      );
-    }
+    return Text(
+      "4kq",
+      style: TextStyle(
+          color: Colors.green, fontSize: 18, fontWeight: FontWeight.bold),
+    );
   }
 }

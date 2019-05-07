@@ -6,6 +6,7 @@ import 'package:redux_sign_in/ui/page/grocery/grocery_details_page.dart';
 import 'package:redux_sign_in/ui/page/grocery/grocery_shop_list.dart';
 import 'package:redux_sign_in/ui/page/grocery/gwishlisttab.dart';
 import 'package:redux_sign_in/ui/page/order_history.dart';
+import 'package:redux_sign_in/ui/page/order_shop_list.dart';
 import 'package:redux_sign_in/ui/page/payment/checkout.dart';
 import 'package:redux_sign_in/ui/page/payment/confirm_order.dart';
 import 'package:redux_sign_in/ui/page/flutter_map.dart';
@@ -23,7 +24,6 @@ import 'package:redux_sign_in/ui/page/test/old_shopping_cart.dart';
 import 'package:redux_sign_in/ui/widgets/dropdown.dart';
 import 'package:redux_sign_in/util/sharedpref_util.dart';
 import 'package:redux_thunk/redux_thunk.dart';
-
 
 void main() => runApp(MyApp());
 
@@ -47,11 +47,12 @@ class MyApp extends StatelessWidget {
           "/shopping_cart": (BuildContext context) => GroceryShopCartPage(),
           "/product_detail": (BuildContext context) => GroceryDetailsPage(),
           "/drop_down": (BuildContext context) => DropdownMenu(),
-          "/wish_list": (BuildContext context) =>   GroceryWishlistTabView(),
-          "/confirm_order":(context)=>ConfirmOrderPage(),
-          "/card_storage":(context)=> PaymentMethodPage(),
+          "/wish_list": (BuildContext context) => GroceryWishlistTabView(),
+          "/confirm_order": (context) => ConfirmOrderPage(),
+          "/card_storage": (context) => PaymentMethodPage(),
           "/checkout": (BuildContext context) => CheckoutsPage(),
-          "/order_history":(BuildContext context)=>OrderHistoryPage()
+          "/order_history": (BuildContext context) => OrderHistoryPage(),
+          "/order_shop_list": (BuildContext context) => OrderShopListPage()
 
           // "/product_list": (BuildContext context) => ProductListPage()
         },

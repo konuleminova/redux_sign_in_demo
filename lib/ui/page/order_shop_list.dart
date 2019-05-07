@@ -2,41 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:redux_sign_in/data/model/order_history_model.dart';
 import 'package:redux_sign_in/data/model/product_model.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/glistitem3.dart';
+import 'package:redux_sign_in/ui/widgets/list_item/glistitem4.dart';
 
-class OrderHistoryPage extends StatelessWidget {
-  List<OrderItem> orderItems = new List();
+class OrderShopListPage extends StatelessWidget {
+  List<Product> products = new List();
   BuildContext context;
 
   @override
   Widget build(BuildContext context) {
     context = this.context;
-    orderItems.add(
-      new OrderItem(
+    products.add(
+      new Product(
           title: "Order Name",
           subtitle: "27.02.2019",
           price: "1 AZN",
-          status: true),
+          image:
+              "https://pulapul.com/PulaPul/?action=GetImage&module=Campaigns&fileid=2&d=20190507"),
     );
-    orderItems.add(
-      new OrderItem(
+    products.add(
+      new Product(
           title: "Order Name",
           subtitle: "28.05.2019",
           price: "1 AZN",
-          status: false),
+          image:
+              "https://pulapul.com/PulaPul/?action=GetImage&module=Campaigns&fileid=2&d=20190507"),
     );
-    orderItems.add(
-      new OrderItem(
+    products.add(
+      new Product(
           title: "Order Name",
           subtitle: "1.02.2019",
           price: "1 AZN",
-          status: false),
+          image:
+              "https://pulapul.com/PulaPul/?action=GetImage&module=Campaigns&fileid=2&d=20190507"),
     );
-    orderItems.add(
-      new OrderItem(
+    products.add(
+      new Product(
           title: "Order Name",
           subtitle: "3.04.2019",
           price: "1 AZN",
-          status: true),
+          image:
+              "https://pulapul.com/PulaPul/?action=GetImage&module=Campaigns&fileid=2&d=20190507"),
     );
     // TODO: implement build
     return new Scaffold(
@@ -71,25 +76,25 @@ class OrderHistoryPage extends StatelessWidget {
         child: new ListView(
           shrinkWrap: true,
           physics: ClampingScrollPhysics(),
-          children: orderItems
-              .map((OrderItem orderItem) => _builOrderListItem(orderItem))
+          children: products
+              .map((Product product) => _builOrderListItem(product))
               .toList(),
         ),
       );
 
-  Widget _builOrderListItem(OrderItem orderItem) => GestureDetector(
+  Widget _builOrderListItem(Product product) => GestureDetector(
         child: new Stack(
           children: <Widget>[
-            GroceryListItemThree(new OrderItem(
-                title: orderItem.title,
-                subtitle: orderItem.subtitle,
-                status: orderItem.status,
+            GroceryListItemFour(new Product(
+                title: product.title,
+                subtitle: product.subtitle,
                 amount: 1,
-                price: orderItem.price)),
+                price: product.price,
+                image: product.image)),
           ],
         ),
         onTap: () {
-
+          Navigator.pushNamed(context, "/order_shop_list");
         },
       );
 }
