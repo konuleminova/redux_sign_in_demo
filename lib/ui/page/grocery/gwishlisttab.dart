@@ -89,12 +89,12 @@ class GroceryWishlistTabViewState extends State<GroceryWishlistTabView> {
       shrinkWrap: true,
       physics: ClampingScrollPhysics(),
       children: viewModel.shopItems
-          .map((ShopItem shopItem) => _builShopListItem(shopItem))
+          .map((ShopItem shopItem) => _buildWishListItem(shopItem))
           .toList(),
     ),
   );
 
-  Widget _builShopListItem(ShopItem shopItem) => new Stack(
+  Widget _buildWishListItem(ShopItem shopItem) => new Stack(
     children: <Widget>[
       GroceryListItemTwo(new Product(
           image: shopItem.image,
