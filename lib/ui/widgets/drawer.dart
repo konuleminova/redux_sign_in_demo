@@ -38,9 +38,14 @@ class DrawerState extends State<DrawerWidget> {
               Navigator.pushNamed(context, "/wish_list");
             },
           ),
-          ListTile(
-            leading: Icon(Icons.history),
-            title: Text("Order History"),
+          GestureDetector(
+            child: ListTile(
+              leading: Icon(Icons.history),
+              title: Text("Order History"),
+            ),
+            onTap: () {
+              Navigator.pushNamed(context, "/order_history");
+            },
           ),
           ListTile(
             leading: Icon(Icons.notifications_active),

@@ -5,6 +5,7 @@ import 'package:redux_sign_in/data/viewmodel/login_viewmodel.dart';
 import 'package:redux_sign_in/ui/page/grocery/grocery_details_page.dart';
 import 'package:redux_sign_in/ui/page/grocery/grocery_shop_list.dart';
 import 'package:redux_sign_in/ui/page/grocery/gwishlisttab.dart';
+import 'package:redux_sign_in/ui/page/order_history.dart';
 import 'package:redux_sign_in/ui/page/payment/checkout.dart';
 import 'package:redux_sign_in/ui/page/payment/confirm_order.dart';
 import 'package:redux_sign_in/ui/page/flutter_map.dart';
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
           "/confirm_order":(context)=>ConfirmOrderPage(),
           "/card_storage":(context)=> PaymentMethodPage(),
           "/checkout": (BuildContext context) => CheckoutsPage(),
+          "/order_history":(BuildContext context)=>OrderHistoryPage()
 
           // "/product_list": (BuildContext context) => ProductListPage()
         },
