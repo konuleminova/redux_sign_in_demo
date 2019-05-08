@@ -11,6 +11,7 @@ import 'package:redux_sign_in/ui/page/payment/checkout.dart';
 import 'package:redux_sign_in/ui/page/payment/confirm_order.dart';
 import 'package:redux_sign_in/ui/page/flutter_map.dart';
 import 'package:redux_sign_in/ui/page/profile.dart';
+import 'package:redux_sign_in/ui/page/settings.dart';
 import 'package:redux_sign_in/ui/page/test/old_test_cards.dart';
 import 'package:redux_sign_in/ui/page/home.dart';
 import 'package:redux_sign_in/ui/page/index.dart';
@@ -54,7 +55,8 @@ class MyApp extends StatelessWidget {
           "/checkout": (BuildContext context) => CheckoutsPage(),
           "/order_history": (BuildContext context) => OrderHistoryPage(),
           "/order_shop_list": (BuildContext context) => OrderShopListPage(),
-          "/profile": (BuildContext context) => ProfilePage()
+          "/profile": (BuildContext context) => ProfilePage(),
+          "/settings": (BuildContext context) => SettingsPage()
 
           // "/product_list": (BuildContext context) => ProductListPage()
         },

@@ -40,7 +40,9 @@ class DrawerState extends State<DrawerWidget> {
               Container(
                 child: new IconButton(
                   icon: new Icon(Icons.settings),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/settings");
+                  },
                   iconSize: 25,
                   disabledColor: Colors.white,
                   color: Colors.white,
