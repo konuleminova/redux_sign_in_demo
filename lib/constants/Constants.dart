@@ -18,8 +18,8 @@ class Constants {
   static const String numberIsInvalid = 'Card is invalid';
   static const String pay = 'Pay';
 
-  static const String OrderProcessing = 'First: OrderProcessing';
-  static const String OrderDeliverid = 'First: OrderDeliverid ';
+  static const String OrderProcessing = 'OrderProcessing';
+  static const String OrderDeliverid = 'OrderDeliverid ';
   static const List<String> orders = <String>[OrderProcessing, OrderDeliverid];
 
   static const String AutoYenilenme1 = 'Automatik Yenilenme: Time1';

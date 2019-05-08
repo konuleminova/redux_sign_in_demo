@@ -57,7 +57,10 @@ class OrderHistoryPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Text(choice),
-                          new Icon(Icons.access_time,color: Colors.orange[700],)
+                          new Icon(
+                            Icons.access_time,
+                            color: Colors.orange[700],
+                          )
                         ],
                       ),
                     ));
@@ -71,7 +74,21 @@ class OrderHistoryPage extends StatelessWidget {
               return Constants.orders.map((String choice) {
                 return PopupMenuItem<String>(
                   value: choice,
-                  child: Text(choice),
+                  child: new Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Text(choice),
+                      choice == "OrderProcessing"
+                          ? new Icon(
+                              Icons.sync_problem,
+                              color: Colors.red,
+                            )
+                          : new Icon(
+                              Icons.done,
+                              color: Colors.green,
+                            )
+                    ],
+                  ),
                 );
               }).toList();
             },
