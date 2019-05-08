@@ -50,14 +50,13 @@ class HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    super.dispose();
     _scrollController.dispose();
+    _scrollControllerSecond.dispose();
+    super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
-
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     // TODO: implement build
@@ -76,13 +75,13 @@ class HomePageState extends State<HomePage> {
                 //onData.home.data = productList;
                 for (int i = 0; i < productList.length; i++) {
                   if (productList[i].isAdded) {
-                    counter=0;
-                    print(productList[i].isAdded.toString()+i.toString());
+                    counter = 0;
+                    print(productList[i].isAdded.toString() + i.toString());
                     setState(() {
                       counter++;
                     });
                   } else {
-                     //counter--;
+                    //counter--;
                   }
                 }
                 onData.home.products = productList;
@@ -202,6 +201,7 @@ class HomePageState extends State<HomePage> {
               ]));
         });
   }
+
   Widget _buildCarousel() => Container(
         child: new Carousel(
           children: [

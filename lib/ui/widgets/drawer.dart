@@ -24,6 +24,9 @@ class DrawerState extends State<DrawerWidget> {
             currentAccountPicture: Image.network(
                 'http://www.clker.com/cliparts/5/7/4/8/13099629981030824019profile.svg.med.png'),
             decoration: new BoxDecoration(color: Colors.lightGreen),
+            onDetailsPressed: () {
+              Navigator.pushNamed(context, "/profile");
+            },
           ),
           ListTile(
             leading: Icon(Icons.category),

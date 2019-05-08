@@ -46,14 +46,15 @@ class LoginState extends State<LoginPage> {
       onInit: (store) {
         store.onChange.listen((state) {
           if (state != null) {
-            if (state.user_info.isAdded == STATUS.SUCCESS) {
+            if (state.user_info.status == STATUS.SUCCESS) {
               Navigator.of(context).pushNamedAndRemoveUntil(
                   '/home', (Route<dynamic> route) => false);
-            } else if (state.user_info.isAdded == STATUS.LOADING) {
+              //Navigator.pushNamed(context, "/home");
+            } else if (state.user_info.status == STATUS.LOADING) {
               print("loading..");
-            } else if (state.user_info.isAdded == STATUS.FAIL) {
+            } else if (state.user_info.status == STATUS.FAIL) {
               _showToast(context, "Username or Password is wrong.");
-            } else if (state.user_info.isAdded == STATUS.NETWORK_ERROR) {
+            } else if (state.user_info.status == STATUS.NETWORK_ERROR) {
               _showToast(context, "No internet connection");
             }
           }
@@ -118,6 +119,11 @@ class LoginState extends State<LoginPage> {
             )),
           ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
