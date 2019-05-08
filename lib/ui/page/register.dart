@@ -26,47 +26,6 @@ class RegisterPage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      Text("or, connect with"),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      Row(
-                        children: <Widget>[
-                          SizedBox(
-                            width: 20.0,
-                          ),
-                          Expanded(
-                            child: RaisedButton(
-                              child: Text("Facebook"),
-                              textColor: Colors.white,
-                              color: Colors.blue,
-                              shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(40)),
-                              ),
-                              onPressed: () {},
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                          Expanded(
-                            child: RaisedButton(
-                              child: Text("Twitter"),
-                              textColor: Colors.white,
-                              color: Colors.indigo,
-                              shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(40)),
-                              ),
-                              onPressed: () {},
-                            ),
-                          ),
-                          SizedBox(
-                            width: 20.0,
-                          ),
-                        ],
-                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
