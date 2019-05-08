@@ -109,7 +109,8 @@ class ProfilePage extends StatelessWidget {
                 SharedPrefUtil().setUserHasLogin(false);
                 // Navigator.pushNamed(context, "/login");
                 //  Navigator.of(context).popUntil(ModalRoute.withName('/login'));
-                Navigator.pushNamed(context, "/");
+                // Navigator.pushNamed(context, "/");
+                Navigator.pop<bool>(context, true);
               },
               child: Text(
                 "Sign Out",

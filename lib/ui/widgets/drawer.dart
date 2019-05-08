@@ -34,7 +34,12 @@ class DrawerState extends State<DrawerWidget> {
                     )),
                 decoration: new BoxDecoration(color: Colors.lightGreen),
                 onDetailsPressed: () {
-                  Navigator.pushNamed(context, "/profile");
+                  Navigator.pushNamed<dynamic>(context, "/profile")
+                  .then((isLoggedOut) {
+                    if(isLoggedOut != null && isLoggedOut == true) {
+                      Navigator.pushReplacementNamed(context, '/login');
+                    }
+                  });
                 },
               ),
               Container(
