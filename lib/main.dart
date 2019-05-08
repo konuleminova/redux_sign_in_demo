@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
           "/shopping_cart": (BuildContext context) => GroceryShopCartPage(),
           "/product_detail": (BuildContext context) => GroceryDetailsPage(),
           "/drop_down": (BuildContext context) => DropdownMenu(),
-          "/wish_list": (BuildContext context) => LoginThreePage(),
+          "/wish_list": (BuildContext context) => GroceryWishlistTabView(),
           "/confirm_order": (context) => ConfirmOrderPage(),
           "/card_storage": (context) => PaymentMethodPage(),
           "/checkout": (BuildContext context) => CheckoutsPage(),
