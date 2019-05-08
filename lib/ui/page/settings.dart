@@ -40,7 +40,7 @@ class SettingsState extends State<SettingsPage> {
                   padding: EdgeInsets.only(left: 8),
                   width: 200,
                 ),
-                top: 40,
+                top: 45,
               ),
               new Positioned(
                   bottom: 0,
