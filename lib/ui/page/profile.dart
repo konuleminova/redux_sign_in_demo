@@ -10,7 +10,7 @@ class ProfilePage extends StatelessWidget {
       backgroundColor: Colors.grey.shade300,
       appBar: AppBar(
         title: Text("View Profile"),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.lightGreen,
         elevation: 0,
       ),
       body: ListView(
@@ -22,7 +22,7 @@ class ProfilePage extends StatelessWidget {
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                     stops: [0.5, 0.9],
-                    colors: [Colors.green, Colors.green.shade300])),
+                    colors: [Colors.lightGreen, Colors.lightGreen.shade300])),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,9 +34,11 @@ class ProfilePage extends StatelessWidget {
                       minRadius: 60,
                       backgroundColor: Colors.green.shade300,
                       child: CircleAvatar(
-                        backgroundImage: AssetImage('images/img1.jpg'),
-                        minRadius: 50,
-                      ),
+                        radius: 50.0,
+                        backgroundImage:
+                        NetworkImage('https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg'),
+                        backgroundColor: Colors.transparent,
+                      )
                     ),
                   ],
                 ),

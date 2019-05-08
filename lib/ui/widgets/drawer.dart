@@ -15,18 +15,28 @@ class DrawerState extends State<DrawerWidget> {
     return new Drawer(
       child: ListView(
         children: <Widget>[
-          UserAccountsDrawerHeader(
-            accountName: new Text(
-              "KOnul Eminova",
-              style: new TextStyle(fontSize: 20),
+          Center(
+            child: UserAccountsDrawerHeader(
+              accountName: new Text(
+                "Name Surname",
+                style: new TextStyle(fontSize: 20),
+              ),
+              accountEmail: new Text("300 Bonus"),
+              currentAccountPicture: CircleAvatar(
+                minRadius: 60,
+                backgroundColor: Colors.green.shade300,
+                child: CircleAvatar(
+                  radius: 50.0,
+                  backgroundImage:
+                  NetworkImage('https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg'),
+                  backgroundColor: Colors.transparent,
+                )
+              ),
+              decoration: new BoxDecoration(color: Colors.lightGreen),
+              onDetailsPressed: () {
+                Navigator.pushNamed(context, "/profile");
+              },
             ),
-            accountEmail: new Text("konul.eminova@mail.sinam.net"),
-            currentAccountPicture: Image.network(
-                'http://www.clker.com/cliparts/5/7/4/8/13099629981030824019profile.svg.med.png'),
-            decoration: new BoxDecoration(color: Colors.lightGreen),
-            onDetailsPressed: () {
-              Navigator.pushNamed(context, "/profile");
-            },
           ),
           ListTile(
             leading: Icon(Icons.category),
