@@ -15,28 +15,39 @@ class DrawerState extends State<DrawerWidget> {
     return new Drawer(
       child: ListView(
         children: <Widget>[
-          Center(
-            child: UserAccountsDrawerHeader(
-              accountName: new Text(
-                "Name Surname",
-                style: new TextStyle(fontSize: 20),
+          new Stack(
+            children: <Widget>[
+              UserAccountsDrawerHeader(
+                accountName: new Text(
+                  "Name Surname",
+                  style: new TextStyle(fontSize: 20),
+                ),
+                accountEmail: new Text("300 Bonus"),
+                currentAccountPicture: CircleAvatar(
+                    minRadius: 60,
+                    backgroundColor: Colors.green.shade300,
+                    child: CircleAvatar(
+                      radius: 50.0,
+                      backgroundImage: NetworkImage(
+                          'https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg'),
+                      backgroundColor: Colors.transparent,
+                    )),
+                decoration: new BoxDecoration(color: Colors.lightGreen),
+                onDetailsPressed: () {
+                  Navigator.pushNamed(context, "/profile");
+                },
               ),
-              accountEmail: new Text("300 Bonus"),
-              currentAccountPicture: CircleAvatar(
-                minRadius: 60,
-                backgroundColor: Colors.green.shade300,
-                child: CircleAvatar(
-                  radius: 50.0,
-                  backgroundImage:
-                  NetworkImage('https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg'),
-                  backgroundColor: Colors.transparent,
-                )
-              ),
-              decoration: new BoxDecoration(color: Colors.lightGreen),
-              onDetailsPressed: () {
-                Navigator.pushNamed(context, "/profile");
-              },
-            ),
+              Container(
+                child: new IconButton(
+                  icon: new Icon(Icons.settings),
+                  onPressed: () {},
+                  iconSize: 25,
+                  disabledColor: Colors.white,
+                  color: Colors.white,
+                ),
+                alignment: Alignment.topRight,
+              )
+            ],
           ),
           ListTile(
             leading: Icon(Icons.category),
