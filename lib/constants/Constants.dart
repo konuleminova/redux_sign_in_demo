@@ -17,4 +17,13 @@ class Constants {
   static const String fieldReq = '6765***8912';
   static const String numberIsInvalid = 'Card is invalid';
   static const String pay = 'Pay';
+
+  static const String OrderProcessing = 'First: OrderProcessing';
+  static const String OrderDeliverid = 'First: OrderDeliverid ';
+  static const List<String> orders = <String>[OrderProcessing, OrderDeliverid];
+
+  static const String AutoYenilenme1 = 'Automatik Yenilenme: Time1';
+  static const String AutoYenilenme2 = 'Automatik Yenilenme: Time2';
+  static const String AutoYenilenme3 = 'Automatik Yenilenme: Time3';
+  static const List<String> autodates = <String>[AutoYenilenme1, AutoYenilenme2,AutoYenilenme3];
 }

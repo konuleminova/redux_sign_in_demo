@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:redux_sign_in/constants/Constants.dart';
 import 'package:redux_sign_in/data/model/order_history_model.dart';
 import 'package:redux_sign_in/data/model/product_model.dart';
 import 'package:redux_sign_in/ui/widgets/list_item/glistitem3.dart';
@@ -44,13 +45,36 @@ class OrderHistoryPage extends StatelessWidget {
         backgroundColor: Colors.lightGreen,
         title: new Text("Order History"),
         actions: <Widget>[
-          new Container(
-            child: new Icon(Icons.filter_list),
-            margin: EdgeInsets.only(right: 8),
+          PopupMenuButton<String>(
+            icon: new Icon(Icons.date_range),
+            onSelected: choiceAction,
+            itemBuilder: (BuildContext context) {
+              return Constants.autodates.map((String choice) {
+                return PopupMenuItem<String>(
+                    value: choice,
+                    child: new Container(
+                      child: new Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Text(choice),
+                          new Icon(Icons.access_time,color: Colors.orange[700],)
+                        ],
+                      ),
+                    ));
+              }).toList();
+            },
           ),
-          new Container(
-            child: new Icon(Icons.more_vert),
-            margin: EdgeInsets.only(right: 8),
+          PopupMenuButton<String>(
+            icon: new Icon(Icons.filter_list),
+            onSelected: choiceAction,
+            itemBuilder: (BuildContext context) {
+              return Constants.orders.map((String choice) {
+                return PopupMenuItem<String>(
+                  value: choice,
+                  child: Text(choice),
+                );
+              }).toList();
+            },
           ),
         ],
       ),
@@ -64,6 +88,16 @@ class OrderHistoryPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  static void choiceAction(String choice) {
+    if (choice == Constants.FirstItem) {
+      print('I First Item');
+    } else if (choice == Constants.SecondItem) {
+      print('I Second Item');
+    } else if (choice == Constants.ThirdItem) {
+      print('I Thired Item');
+    }
   }
 
   Widget _shopBody() => new Container(
@@ -88,8 +122,6 @@ class OrderHistoryPage extends StatelessWidget {
                 price: orderItem.price)),
           ],
         ),
-        onTap: () {
-
-        },
+        onTap: () {},
       );
 }
